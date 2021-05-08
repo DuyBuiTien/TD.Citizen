@@ -1,7 +1,7 @@
 ﻿using TD.CongDan.Application.Extensions;
 using TD.CongDan.Application.Interfaces.Repositories;
 using TD.CongDan.Domain.Entities.Catalog;
-using AspNetCoreHero.Results;
+using TD.Libs.Results;
 using MediatR;
 using System;
 using System.Linq;

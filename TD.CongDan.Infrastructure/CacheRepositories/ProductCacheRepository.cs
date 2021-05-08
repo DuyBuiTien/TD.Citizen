@@ -2,8 +2,8 @@
 using TD.CongDan.Application.Interfaces.Repositories;
 using TD.CongDan.Domain.Entities.Catalog;
 using TD.CongDan.Infrastructure.CacheKeys;
-using AspNetCoreHero.Extensions.Caching;
-using AspNetCoreHero.ThrowR;
+using TD.Libs.Extensions.Caching;
+using TD.Libs.ThrowR;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Collections.Generic;
 using System.Threading.Tasks;

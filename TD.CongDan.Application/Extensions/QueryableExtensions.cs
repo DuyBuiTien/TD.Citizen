@@ -1,5 +1,5 @@
-﻿using AspNetCoreHero.Results;
-using AspNetCoreHero.ThrowR;
+﻿using TD.Libs.Results;
+using TD.Libs.ThrowR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;

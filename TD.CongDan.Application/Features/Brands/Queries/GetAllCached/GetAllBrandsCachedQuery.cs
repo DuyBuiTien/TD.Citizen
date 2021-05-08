@@ -1,5 +1,5 @@
 ﻿using TD.CongDan.Application.Interfaces.CacheRepositories;
-using AspNetCoreHero.Results;
+using TD.Libs.Results;
 using AutoMapper;
 using MediatR;
 using System.Collections.Generic;

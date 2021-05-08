@@ -1,6 +1,6 @@
 ﻿using TD.CongDan.Application.Exceptions;
 using TD.CongDan.Application.Interfaces.Repositories;
-using AspNetCoreHero.Results;
+using TD.Libs.Results;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

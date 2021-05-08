@@ -6,7 +6,7 @@ using TD.CongDan.Infrastructure.DbContexts;
 using TD.CongDan.Infrastructure.Identity.Models;
 using TD.CongDan.Infrastructure.Identity.Services;
 using TD.CongDan.Infrastructure.Shared.Services;
-using AspNetCoreHero.Results;
+using TD.Libs.Results;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;

@@ -1,5 +1,5 @@
 using TD.CongDan.Infrastructure.Identity.Models;
-using AspNetCoreHero.Extensions.Logging;
+using TD.Libs.Extensions.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;

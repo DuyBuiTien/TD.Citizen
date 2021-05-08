@@ -1,6 +1,6 @@
 ﻿using TD.CongDan.Application.Interfaces.Repositories;
 using TD.CongDan.Domain.Entities.Catalog;
-using AspNetCoreHero.Results;
+using TD.Libs.Results;
 using AutoMapper;
 using MediatR;
 using System.Threading;

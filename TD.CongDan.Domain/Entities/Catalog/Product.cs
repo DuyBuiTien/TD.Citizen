@@ -1,4 +1,4 @@
-﻿using AspNetCoreHero.Abstractions.Domain;
+﻿using TD.Libs.Abstractions.Domain;
 
 namespace TD.CongDan.Domain.Entities.Catalog
 {

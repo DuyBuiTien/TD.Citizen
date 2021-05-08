@@ -1,7 +1,7 @@
 ﻿using TD.CongDan.Application.DTOs;
 using TD.CongDan.Application.Interfaces.Repositories;
 using TD.CongDan.Application.Interfaces.Shared;
-using AspNetCoreHero.EntityFrameworkCore.AuditTrail.Models;
+using TD.Libs.EntityFrameworkCore.AuditTrail.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

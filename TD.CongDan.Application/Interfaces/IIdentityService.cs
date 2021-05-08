@@ -1,5 +1,5 @@
 ﻿using TD.CongDan.Application.DTOs.Identity;
-using AspNetCoreHero.Results;
+using TD.Libs.Results;
 using System.Threading.Tasks;
 
 namespace TD.CongDan.Application.Interfaces

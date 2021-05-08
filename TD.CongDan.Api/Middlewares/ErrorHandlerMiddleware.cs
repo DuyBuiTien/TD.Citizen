@@ -1,5 +1,5 @@
 ﻿using TD.CongDan.Application.Exceptions;
-using AspNetCoreHero.Results;
+using TD.Libs.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;

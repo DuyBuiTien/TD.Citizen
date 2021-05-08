@@ -1,13 +1,13 @@
-﻿using AspNetCoreHero.Abstractions.Domain;
-using TD.CongDan.Application.Interfaces.Contexts;
+﻿using TD.CongDan.Application.Interfaces.Contexts;
 using TD.CongDan.Application.Interfaces.Shared;
 using TD.CongDan.Domain.Entities.Catalog;
-using AspNetCoreHero.EntityFrameworkCore.AuditTrail;
+using TD.Libs.EntityFrameworkCore.AuditTrail;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using TD.Libs.Abstractions.Domain;
 
 namespace TD.CongDan.Infrastructure.DbContexts
 {
