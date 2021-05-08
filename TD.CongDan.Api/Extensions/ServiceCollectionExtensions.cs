@@ -100,21 +100,21 @@ namespace TD.CongDan.Api.Extensions
         {
             if (configuration.GetValue<bool>("UseInMemoryDatabase"))
             {
-                services.AddDbContext<IdentityContext>(options =>
-                    options.UseInMemoryDatabase("IdentityDb"));
+                /*services.AddDbContext<IdentityContext>(options =>
+                    options.UseInMemoryDatabase("IdentityDb"));*/
                 services.AddDbContext<ApplicationDbContext>(options =>
                    options.UseInMemoryDatabase("ApplicationDb"));
             }
             else
             {
-                services.AddDbContext<IdentityContext>(options => options.UseSqlServer(configuration.GetConnectionString("IdentityConnection")));
+                //services.AddDbContext<IdentityContext>(options => options.UseSqlServer(configuration.GetConnectionString("IdentityConnection")));
                 services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ApplicationConnection"), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = true;
                 options.Password.RequireNonAlphanumeric = false;
-            }).AddEntityFrameworkStores<IdentityContext>().AddDefaultUI().AddDefaultTokenProviders();
+            }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 
             #region Services
 

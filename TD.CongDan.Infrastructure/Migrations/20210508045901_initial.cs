@@ -7,12 +7,47 @@ namespace TD.CongDan.Infrastructure.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema(
-                name: "Identity");
+            migrationBuilder.CreateTable(
+                name: "AuditLogs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TableName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OldValues = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NewValues = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AffectedColumns = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrimaryKey = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuditLogs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Brand",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Tax = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Brand", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Roles",
-                schema: "Identity",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -27,7 +62,6 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Users",
-                schema: "Identity",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -56,8 +90,35 @@ namespace TD.CongDan.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Barcode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Rate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    BrandId = table.Column<int>(type: "int", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Brand_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brand",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RoleClaims",
-                schema: "Identity",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -72,7 +133,6 @@ namespace TD.CongDan.Infrastructure.Migrations
                     table.ForeignKey(
                         name: "FK_RoleClaims_Roles_RoleId",
                         column: x => x.RoleId,
-                        principalSchema: "Identity",
                         principalTable: "Roles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -80,7 +140,6 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserClaims",
-                schema: "Identity",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -95,7 +154,6 @@ namespace TD.CongDan.Infrastructure.Migrations
                     table.ForeignKey(
                         name: "FK_UserClaims_Users_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Identity",
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -103,7 +161,6 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserLogins",
-                schema: "Identity",
                 columns: table => new
                 {
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -117,7 +174,6 @@ namespace TD.CongDan.Infrastructure.Migrations
                     table.ForeignKey(
                         name: "FK_UserLogins_Users_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Identity",
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -125,7 +181,6 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserRoles",
-                schema: "Identity",
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -137,14 +192,12 @@ namespace TD.CongDan.Infrastructure.Migrations
                     table.ForeignKey(
                         name: "FK_UserRoles_Roles_RoleId",
                         column: x => x.RoleId,
-                        principalSchema: "Identity",
                         principalTable: "Roles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UserRoles_Users_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Identity",
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -152,7 +205,6 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserTokens",
-                schema: "Identity",
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -166,21 +218,23 @@ namespace TD.CongDan.Infrastructure.Migrations
                     table.ForeignKey(
                         name: "FK_UserTokens_Users_UserId",
                         column: x => x.UserId,
-                        principalSchema: "Identity",
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Products_BrandId",
+                table: "Products",
+                column: "BrandId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",
-                schema: "Identity",
                 table: "RoleClaims",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
-                schema: "Identity",
                 table: "Roles",
                 column: "NormalizedName",
                 unique: true,
@@ -188,31 +242,26 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserClaims_UserId",
-                schema: "Identity",
                 table: "UserClaims",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserLogins_UserId",
-                schema: "Identity",
                 table: "UserLogins",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_RoleId",
-                schema: "Identity",
                 table: "UserRoles",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
-                schema: "Identity",
                 table: "Users",
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
-                schema: "Identity",
                 table: "Users",
                 column: "NormalizedUserName",
                 unique: true,
@@ -222,32 +271,34 @@ namespace TD.CongDan.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "RoleClaims",
-                schema: "Identity");
+                name: "AuditLogs");
 
             migrationBuilder.DropTable(
-                name: "UserClaims",
-                schema: "Identity");
+                name: "Products");
 
             migrationBuilder.DropTable(
-                name: "UserLogins",
-                schema: "Identity");
+                name: "RoleClaims");
 
             migrationBuilder.DropTable(
-                name: "UserRoles",
-                schema: "Identity");
+                name: "UserClaims");
 
             migrationBuilder.DropTable(
-                name: "UserTokens",
-                schema: "Identity");
+                name: "UserLogins");
 
             migrationBuilder.DropTable(
-                name: "Roles",
-                schema: "Identity");
+                name: "UserRoles");
 
             migrationBuilder.DropTable(
-                name: "Users",
-                schema: "Identity");
+                name: "UserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Brand");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

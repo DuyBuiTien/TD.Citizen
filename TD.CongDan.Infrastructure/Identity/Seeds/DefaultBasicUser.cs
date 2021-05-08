@@ -15,8 +15,8 @@ namespace TD.CongDan.Infrastructure.Identity.Seeds
             {
                 UserName = "basicuser",
                 Email = "basicuser@gmail.com",
-                FirstName = "John",
-                LastName = "Doe",
+                FirstName = "Người dùng",
+                LastName = "Demo",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
                 IsActive = true
@@ -26,7 +26,7 @@ namespace TD.CongDan.Infrastructure.Identity.Seeds
                 var user = await userManager.FindByEmailAsync(defaultUser.Email);
                 if (user == null)
                 {
-                    await userManager.CreateAsync(defaultUser, "123Pa$$word!");
+                    await userManager.CreateAsync(defaultUser, "Tandan@123");
                     await userManager.AddToRoleAsync(defaultUser, Roles.Basic.ToString());
                 }
             }

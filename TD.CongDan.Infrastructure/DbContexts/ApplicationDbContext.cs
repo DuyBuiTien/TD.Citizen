@@ -1,17 +1,19 @@
 ﻿using TD.CongDan.Application.Interfaces.Contexts;
 using TD.CongDan.Application.Interfaces.Shared;
 using TD.CongDan.Domain.Entities.Catalog;
-using TD.Libs.EntityFrameworkCore.AuditTrail;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TD.Libs.Abstractions.Domain;
+using System;
+using TD.CongDan.Infrastructure.Identity.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace TD.CongDan.Infrastructure.DbContexts
 {
-    public class ApplicationDbContext : AuditableContext, IApplicationDbContext
+    public class ApplicationDbContext : AuditableIdentityContext, IApplicationDbContext
     {
         private readonly IDateTimeService _dateTime;
         private readonly IAuthenticatedUserService _authenticatedUser;
@@ -22,6 +24,7 @@ namespace TD.CongDan.Infrastructure.DbContexts
             _authenticatedUser = authenticatedUser;
         }
 
+       
         public DbSet<Product> Products { get; set; }
 
         public IDbConnection Connection => Database.GetDbConnection();
@@ -57,6 +60,9 @@ namespace TD.CongDan.Infrastructure.DbContexts
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
+            
+
             foreach (var property in builder.Model.GetEntityTypes()
             .SelectMany(t => t.GetProperties())
             .Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?)))

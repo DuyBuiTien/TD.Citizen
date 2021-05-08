@@ -1,12 +1,12 @@
 ﻿using TD.CongDan.Application.DTOs;
 using TD.CongDan.Application.Interfaces.Repositories;
 using TD.CongDan.Application.Interfaces.Shared;
-using TD.Libs.EntityFrameworkCore.AuditTrail.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TD.CongDan.Infrastructure.Models;
 
 namespace TD.CongDan.Infrastructure.Repositories
 {

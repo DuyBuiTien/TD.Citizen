@@ -36,10 +36,10 @@ namespace TD.CongDan.Infrastructure.Identity.Seeds
             //Seed Default User
             var defaultUser = new ApplicationUser
             {
-                UserName = "superadmin",
-                Email = "superadmin@gmail.com",
-                FirstName = "Mukesh",
-                LastName = "Murugan",
+                UserName = "admin",
+                Email = "admin@gmail.com",
+                FirstName = "Quản trị",
+                LastName = "Hệ thống",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
                 IsActive = true
@@ -49,7 +49,7 @@ namespace TD.CongDan.Infrastructure.Identity.Seeds
                 var user = await userManager.FindByEmailAsync(defaultUser.Email);
                 if (user == null)
                 {
-                    await userManager.CreateAsync(defaultUser, "123Pa$$word!");
+                    await userManager.CreateAsync(defaultUser, "Tandan@123");
                     await userManager.AddToRoleAsync(defaultUser, Roles.Basic.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Roles.Moderator.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Roles.Admin.ToString());
