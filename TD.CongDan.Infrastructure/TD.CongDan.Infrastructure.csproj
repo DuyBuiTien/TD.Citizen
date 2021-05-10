@@ -13,6 +13,7 @@
     <PackageReference Include="MimeKit" Version="2.11.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.5" />
@@ -29,5 +30,8 @@
     <ProjectReference Include="..\TD.Libs.Extensions.Logging\TD.Libs.Extensions.Logging.csproj" />
     <ProjectReference Include="..\TD.Libs.Results\TD.Libs.Results.csproj" />
     <ProjectReference Include="..\TD.Libs.ThrowR\TD.Libs.ThrowR.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Identity\Models\" />
   </ItemGroup>
 </Project>

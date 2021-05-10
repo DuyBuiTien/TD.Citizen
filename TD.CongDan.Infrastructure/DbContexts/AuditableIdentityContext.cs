@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TD.CongDan.Domain.Entities;
 using TD.CongDan.Domain.Enums;
-using TD.CongDan.Infrastructure.Identity.Models;
+using TD.CongDan.Infrastructure.Configurations;
 using TD.CongDan.Infrastructure.Models;
 
 namespace TD.CongDan.Infrastructure.DbContexts
@@ -110,41 +112,45 @@ namespace TD.CongDan.Infrastructure.DbContexts
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
+
+           
+
+
+            //base.OnModelCreating(builder);
             //builder.HasDefaultSchema("Identity");
-            builder.Entity<ApplicationUser>(entity =>
-            {
-                entity.ToTable(name: "Users");
-            });
+            /* builder.Entity<ApplicationUser>(entity =>
+             {
+                 entity.ToTable(name: "Users");
+             });*/
 
-            builder.Entity<IdentityRole>(entity =>
-            {
-                entity.ToTable(name: "Roles");
-            });
-            builder.Entity<IdentityUserRole<string>>(entity =>
-            {
-                entity.ToTable("UserRoles");
-            });
+            /*            builder.Entity<IdentityRole>(entity =>
+                        {
+                            entity.ToTable(name: "Roles");
+                        });
+                        builder.Entity<IdentityUserRole<string>>(entity =>
+                        {
+                            entity.ToTable("UserRoles");
+                        });
 
-            builder.Entity<IdentityUserClaim<string>>(entity =>
-            {
-                entity.ToTable("UserClaims");
-            });
+                        builder.Entity<IdentityUserClaim<string>>(entity =>
+                        {
+                            entity.ToTable("UserClaims");
+                        });
 
-            builder.Entity<IdentityUserLogin<string>>(entity =>
-            {
-                entity.ToTable("UserLogins");
-            });
+                        builder.Entity<IdentityUserLogin<string>>(entity =>
+                        {
+                            entity.ToTable("UserLogins");
+                        });
 
-            builder.Entity<IdentityRoleClaim<string>>(entity =>
-            {
-                entity.ToTable("RoleClaims");
-            });
+                        builder.Entity<IdentityRoleClaim<string>>(entity =>
+                        {
+                            entity.ToTable("RoleClaims");
+                        });
 
-            builder.Entity<IdentityUserToken<string>>(entity =>
-            {
-                entity.ToTable("UserTokens");
-            });
+                        builder.Entity<IdentityUserToken<string>>(entity =>
+                        {
+                            entity.ToTable("UserTokens");
+                        });*/
         }
     }
 }

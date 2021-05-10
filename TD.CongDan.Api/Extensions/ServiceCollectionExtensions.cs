@@ -3,7 +3,6 @@ using TD.CongDan.Application.DTOs.Settings;
 using TD.CongDan.Application.Interfaces;
 using TD.CongDan.Application.Interfaces.Shared;
 using TD.CongDan.Infrastructure.DbContexts;
-using TD.CongDan.Infrastructure.Identity.Models;
 using TD.CongDan.Infrastructure.Identity.Services;
 using TD.CongDan.Infrastructure.Shared.Services;
 using TD.Libs.Results;
@@ -20,6 +19,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TD.CongDan.Domain.Entities;
 
 namespace TD.CongDan.Api.Extensions
 {

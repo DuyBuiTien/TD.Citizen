@@ -1,4 +1,3 @@
-using TD.CongDan.Infrastructure.Identity.Models;
 using TD.Libs.Extensions.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -7,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using TD.CongDan.Domain.Entities;
 
 namespace TD.CongDan.Api
 {

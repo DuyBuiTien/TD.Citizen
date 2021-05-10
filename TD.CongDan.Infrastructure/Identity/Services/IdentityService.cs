@@ -5,7 +5,6 @@ using TD.CongDan.Application.Enums;
 using TD.CongDan.Application.Exceptions;
 using TD.CongDan.Application.Interfaces;
 using TD.CongDan.Application.Interfaces.Shared;
-using TD.CongDan.Infrastructure.Identity.Models;
 using TD.Libs.Results;
 using TD.Libs.ThrowR;
 using Microsoft.AspNetCore.Identity;
@@ -20,6 +19,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using TD.CongDan.Domain.Entities;
 
 namespace TD.CongDan.Infrastructure.Identity.Services
 {

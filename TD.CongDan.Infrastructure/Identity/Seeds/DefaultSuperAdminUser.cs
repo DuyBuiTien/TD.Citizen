@@ -1,10 +1,10 @@
 ﻿using TD.CongDan.Application.Constants;
 using TD.CongDan.Application.Enums;
-using TD.CongDan.Infrastructure.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using TD.CongDan.Domain.Entities;
 
 namespace TD.CongDan.Infrastructure.Identity.Seeds
 {
