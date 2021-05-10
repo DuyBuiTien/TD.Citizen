@@ -1,6 +1,7 @@
 ﻿using TD.CongDan.Application.DTOs.Identity;
 using TD.Libs.Results;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace TD.CongDan.Application.Interfaces
 {
@@ -15,5 +16,10 @@ namespace TD.CongDan.Application.Interfaces
         Task ForgotPassword(ForgotPasswordRequest model, string origin);
 
         Task<Result<string>> ResetPassword(ResetPasswordRequest model);
+
+        Task<Result<string>> UpdateAvatar(IFormFile file);
+        Task<Result<ApplicationUserResponse>> GetUserInfor();
+        Task<Result<ApplicationUserResponse>> UpdateUserInfor(ApplicationUserEditRequest model);
+
     }
 }

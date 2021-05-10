@@ -13,8 +13,8 @@ namespace TD.CongDan.Infrastructure.Identity.Seeds
             //Seed Default User
             var defaultUser = new ApplicationUser
             {
-                UserName = "basicuser",
-                Email = "basicuser@gmail.com",
+                UserName = "user",
+                Email = "user@gmail.com",
                 FirstName = "Người dùng",
                 LastName = "Demo",
                 EmailConfirmed = true,

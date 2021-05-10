@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using TD.Libs.Abstractions.Domain;
 
 namespace TD.CongDan.Domain.Entities
@@ -18,12 +19,17 @@ namespace TD.CongDan.Domain.Entities
         public string Description { get; set; }
 
 
+        [JsonIgnore]
         public ICollection<ApplicationUser> UserInfoProvinces { get; set; }
+        [JsonIgnore]
         public ICollection<ApplicationUser> UserInfoDistricts { get; set; }
+        [JsonIgnore]
         public ICollection<ApplicationUser> UserInfoCommunes { get; set; }
-
+        [JsonIgnore]
         public ICollection<Place> PlaceProvinces { get; set; }
+        [JsonIgnore]
         public ICollection<Place> PlaceDistricts { get; set; }
+        [JsonIgnore]
         public ICollection<Place> PlaceCommunes { get; set; }
 
     }

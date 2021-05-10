@@ -191,6 +191,20 @@ new Industry() { Id = 40, Name = "Xuất nhập khẩu", Code = "", Description 
 );
 
 
+            modelBuilder.Entity<IdentityType>().HasData(
+   new IdentityType() { Id = 1, Name = "Chứng minh nhân dân", Code = "", Description = "" },
+  new IdentityType() { Id = 2, Name = "Căn cước công dân", Code = "", Description = "" },
+  new IdentityType() { Id = 3, Name = "Hộ chiếu", Code = "", Description = "" },
+ 
+);
+
+            modelBuilder.Entity<Gender>().HasData(
+  new Gender() { Id = 1, Name = "Nam", Code = "", Description = "" },
+ new Gender() { Id = 2, Name = "Nữ", Code = "", Description = "" },
+ new Gender() { Id = 3, Name = "Khác", Code = "", Description = "" },
+
+
+);
         }
     }
 }

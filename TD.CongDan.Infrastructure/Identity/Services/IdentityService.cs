@@ -20,6 +20,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using TD.CongDan.Domain.Entities;
+using System.Globalization;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using TD.CongDan.Application.Interfaces.Repositories;
+using TD.CongDan.Application.Interfaces.Contexts;
 
 namespace TD.CongDan.Infrastructure.Identity.Services
 {
@@ -31,12 +36,18 @@ namespace TD.CongDan.Infrastructure.Identity.Services
         private readonly JWTSettings _jwtSettings;
         private readonly IDateTimeService _dateTimeService;
         private readonly IMailService _mailService;
+        private readonly IAuthenticatedUserService _authenticatedUserService;
+        private readonly IGenderRepository _repositoryAsync;
+        private readonly IApplicationDbContext _applicationDbContext;
+        //private readonly IGender gender;
+
 
         public IdentityService(UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
             IOptions<JWTSettings> jwtSettings,
             IDateTimeService dateTimeService,
-            SignInManager<ApplicationUser> signInManager, IMailService mailService)
+            IApplicationDbContext applicationDbContext,
+            SignInManager<ApplicationUser> signInManager, IMailService mailService, IAuthenticatedUserService authenticatedUserService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -44,11 +55,23 @@ namespace TD.CongDan.Infrastructure.Identity.Services
             _dateTimeService = dateTimeService;
             _signInManager = signInManager;
             _mailService = mailService;
+            _authenticatedUserService = authenticatedUserService;
+            _applicationDbContext = applicationDbContext;
+
         }
 
         public async Task<Result<TokenResponse>> GetTokenAsync(TokenRequest request, string ipAddress)
         {
-            var user = await _userManager.FindByEmailAsync(request.Email);
+
+            ApplicationUser user;
+            if (string.IsNullOrWhiteSpace(request.UserName))
+            {
+                user = await _userManager.FindByEmailAsync(request.Email);
+            } else
+            {
+                user = await _userManager.FindByNameAsync(request.UserName);
+            }
+             
             Throw.Exception.IfNull(user, nameof(user), $"No Accounts Registered with {request.Email}.");
             var result = await _signInManager.PasswordSignInAsync(user.UserName, request.Password, false, lockoutOnFailure: false);
             Throw.Exception.IfFalse(user.EmailConfirmed, $"Email is not confirmed for '{request.Email}'.");
@@ -137,14 +160,38 @@ namespace TD.CongDan.Infrastructure.Identity.Services
             {
                 throw new ApiException($"Username '{request.UserName}' is already taken.");
             }
+
+
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            DateTime? dateOfBirth = null;
+            try { dateOfBirth = DateTime.ParseExact(request.DateOfBirth, "dd/MM/yyyy", provider); } catch { }
+            DateTime? identityDateOfIssue = null;
+            try { identityDateOfIssue = DateTime.ParseExact(request.IdentityDateOfIssue, "dd/MM/yyyy", provider); } catch { }
+
             var user = new ApplicationUser
             {
                 Email = request.Email,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                UserName = request.UserName
+                UserName = request.UserName,
+                PhoneNumber = request.PhoneNumber,
+                GenderId = request.GenderId,
+                DateOfBirth = dateOfBirth,
+                IdentityTypeId = request.IdentityTypeId,
+                IdentityNumber = request.IdentityNumber,
+                IdentityPlace = request.IdentityPlace,
+                IdentityDateOfIssue = identityDateOfIssue,
+                Nationality = request.Nationality,
+                ProvinceId = request.ProvinceId,
+                DistrictId = request.DistrictId,
+                CommuneId = request.CommuneId,
+                Address = request.Address,
+                MaritalStatusId = request.MaritalStatusId,
+
             };
-            var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
+            //var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
+            var userWithSameEmail = await _userManager.FindByNameAsync(request.UserName);
             if (userWithSameEmail == null)
             {
                 var result = await _userManager.CreateAsync(user, request.Password);
@@ -163,7 +210,7 @@ namespace TD.CongDan.Infrastructure.Identity.Services
             }
             else
             {
-                throw new ApiException($"Email {request.Email } is already registered.");
+                throw new ApiException($"UserName {request.UserName } is already registered.");
             }
         }
 
@@ -226,6 +273,157 @@ namespace TD.CongDan.Infrastructure.Identity.Services
             {
                 throw new ApiException($"Error occured while reseting the password.");
             }
+        }
+
+        public async Task<Result<string>> UpdateAvatar(IFormFile file)
+        {
+            var id = _authenticatedUserService.UserId;
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null) throw new ApiException("Không tìm thấy tài khoản!");
+
+            var fileName = file.FileName;
+            var folderName = Path.Combine("Resources", "Files");
+            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+            Guid dir_UUID = Guid.NewGuid();
+            string dir_UUID_String = dir_UUID.ToString();
+
+            var target = Path.Combine(pathToSave, dir_UUID_String);
+            if (!Directory.Exists(target))
+            {
+                Directory.CreateDirectory(target);
+            }
+
+            var fullPath = Path.Combine(target, fileName);
+            var dbPath = Path.Combine(folderName, dir_UUID_String, fileName);
+
+            using (var stream = System.IO.File.Create(fullPath))
+            {
+                await file.CopyToAsync(stream);
+                user.AvatarUrl = dbPath.Replace("\\", "/");
+            }
+
+            await _userManager.UpdateAsync(user);
+            return Result<string>.Success(dbPath.Replace("\\", "/"));
+        }
+
+        public async Task<Result<ApplicationUserResponse>> GetUserInfor()
+        {
+            var id = _authenticatedUserService.UserId;
+
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) throw new ApiException("Không tìm thấy tài khoản!");
+
+            var rolesList = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
+
+
+            //var gender = await _repositoryAsync.GetByIdAsync(1);
+            var gender = await _applicationDbContext.Genders.FindAsync(user.GenderId);
+            var identityType = await _applicationDbContext.IdentityTypes.FindAsync(user.IdentityTypeId);
+            var Province = await _applicationDbContext.Areas.FindAsync(user.ProvinceId);
+            var District = await _applicationDbContext.Areas.FindAsync(user.DistrictId);
+            var Commune = await _applicationDbContext.Areas.FindAsync(user.CommuneId);
+            var MaritalStatus = await _applicationDbContext.MaritalStatuses.FindAsync(user.MaritalStatusId);
+
+            return Result<ApplicationUserResponse>.Success(new ApplicationUserResponse()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                AvatarUrl = user.AvatarUrl,
+                GenderId = user.GenderId,
+                Gender = gender,
+                DateOfBirth = user.DateOfBirth,
+                IdentityTypeId = user.IdentityTypeId,
+                IdentityType = identityType,
+                IdentityNumber = user.IdentityNumber,
+                IdentityPlace = user.IdentityPlace,
+                IdentityDateOfIssue = user.IdentityDateOfIssue,
+                Nationality = user.Nationality,
+                ProvinceId = user.ProvinceId,
+                Province = Province,
+                DistrictId = user.DistrictId,
+                District = District,
+                CommuneId = user.CommuneId,
+                Commune = Commune,
+                Address = user.Address,
+                MaritalStatusId = user.MaritalStatusId,
+                MaritalStatus = MaritalStatus,
+                IsActive = user.IsActive,
+                IsVerified = user.IsActive,
+                Roles = rolesList.ToList(),
+            });
+        }
+
+        public async Task<Result<ApplicationUserResponse>> UpdateUserInfor(ApplicationUserEditRequest command)
+        {
+            var id = _authenticatedUserService.UserId;
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null ) throw new ApiException("Không tìm thấy tài khoản!");
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            DateTime? dateOfBirth = user.DateOfBirth;
+            try { dateOfBirth = DateTime.ParseExact(command.DateOfBirth, "dd/MM/yyyy", provider); } catch { }
+            DateTime? identityDateOfIssue = user.IdentityDateOfIssue;
+            try { identityDateOfIssue = DateTime.ParseExact(command.IdentityDateOfIssue, "dd/MM/yyyy", provider); } catch { }
+
+
+            user.FirstName = command.FirstName ?? user.FirstName;
+            user.LastName = command.LastName ?? user.LastName;
+            user.GenderId = command.GenderId ?? user.GenderId;
+            user.IdentityTypeId = command.IdentityTypeId ?? user.IdentityTypeId;
+            user.IdentityNumber = command.IdentityNumber ?? user.IdentityNumber;
+            user.IdentityPlace = command.IdentityPlace ?? user.IdentityPlace;
+            user.Nationality = command.Nationality ?? user.Nationality;
+            user.ProvinceId = command.ProvinceId ?? user.ProvinceId;
+            user.DistrictId = command.DistrictId ?? user.DistrictId;
+            user.CommuneId = command.CommuneId ?? user.CommuneId;
+            user.Address = command.Address ?? user.Address;
+            user.MaritalStatusId = command.MaritalStatusId ?? user.MaritalStatusId;
+            user.DateOfBirth = dateOfBirth;
+            user.IdentityDateOfIssue = identityDateOfIssue;
+
+            await _userManager.UpdateAsync(user);
+
+            var rolesList = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
+
+
+            return Result<ApplicationUserResponse>.Success(new ApplicationUserResponse()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                GenderId = user.GenderId,
+                Gender = user.Gender,
+                DateOfBirth = user.DateOfBirth,
+                IdentityTypeId = user.IdentityTypeId,
+                IdentityType = user.IdentityType,
+                IdentityNumber = user.IdentityNumber,
+                IdentityPlace = user.IdentityPlace,
+                IdentityDateOfIssue = user.IdentityDateOfIssue,
+                Nationality = user.Nationality,
+                ProvinceId = user.ProvinceId,
+                Province = user.Province,
+                DistrictId = user.DistrictId,
+                District = user.District,
+                CommuneId = user.CommuneId,
+                Commune = user.Commune,
+                Address = user.Address,
+                MaritalStatus = user.MaritalStatus,
+                IsActive = user.IsActive,
+                IsVerified = user.IsActive,
+                Roles = rolesList.ToList(),
+                AvatarUrl = user.AvatarUrl,
+
+            });
         }
     }
 }

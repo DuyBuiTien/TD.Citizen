@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using TD.CongDan.Domain.Enums;
+using System.Text.Json.Serialization;
 
 namespace TD.CongDan.Domain.Entities
 {
@@ -42,7 +43,7 @@ namespace TD.CongDan.Domain.Entities
 
 
         public virtual PlaceType PlaceType { get; set; }
-
+        [JsonIgnore]
         public ICollection<Company.Company> Companies { get; set; }
 
     }

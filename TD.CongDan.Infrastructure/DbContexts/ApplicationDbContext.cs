@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using TD.CongDan.Infrastructure.Models;
 using System.Collections.Generic;
 using TD.CongDan.Domain.Enums;
+using TD.CongDan.Infrastructure.Extensions;
 
 namespace TD.CongDan.Infrastructure.DbContexts
 {
@@ -254,6 +255,7 @@ namespace TD.CongDan.Infrastructure.DbContexts
                 entity.ToTable("UserTokens");
             });
 
+            builder.Seed();
 
 
             /*foreach (var property in builder.Model.GetEntityTypes()

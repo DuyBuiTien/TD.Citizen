@@ -31,6 +31,28 @@ namespace TD.CongDan.Infrastructure.Extensions
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ICategoryCacheRepository, CategoryCacheRepository>();
+            services.AddTransient<IAttachmentRepository, AttachmentRepository>();
+            services.AddTransient<IAreaRepository, AreaRepository>();
+            services.AddTransient<IAreaCacheRepository, AreaCacheRepository>();
+            services.AddTransient<IAreaTypeRepository, AreaTypeRepository>();
+            services.AddTransient<IPlaceTypeRepository, PlaceTypeRepository>();
+            services.AddTransient<IPlaceRepository, PlaceRepository>();
+            services.AddTransient<ICompanyRepository, CompanyRepository>();
+            services.AddTransient<IDegreeRepository, DegreeRepository>();
+            services.AddTransient<IExperienceRepository, ExperienceRepository>();
+            services.AddTransient<IIndustryRepository, IndustryRepository>();
+            services.AddTransient<IJobAgeRepository, JobAgeRepository>();
+            services.AddTransient<IJobApplicationRepository, JobApplicationRepository>();
+            services.AddTransient<IJobNameRepository, JobNameRepository>();
+            services.AddTransient<IJobPositionRepository, JobPositionRepository>();
+            services.AddTransient<IJobTypeRepository, JobTypeRepository>();
+            services.AddTransient<IRecruitmentRepository, RecruitmentRepository>();
+            services.AddTransient<ISalaryRepository, SalaryRepository>();
+
+            services.AddTransient<IGenderRepository,GenderRepository>();
+
             #endregion Repositories
         }
     }

@@ -3,6 +3,7 @@ using TD.CongDan.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace TD.CongDan.Api.Controllers
 {
@@ -58,6 +59,18 @@ namespace TD.CongDan.Api.Controllers
         public async Task<IActionResult> ResetPassword(ResetPasswordRequest model)
         {
             return Ok(await _identityService.ResetPassword(model));
+        }
+
+        [HttpPost("update-avatar"), DisableRequestSizeLimit]
+        public async Task<IActionResult> UpdateAvatar([FromForm(Name = "file")] IFormFile file)
+        {
+            return Ok(await _identityService.UpdateAvatar(file));
+        }
+
+        [HttpGet("user-infor")]
+        public async Task<IActionResult> UserInfor()
+        {
+            return Ok(await _identityService.GetUserInfor());
         }
 
         private string GenerateIPAddress()

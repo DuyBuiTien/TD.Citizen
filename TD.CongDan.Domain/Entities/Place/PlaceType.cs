@@ -1,6 +1,6 @@
 ﻿using TD.Libs.Abstractions.Domain;
 using System.Collections.Generic;
-
+using System.Text.Json.Serialization;
 
 namespace TD.CongDan.Domain.Entities
 {
@@ -15,7 +15,7 @@ namespace TD.CongDan.Domain.Entities
         public int? CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
-
+        [JsonIgnore]
         public ICollection<Place> Places { get; set; }
     }
  

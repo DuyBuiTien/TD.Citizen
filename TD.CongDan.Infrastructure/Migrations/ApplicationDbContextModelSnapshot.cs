@@ -377,6 +377,72 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AreaTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "tinh",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Tỉnh"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "thanh-pho",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Thành phố"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "quan",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Quận"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "huyen",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Huyện"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "thi-xa",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Thị xã"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "thi-tran",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Thị trấn"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "phuong",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Phường"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "xa",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Xã"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Attachment", b =>
@@ -533,6 +599,80 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "giao-thong",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Giao thông"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "y-te",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Y tế"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "giao-duc",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Giáo dục"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "moi-truong",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Môi trường"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "nong-nghiep",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Nông nghiệp"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "du-lich",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Du lịch"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "kinh-te",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Kinh tế"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "hanh-chinh",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Hành chính"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "khac",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Khác"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.Benefit", b =>
@@ -573,6 +713,143 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Benefits");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "money-bill-wave",
+                            Name = "Thưởng"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "award",
+                            Name = "Giải thưởng"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "plane",
+                            Name = "Du lịch"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "piggy-bank",
+                            Name = "Phiếu giảm giá"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "user-nurse",
+                            Name = "Khám sức khỏe"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "book-reader",
+                            Name = "Thư viện"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "swimmer",
+                            Name = "Hoạt động nhóm"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "baby-carriage",
+                            Name = "Trông trẻ"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "umbrella-beach",
+                            Name = "Nghỉ phép"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "laptop",
+                            Name = "Laptop"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "taxi",
+                            Name = "Trợ cấp đi lại"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "chalkboard-teacher",
+                            Name = "Đào tạo"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "mobile",
+                            Name = "Điện thoại"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "hamburger",
+                            Name = "Căn-tin"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "ellipsis-h",
+                            Name = "Khác"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.Company", b =>
@@ -729,6 +1006,56 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Degrees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Trung học phổ thông"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Trung cấp"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Cao đẳng/Đại học"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Thạch sĩ"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Tiến sĩ"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Khác"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.Experience", b =>
@@ -766,6 +1093,72 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Experiences");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Chưa có kinh nghiệm"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Dưới 1 năm"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "1 năm"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "2 năm"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "3 năm"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "4 năm"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "5 năm"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Trên 5 năm"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.Industry", b =>
@@ -803,6 +1196,328 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Industries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Agency (Design/Development)"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Agency (Marketing/Advertising)"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Bán lẻ - Hàng tiêu dùng - FMCG"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Bảo hiểm"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Bảo trì / Sửa chữa"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Bất động sản"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Chứng khoán"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Cơ khí"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Cơ quan nhà nước"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Du lịch"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Dược phẩm / Y tế / Công nghệ sinh học"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Điện tử / Điện lạnh"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Giải trí"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Giáo dục / Đào tạo"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "In ấn / Xuất bản"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Internet / Online"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "IT - Phần cứng"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "IT - Phần mềm"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Kế toán / Kiểm toán"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Khác"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Logistics - Vận tải"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Luật"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Marketing / Truyền thông / Quảng cáo"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Môi trường"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Năng lượng"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Ngân hàng"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Nhà hàng / Khách sạn"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Nhân sự"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Nông Lâm Ngư nghiệp"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Sản xuất"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Tài chính"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Thiết kế / kiến trúc"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Thời trang"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Thương mại điện tử"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Tổ chức phi lợi nhuận"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Tự động hóa"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Tư vấn"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Viễn thông"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Xây dựng"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Xuất nhập khẩu"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.JobAge", b =>
@@ -948,6 +1663,192 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JobNames");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "An toàn lao động"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Bán hàng kỹ thuật"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Bán lẻ/Bán sỉ"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Báo chí/Truyền hình"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Bảo hiểm"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Bảo trì/Sửa chữa"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Bất động sản"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Biên/Phiên dịch"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Bưu chính viễn thông"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Chứng khoán/Vàng/Ngoại tệ"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Cơ khí/Chế tạo/Tự động hóa"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Công nghệ cao"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Công nghệ ô tô"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Công nghệ thông tin"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Dầu khí, khóa chất"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Dịch vụ khách hàng"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Điện/Điện tử/Điện lạnh"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Du lịch"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Giáo dục/Đào tạo"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Tư vấn"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Vận tải/Kho vận"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Y tế/Dược"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Khác"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.JobPosition", b =>
@@ -985,6 +1886,48 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JobPositions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Mới tốt nghiệp"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Nhân viên"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Trưởng phòng"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Giám đốc và cấp cao hơn"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Khác"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.JobType", b =>
@@ -1022,6 +1965,56 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JobTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Toàn thời gian"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Bán thời gian"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Thực tập"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Nghề tự do"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Hợp đồng thời vụ"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Khác"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.Recruitment", b =>
@@ -1213,6 +2206,96 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Salaries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Dưới 3 triệu"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "3 - 5 triệu"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "5 -7 triệu"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "7 - 10 triệu"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "10 - 12 triệu"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "12 - 15 triệu"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "15 - 20 triệu"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "20 - 25 triệu"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "25 - 30 triệu"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Trên 30 triệu"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Thỏa thuận"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Gender", b =>
@@ -1483,6 +2566,248 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("PlaceTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 2,
+                            Code = "benh-vien",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "hospital",
+                            Name = "Bệnh viện"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 2,
+                            Code = "benh-vien",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "capsules",
+                            Name = "Hiệu thuốc"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 2,
+                            Code = "phong-kham",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "stethoscope",
+                            Name = "Phòng khám"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 2,
+                            Code = "tram-y-te",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "briefcase-medical",
+                            Name = "Trạm y tế"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 1,
+                            Code = "tram-xang",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "gas-pump",
+                            Name = "Trạm xăng"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 1,
+                            Code = "diem-do-xe",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "parking",
+                            Name = "Điểm đỗ xe"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 1,
+                            Code = "gara-o-to",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "tools",
+                            Name = "Gara ô tô"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 1,
+                            Code = "tram-thu-phi",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "money-bill",
+                            Name = "Trạm thu phí"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 1,
+                            Code = "diem-den-giao-thong",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "money-bill",
+                            Name = "Điểm đen giao thông"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryId = 6,
+                            Code = "nha-hang",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "concierge-bell",
+                            Name = "Nhà hàng"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CategoryId = 6,
+                            Code = "khach-san",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "hotel",
+                            Name = "Khách sạn"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CategoryId = 6,
+                            Code = "diem-mua-sam",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "shopping-cart",
+                            Name = "Điểm mua sắm"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CategoryId = 6,
+                            Code = "dia-diem-noi-tieng",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "map-marked",
+                            Name = "Địa điểm nổi tiếng"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CategoryId = 6,
+                            Code = "di-tich-lich-su",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "monument",
+                            Name = "Di tích lịch sử"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CategoryId = 6,
+                            Code = "su-kien-dip-tet",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "calendar-day",
+                            Name = "Sự kiện dịp Tết"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CategoryId = 6,
+                            Code = "le-hoi",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "mask",
+                            Name = "Lễ hội"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CategoryId = 6,
+                            Code = "danh-lam-thang-canh",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "gratipay",
+                            Name = "Danh lam thắng cảnh"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CategoryId = 6,
+                            Code = "den",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "gopuram",
+                            Name = "Đền"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CategoryId = 6,
+                            Code = "chua",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "gopuram",
+                            Name = "Chùa"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CategoryId = 6,
+                            Code = "nha-tho",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "church",
+                            Name = "Nhà thờ"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CategoryId = 6,
+                            Code = "diem-o-nhiem",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "biohazard",
+                            Name = "Điểm ô nhiễm"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CategoryId = 6,
+                            Code = "diem-xu-ly-rac",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "recycle",
+                            Name = "Điểm xử lý rác"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CategoryId = 7,
+                            Code = "cong-ty",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "building",
+                            Name = "Công ty"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CategoryId = 9,
+                            Code = "khac",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Icon = "map-marker",
+                            Name = "Khác"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Religion", b =>
