@@ -18,8 +18,8 @@ namespace TD.CongDan.Domain.Entities
         public string Email { get; set; }
         public string Content { get; set; }
         public string ContentHtml { get; set; }
-        public double? Latitude { get; set; }
-        public double? Longitude { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
         public string Tags { get; set; }
         public string Image { get; set; }

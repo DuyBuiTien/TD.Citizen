@@ -24,32 +24,46 @@ namespace TD.CongDan.Application.Extensions
         public static IQueryable<Company> FilterCompanyByProvinceId(this IQueryable<Company> source, int? provinceId)
         {
             Throw.Exception.IfNull(source, nameof(source));
-            if (provinceId==null)
+            if (provinceId == null || provinceId < 1)
                 return source;
+            return source.Where(s => s.Place.ProvinceId == provinceId);
 
-
-            return source.Where(s=>s.Place.ProvinceId== provinceId);
         }
+            public static IQueryable<Company> FilterCompanyByDistrictId(this IQueryable<Company> source, int? districtId)
+            {
+                Throw.Exception.IfNull(source, nameof(source));
+                if (districtId == null || districtId < 1)
+                    return source;
+                return source.Where(s => s.Place.DistrictId == districtId);
+            }
 
-        /* public static IQueryable<Company> FilterAreaType(this IQueryable<Area> source, string Type)
-         {
-             Throw.Exception.IfNull(source, nameof(source));
-             if (string.IsNullOrWhiteSpace(Type))
-                 return source;
+            public static IQueryable<Company> FilterCompanyByCommuneId(this IQueryable<Company> source, int? communeId)
+            {
+                Throw.Exception.IfNull(source, nameof(source));
+                if (communeId == null || communeId < 1)
+                    return source;
+                return source.Where(s => s.Place.CommuneId == communeId);
+            }
 
-             return source.Where(e => e.Type == Type);
-         }*/
+            /* public static IQueryable<Company> FilterAreaType(this IQueryable<Area> source, string Type)
+             {
+                 Throw.Exception.IfNull(source, nameof(source));
+                 if (string.IsNullOrWhiteSpace(Type))
+                     return source;
 
-        /* public static IQueryable<Company> FilterAreaLevel(this IQueryable<Area> source, int? Level)
-         {
-             Throw.Exception.IfNull(source, nameof(source));
-             if (Level==null)
-                 return source;
+                 return source.Where(e => e.Type == Type);
+             }*/
 
-             return source.Where(e => e.Level == Level);
-         }*/
+            /* public static IQueryable<Company> FilterAreaLevel(this IQueryable<Area> source, int? Level)
+             {
+                 Throw.Exception.IfNull(source, nameof(source));
+                 if (Level==null)
+                     return source;
 
-        public static IQueryable<Company> Sort(this IQueryable<Company> source, string orderByQueryString)
+                 return source.Where(e => e.Level == Level);
+             }*/
+
+            public static IQueryable<Company> Sort(this IQueryable<Company> source, string orderByQueryString)
         {
             if (string.IsNullOrWhiteSpace(orderByQueryString))
                 return source.OrderBy(e => e.Id);

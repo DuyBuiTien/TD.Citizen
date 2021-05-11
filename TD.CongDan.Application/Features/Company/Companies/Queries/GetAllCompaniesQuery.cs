@@ -50,6 +50,15 @@ namespace TD.CongDan.Application.Features.Companies.Queries
             {
                 Id = e.Id,
                 Name = e.Name,
+                InternationalName = e.InternationalName,
+                ShortName = e.ShortName,
+                TaxCode = e.TaxCode,
+                PlaceName = e.Place.PlaceName,
+                Latitude = e.Place.Latitude,
+                Longitude = e.Place.Longitude,
+                Province = e.Place.Province.NameWithType,
+                District = e.Place.District.NameWithType,
+                Commune = e.Place.Commune.NameWithType,
                 Description = e.Description,
                 Image = e.Image,
                 Logo = e.Logo,
@@ -59,6 +68,8 @@ namespace TD.CongDan.Application.Features.Companies.Queries
             var paginatedList = await _repository.Companies
                 .FilterCompanyByUserId(request.UserId)
                 .FilterCompanyByProvinceId(request.ProvinceId)
+                .FilterCompanyByDistrictId(request.DistrictId)
+                .FilterCompanyByCommuneId(request.CommuneId)
                 .Search(request.KeySearch)
                 .Sort(request.OrderBy)
                 .Select(expression)
