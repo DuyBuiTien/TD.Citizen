@@ -17,10 +17,11 @@ namespace TD.CongDan.Application.Features.Are.Queries
         public int PageSize { get; set; }
         public string ParentCode { get; set; }
         public string Type { get; set; }
+        public int? Level { get; set; }
         public string KeySearch { get; set; }
         public string OrderBy { get; set; }
         
-        public GetAllAreaQuery(int pageNumber, int pageSize, string parentCode, string type, string keySearch, string orderBy)
+        public GetAllAreaQuery(int pageNumber, int pageSize, string parentCode, string type, string keySearch, string orderBy, int? level)
         {
             PageNumber = pageNumber;
             PageSize = pageSize;
@@ -28,6 +29,7 @@ namespace TD.CongDan.Application.Features.Are.Queries
             Type = type;
             KeySearch = keySearch;
             OrderBy = orderBy;
+            Level = level;
         }
     }
 
@@ -53,14 +55,15 @@ namespace TD.CongDan.Application.Features.Are.Queries
                 NameWithType = e.NameWithType,
                 Path = e.Path,
                 PathWithType = e.PathWithType,
-                Description = e.Description
-
+                Description = e.Description,
+                Level = e.Level
             };
 
 
             var paginatedList = await _repository.Areas
                 .FilterAreaParentCode(request.ParentCode)
                 .FilterAreaType(request.Type)
+                .FilterAreaLevel(request.Level)
                 .Search(request.KeySearch)
                 .Sort(request.OrderBy)
                 .Select(expression)

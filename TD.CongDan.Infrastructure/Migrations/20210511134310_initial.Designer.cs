@@ -10,7 +10,7 @@ using TD.CongDan.Infrastructure.DbContexts;
 namespace TD.CongDan.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210510074554_initial")]
+    [Migration("20210511134310_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -312,6 +312,9 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -444,6 +447,14 @@ namespace TD.CongDan.Infrastructure.Migrations
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Name = "Xã"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "thanh-pho",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Thành phố trung ương"
                         });
                 });
 
@@ -2335,6 +2346,32 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Nam"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Nữ"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Khác"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.IdentityType", b =>
@@ -2372,6 +2409,32 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("IdentityTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Chứng minh nhân dân"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Căn cước công dân"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Hộ chiếu"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.MaritalStatus", b =>
@@ -2409,6 +2472,40 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MaritalStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Độc thân"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Kết hôn"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Ly hôn"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Khác"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Place", b =>
@@ -2847,6 +2944,48 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Religions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Không"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Phật giáo"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Công giáo"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Tin lành"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Name = "Khác"
+                        });
                 });
 
             modelBuilder.Entity("TD.CongDan.Infrastructure.Models.Audit", b =>

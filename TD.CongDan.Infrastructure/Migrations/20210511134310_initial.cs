@@ -18,6 +18,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                     ParentCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Slug = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Level = table.Column<int>(type: "int", nullable: false),
                     NameWithType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Path = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PathWithType = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -974,7 +975,8 @@ namespace TD.CongDan.Infrastructure.Migrations
                     { 5, "thi-xa", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thị xã" },
                     { 6, "thi-tran", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thị trấn" },
                     { 7, "phuong", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Phường" },
-                    { 8, "xa", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Xã" }
+                    { 8, "xa", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Xã" },
+                    { 9, "thanh-pho", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thành phố trung ương" }
                 });
 
             migrationBuilder.InsertData(
@@ -982,21 +984,21 @@ namespace TD.CongDan.Infrastructure.Migrations
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "Icon", "LastModifiedBy", "LastModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 6, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "book-reader", null, null, "Thư viện" },
+                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "piggy-bank", null, null, "Phiếu giảm giá" },
+                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "plane", null, null, "Du lịch" },
+                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "award", null, null, "Giải thưởng" },
+                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "money-bill-wave", null, null, "Thưởng" },
                     { 7, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "swimmer", null, null, "Hoạt động nhóm" },
                     { 8, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "baby-carriage", null, null, "Trông trẻ" },
-                    { 9, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "umbrella-beach", null, null, "Nghỉ phép" },
-                    { 10, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "laptop", null, null, "Laptop" },
-                    { 14, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "hamburger", null, null, "Căn-tin" },
-                    { 12, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "chalkboard-teacher", null, null, "Đào tạo" },
                     { 13, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "mobile", null, null, "Điện thoại" },
-                    { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "user-nurse", null, null, "Khám sức khỏe" },
-                    { 15, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "ellipsis-h", null, null, "Khác" },
+                    { 10, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "laptop", null, null, "Laptop" },
                     { 11, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "taxi", null, null, "Trợ cấp đi lại" },
-                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "piggy-bank", null, null, "Phiếu giảm giá" },
-                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "money-bill-wave", null, null, "Thưởng" },
-                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "award", null, null, "Giải thưởng" },
-                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "plane", null, null, "Du lịch" }
+                    { 12, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "chalkboard-teacher", null, null, "Đào tạo" },
+                    { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "user-nurse", null, null, "Khám sức khỏe" },
+                    { 14, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "hamburger", null, null, "Căn-tin" },
+                    { 15, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "ellipsis-h", null, null, "Khác" },
+                    { 9, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "umbrella-beach", null, null, "Nghỉ phép" },
+                    { 6, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", "book-reader", null, null, "Thư viện" }
                 });
 
             migrationBuilder.InsertData(
@@ -1020,11 +1022,11 @@ namespace TD.CongDan.Infrastructure.Migrations
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Tiến sĩ" },
                     { 6, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Khác" },
+                    { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Tiến sĩ" },
                     { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thạch sĩ" },
-                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Trung học phổ thông" },
                     { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Trung cấp" },
+                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Trung học phổ thông" },
                     { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Cao đẳng/Đại học" }
                 });
 
@@ -1033,10 +1035,9 @@ namespace TD.CongDan.Infrastructure.Migrations
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 7, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "5 năm" },
-                    { 6, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "4 năm" },
-                    { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "3 năm" },
-                    { 8, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Trên 5 năm" }
+                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Chưa có kinh nghiệm" },
+                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Dưới 1 năm" },
+                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "1 năm" }
                 });
 
             migrationBuilder.InsertData(
@@ -1044,10 +1045,31 @@ namespace TD.CongDan.Infrastructure.Migrations
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "1 năm" },
-                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Dưới 1 năm" },
-                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Chưa có kinh nghiệm" },
-                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "2 năm" }
+                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "2 năm" },
+                    { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "3 năm" },
+                    { 6, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "4 năm" },
+                    { 7, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "5 năm" },
+                    { 8, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Trên 5 năm" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Genders",
+                columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
+                values: new object[,]
+                {
+                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Nam" },
+                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Nữ" },
+                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Khác" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "IdentityTypes",
+                columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
+                values: new object[,]
+                {
+                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Căn cước công dân" },
+                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Hộ chiếu" },
+                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Chứng minh nhân dân" }
                 });
 
             migrationBuilder.InsertData(
@@ -1055,44 +1077,37 @@ namespace TD.CongDan.Infrastructure.Migrations
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 30, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Sản xuất" },
-                    { 24, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Môi trường" },
-                    { 25, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Năng lượng" },
+                    { 32, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thiết kế / kiến trúc" },
                     { 26, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Ngân hàng" },
-                    { 27, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Nhà hàng / Khách sạn" },
-                    { 23, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Marketing / Truyền thông / Quảng cáo" },
                     { 28, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Nhân sự" },
                     { 29, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Nông Lâm Ngư nghiệp" },
+                    { 30, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Sản xuất" },
                     { 31, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Tài chính" },
-                    { 36, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Tự động hóa" },
                     { 33, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thời trang" },
-                    { 34, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thương mại điện tử" },
+                    { 25, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Năng lượng" },
                     { 35, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Tổ chức phi lợi nhuận" },
+                    { 36, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Tự động hóa" },
                     { 37, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Tư vấn" },
                     { 38, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Viễn thông" },
                     { 39, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Xây dựng" },
                     { 40, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Xuất nhập khẩu" },
+                    { 34, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thương mại điện tử" },
+                    { 24, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Môi trường" },
+                    { 27, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Nhà hàng / Khách sạn" },
                     { 22, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Luật" },
-                    { 32, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thiết kế / kiến trúc" },
-                    { 21, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Logistics - Vận tải" },
-                    { 20, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Khác" },
-                    { 19, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Kế toán / Kiểm toán" },
-                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Agency (Design/Development)" },
-                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Agency (Marketing/Advertising)" },
-                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bán lẻ - Hàng tiêu dùng - FMCG" },
-                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bảo hiểm" },
+                    { 23, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Marketing / Truyền thông / Quảng cáo" },
                     { 6, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bất động sản" },
-                    { 7, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Chứng khoán" },
-                    { 8, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Cơ khí" },
-                    { 9, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Cơ quan nhà nước" },
                     { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bảo trì / Sửa chữa" },
+                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bảo hiểm" },
+                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bán lẻ - Hàng tiêu dùng - FMCG" },
+                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Agency (Marketing/Advertising)" },
+                    { 7, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Chứng khoán" },
+                    { 9, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Cơ quan nhà nước" },
+                    { 10, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Du lịch" },
                     { 11, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Dược phẩm / Y tế / Công nghệ sinh học" },
-                    { 12, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Điện tử / Điện lạnh" },
+                    { 8, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Cơ khí" },
                     { 13, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Giải trí" },
-                    { 14, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Giáo dục / Đào tạo" },
-                    { 15, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "In ấn / Xuất bản" },
-                    { 16, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Internet / Online" },
-                    { 17, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "IT - Phần cứng" }
+                    { 21, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Logistics - Vận tải" }
                 });
 
             migrationBuilder.InsertData(
@@ -1100,8 +1115,15 @@ namespace TD.CongDan.Infrastructure.Migrations
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
                 values: new object[,]
                 {
+                    { 12, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Điện tử / Điện lạnh" },
+                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Agency (Design/Development)" },
+                    { 19, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Kế toán / Kiểm toán" },
                     { 18, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "IT - Phần mềm" },
-                    { 10, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Du lịch" }
+                    { 20, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Khác" },
+                    { 16, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Internet / Online" },
+                    { 15, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "In ấn / Xuất bản" },
+                    { 14, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Giáo dục / Đào tạo" },
+                    { 17, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "IT - Phần cứng" }
                 });
 
             migrationBuilder.InsertData(
@@ -1109,29 +1131,29 @@ namespace TD.CongDan.Infrastructure.Migrations
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 15, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Dầu khí, khóa chất" },
                     { 16, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Dịch vụ khách hàng" },
-                    { 17, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Điện/Điện tử/Điện lạnh" },
-                    { 18, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Du lịch" },
                     { 23, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Khác" },
-                    { 20, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Tư vấn" },
                     { 21, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Vận tải/Kho vận" },
-                    { 22, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Y tế/Dược" },
-                    { 14, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Công nghệ thông tin" },
+                    { 20, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Tư vấn" },
                     { 19, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Giáo dục/Đào tạo" },
-                    { 12, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Công nghệ cao" },
+                    { 18, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Du lịch" },
+                    { 17, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Điện/Điện tử/Điện lạnh" },
+                    { 15, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Dầu khí, khóa chất" },
+                    { 22, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Y tế/Dược" },
                     { 13, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Công nghệ ô tô" },
-                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bán hàng kỹ thuật" },
-                    { 10, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Chứng khoán/Vàng/Ngoại tệ" },
-                    { 9, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bưu chính viễn thông" },
-                    { 8, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Biên/Phiên dịch" },
-                    { 7, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bất động sản" },
-                    { 6, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bảo trì/Sửa chữa" },
                     { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bảo hiểm" },
+                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bán hàng kỹ thuật" },
+                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "An toàn lao động" },
+                    { 14, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Công nghệ thông tin" },
                     { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Báo chí/Truyền hình" },
+                    { 6, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bảo trì/Sửa chữa" },
                     { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bán lẻ/Bán sỉ" },
+                    { 12, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Công nghệ cao" },
                     { 11, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Cơ khí/Chế tạo/Tự động hóa" },
-                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "An toàn lao động" }
+                    { 10, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Chứng khoán/Vàng/Ngoại tệ" },
+                    { 8, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Biên/Phiên dịch" },
+                    { 9, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bưu chính viễn thông" },
+                    { 7, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bất động sản" }
                 });
 
             migrationBuilder.InsertData(
@@ -1139,11 +1161,11 @@ namespace TD.CongDan.Infrastructure.Migrations
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Khác" },
-                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Giám đốc và cấp cao hơn" },
-                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Nhân viên" },
                     { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Mới tốt nghiệp" },
-                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Trưởng phòng" }
+                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Nhân viên" },
+                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Trưởng phòng" },
+                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Giám đốc và cấp cao hơn" },
+                    { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Khác" }
                 });
 
             migrationBuilder.InsertData(
@@ -1151,12 +1173,39 @@ namespace TD.CongDan.Infrastructure.Migrations
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
                 values: new object[,]
                 {
+                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Nghề tự do" },
                     { 6, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Khác" },
                     { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Hợp đồng thời vụ" },
-                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Nghề tự do" },
-                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Toàn thời gian" },
-                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bán thời gian" },
-                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thực tập" }
+                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thực tập" },
+                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Bán thời gian" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "JobTypes",
+                columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
+                values: new object[] { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Toàn thời gian" });
+
+            migrationBuilder.InsertData(
+                table: "MaritalStatuses",
+                columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
+                values: new object[,]
+                {
+                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Khác" },
+                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Ly hôn" },
+                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Kết hôn" },
+                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Độc thân" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Religions",
+                columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
+                values: new object[,]
+                {
+                    { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Không" },
+                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Tin lành" },
+                    { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Công giáo" },
+                    { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Phật giáo" },
+                    { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Khác" }
                 });
 
             migrationBuilder.InsertData(
@@ -1164,24 +1213,17 @@ namespace TD.CongDan.Infrastructure.Migrations
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 7, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "15 - 20 triệu" },
+                    { 10, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Trên 30 triệu" },
                     { 9, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "25 - 30 triệu" },
                     { 8, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "20 - 25 triệu" },
+                    { 7, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "15 - 20 triệu" },
                     { 6, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "12 - 15 triệu" },
-                    { 10, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Trên 30 triệu" },
-                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "7 - 10 triệu" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Salaries",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name" },
-                values: new object[,]
-                {
+                    { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "10 - 12 triệu" },
                     { 3, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "5 -7 triệu" },
                     { 2, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "3 - 5 triệu" },
                     { 1, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Dưới 3 triệu" },
-                    { 5, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "10 - 12 triệu" },
-                    { 11, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thỏa thuận" }
+                    { 11, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "Thỏa thuận" },
+                    { 4, "", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null, null, "7 - 10 triệu" }
                 });
 
             migrationBuilder.InsertData(

@@ -29,6 +29,15 @@ namespace TD.CongDan.Application.Extensions
             return source.Where(e => e.Type == Type);
         }
 
+        public static IQueryable<Area> FilterAreaLevel(this IQueryable<Area> source, int? Level)
+        {
+            Throw.Exception.IfNull(source, nameof(source));
+            if (Level==null)
+                return source;
+
+            return source.Where(e => e.Level == Level);
+        }
+
         public static IQueryable<Area> Sort(this IQueryable<Area> source, string orderByQueryString)
         {
             if (string.IsNullOrWhiteSpace(orderByQueryString))
@@ -58,7 +67,7 @@ namespace TD.CongDan.Application.Extensions
             //}).AsQueryable();
 
 
-            return source.Where(e => e.NameWithType.ToLower().Contains(lowerCaseTerm));
+            return source.Where(e => e.NameWithType.ToLower().Contains(lowerCaseTerm) || e.Slug.ToLower().Contains(lowerCaseTerm));
         }
 
 

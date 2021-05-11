@@ -16,7 +16,8 @@ namespace TD.CongDan.Infrastructure.Extensions
                  new AreaType() { Id = 5, Name = "Thị xã", Code = "thi-xa", Description = "" },
                  new AreaType() { Id = 6, Name = "Thị trấn", Code = "thi-tran", Description = "" },
                  new AreaType() { Id = 7, Name = "Phường", Code = "phuong", Description = "" },
-                 new AreaType() { Id = 8, Name = "Xã", Code = "xa", Description = "" }
+                 new AreaType() { Id = 8, Name = "Xã", Code = "xa", Description = "" },
+                 new AreaType() { Id = 9, Name = "Thành phố trung ương", Code = "thanh-pho-trung-uong", Description = "" }
                  );
             modelBuilder.Entity<Category>().HasData(
                 new Category() { Id = 1, Name = "Giao thông", Code = "giao-thong", Description = "" },
@@ -88,7 +89,7 @@ namespace TD.CongDan.Infrastructure.Extensions
             );
 
             modelBuilder.Entity<JobType>().HasData(
-               new JobType() { Id = 1, Name = "Toàn thời gian", Code = "", Description = "" },
+              new JobType() { Id = 1, Name = "Toàn thời gian", Code = "", Description = "" },
               new JobType() { Id = 2, Name = "Bán thời gian", Code = "", Description = "" },
               new JobType() { Id = 3, Name = "Thực tập", Code = "", Description = "" },
               new JobType() { Id = 4, Name = "Nghề tự do", Code = "", Description = "" },
@@ -96,7 +97,7 @@ namespace TD.CongDan.Infrastructure.Extensions
               new JobType() { Id = 6, Name = "Khác", Code = "", Description = "" }
            );
             modelBuilder.Entity<JobPosition>().HasData(
-              new JobPosition() { Id = 1, Name = "Mới tốt nghiệp", Code = "", Description = "" },
+             new JobPosition() { Id = 1, Name = "Mới tốt nghiệp", Code = "", Description = "" },
              new JobPosition() { Id = 2, Name = "Nhân viên", Code = "", Description = "" },
              new JobPosition() { Id = 3, Name = "Trưởng phòng", Code = "", Description = "" },
              new JobPosition() { Id = 4, Name = "Giám đốc và cấp cao hơn", Code = "", Description = "" },
@@ -104,7 +105,7 @@ namespace TD.CongDan.Infrastructure.Extensions
           );
 
             modelBuilder.Entity<JobName>().HasData(
-              new JobName() { Id = 1, Name = "An toàn lao động", Code = "", Description = "" },
+             new JobName() { Id = 1, Name = "An toàn lao động", Code = "", Description = "" },
              new JobName() { Id = 2, Name = "Bán hàng kỹ thuật", Code = "", Description = "" },
              new JobName() { Id = 3, Name = "Bán lẻ/Bán sỉ", Code = "", Description = "" },
              new JobName() { Id = 4, Name = "Báo chí/Truyền hình", Code = "", Description = "" },
@@ -129,81 +130,94 @@ namespace TD.CongDan.Infrastructure.Extensions
              new JobName() { Id = 23, Name = "Khác", Code = "", Description = "" }
           );
             modelBuilder.Entity<Industry>().HasData(
-            new Industry() { Id = 1, Name = "Agency (Design/Development)", Code = "", Description = "" },
-new Industry() { Id = 2, Name = "Agency (Marketing/Advertising)", Code = "", Description = "" },
-new Industry() { Id = 3, Name = "Bán lẻ - Hàng tiêu dùng - FMCG", Code = "", Description = "" },
-new Industry() { Id = 4, Name = "Bảo hiểm", Code = "", Description = "" },
-new Industry() { Id = 5, Name = "Bảo trì / Sửa chữa", Code = "", Description = "" },
-new Industry() { Id = 6, Name = "Bất động sản", Code = "", Description = "" },
-new Industry() { Id = 7, Name = "Chứng khoán", Code = "", Description = "" },
-new Industry() { Id = 8, Name = "Cơ khí", Code = "", Description = "" },
-new Industry() { Id = 9, Name = "Cơ quan nhà nước", Code = "", Description = "" },
-new Industry() { Id = 10, Name = "Du lịch", Code = "", Description = "" },
-new Industry() { Id = 11, Name = "Dược phẩm / Y tế / Công nghệ sinh học", Code = "", Description = "" },
-new Industry() { Id = 12, Name = "Điện tử / Điện lạnh", Code = "", Description = "" },
-new Industry() { Id = 13, Name = "Giải trí", Code = "", Description = "" },
-new Industry() { Id = 14, Name = "Giáo dục / Đào tạo", Code = "", Description = "" },
-new Industry() { Id = 15, Name = "In ấn / Xuất bản", Code = "", Description = "" },
-new Industry() { Id = 16, Name = "Internet / Online", Code = "", Description = "" },
-new Industry() { Id = 17, Name = "IT - Phần cứng", Code = "", Description = "" },
-new Industry() { Id = 18, Name = "IT - Phần mềm", Code = "", Description = "" },
-new Industry() { Id = 19, Name = "Kế toán / Kiểm toán", Code = "", Description = "" },
-new Industry() { Id = 20, Name = "Khác", Code = "", Description = "" },
-new Industry() { Id = 21, Name = "Logistics - Vận tải", Code = "", Description = "" },
-new Industry() { Id = 22, Name = "Luật", Code = "", Description = "" },
-new Industry() { Id = 23, Name = "Marketing / Truyền thông / Quảng cáo", Code = "", Description = "" },
-new Industry() { Id = 24, Name = "Môi trường", Code = "", Description = "" },
-new Industry() { Id = 25, Name = "Năng lượng", Code = "", Description = "" },
-new Industry() { Id = 26, Name = "Ngân hàng", Code = "", Description = "" },
-new Industry() { Id = 27, Name = "Nhà hàng / Khách sạn", Code = "", Description = "" },
-new Industry() { Id = 28, Name = "Nhân sự", Code = "", Description = "" },
-new Industry() { Id = 29, Name = "Nông Lâm Ngư nghiệp", Code = "", Description = "" },
-new Industry() { Id = 30, Name = "Sản xuất", Code = "", Description = "" },
-new Industry() { Id = 31, Name = "Tài chính", Code = "", Description = "" },
-new Industry() { Id = 32, Name = "Thiết kế / kiến trúc", Code = "", Description = "" },
-new Industry() { Id = 33, Name = "Thời trang", Code = "", Description = "" },
-new Industry() { Id = 34, Name = "Thương mại điện tử", Code = "", Description = "" },
-new Industry() { Id = 35, Name = "Tổ chức phi lợi nhuận", Code = "", Description = "" },
-new Industry() { Id = 36, Name = "Tự động hóa", Code = "", Description = "" },
-new Industry() { Id = 37, Name = "Tư vấn", Code = "", Description = "" },
-new Industry() { Id = 38, Name = "Viễn thông", Code = "", Description = "" },
-new Industry() { Id = 39, Name = "Xây dựng", Code = "", Description = "" },
-new Industry() { Id = 40, Name = "Xuất nhập khẩu", Code = "", Description = "" }
-         );
+                new Industry() { Id = 1, Name = "Agency (Design/Development)", Code = "", Description = "" },
+                new Industry() { Id = 2, Name = "Agency (Marketing/Advertising)", Code = "", Description = "" },
+                new Industry() { Id = 3, Name = "Bán lẻ - Hàng tiêu dùng - FMCG", Code = "", Description = "" },
+                new Industry() { Id = 4, Name = "Bảo hiểm", Code = "", Description = "" },
+                new Industry() { Id = 5, Name = "Bảo trì / Sửa chữa", Code = "", Description = "" },
+                new Industry() { Id = 6, Name = "Bất động sản", Code = "", Description = "" },
+                new Industry() { Id = 7, Name = "Chứng khoán", Code = "", Description = "" },
+                new Industry() { Id = 8, Name = "Cơ khí", Code = "", Description = "" },
+                new Industry() { Id = 9, Name = "Cơ quan nhà nước", Code = "", Description = "" },
+                new Industry() { Id = 10, Name = "Du lịch", Code = "", Description = "" },
+                new Industry() { Id = 11, Name = "Dược phẩm / Y tế / Công nghệ sinh học", Code = "", Description = "" },
+                new Industry() { Id = 12, Name = "Điện tử / Điện lạnh", Code = "", Description = "" },
+                new Industry() { Id = 13, Name = "Giải trí", Code = "", Description = "" },
+                new Industry() { Id = 14, Name = "Giáo dục / Đào tạo", Code = "", Description = "" },
+                new Industry() { Id = 15, Name = "In ấn / Xuất bản", Code = "", Description = "" },
+                new Industry() { Id = 16, Name = "Internet / Online", Code = "", Description = "" },
+                new Industry() { Id = 17, Name = "IT - Phần cứng", Code = "", Description = "" },
+                new Industry() { Id = 18, Name = "IT - Phần mềm", Code = "", Description = "" },
+                new Industry() { Id = 19, Name = "Kế toán / Kiểm toán", Code = "", Description = "" },
+                new Industry() { Id = 20, Name = "Khác", Code = "", Description = "" },
+                new Industry() { Id = 21, Name = "Logistics - Vận tải", Code = "", Description = "" },
+                new Industry() { Id = 22, Name = "Luật", Code = "", Description = "" },
+                new Industry() { Id = 23, Name = "Marketing / Truyền thông / Quảng cáo", Code = "", Description = "" },
+                new Industry() { Id = 24, Name = "Môi trường", Code = "", Description = "" },
+                new Industry() { Id = 25, Name = "Năng lượng", Code = "", Description = "" },
+                new Industry() { Id = 26, Name = "Ngân hàng", Code = "", Description = "" },
+                new Industry() { Id = 27, Name = "Nhà hàng / Khách sạn", Code = "", Description = "" },
+                new Industry() { Id = 28, Name = "Nhân sự", Code = "", Description = "" },
+                new Industry() { Id = 29, Name = "Nông Lâm Ngư nghiệp", Code = "", Description = "" },
+                new Industry() { Id = 30, Name = "Sản xuất", Code = "", Description = "" },
+                new Industry() { Id = 31, Name = "Tài chính", Code = "", Description = "" },
+                new Industry() { Id = 32, Name = "Thiết kế / kiến trúc", Code = "", Description = "" },
+                new Industry() { Id = 33, Name = "Thời trang", Code = "", Description = "" },
+                new Industry() { Id = 34, Name = "Thương mại điện tử", Code = "", Description = "" },
+                new Industry() { Id = 35, Name = "Tổ chức phi lợi nhuận", Code = "", Description = "" },
+                new Industry() { Id = 36, Name = "Tự động hóa", Code = "", Description = "" },
+                new Industry() { Id = 37, Name = "Tư vấn", Code = "", Description = "" },
+                new Industry() { Id = 38, Name = "Viễn thông", Code = "", Description = "" },
+                new Industry() { Id = 39, Name = "Xây dựng", Code = "", Description = "" },
+                new Industry() { Id = 40, Name = "Xuất nhập khẩu", Code = "", Description = "" }
+            );
             modelBuilder.Entity<Experience>().HasData(
-   new Experience() { Id = 1, Name = "Chưa có kinh nghiệm", Code = "", Description = "" },
-  new Experience() { Id = 2, Name = "Dưới 1 năm", Code = "", Description = "" },
-  new Experience() { Id = 3, Name = "1 năm", Code = "", Description = "" },
-  new Experience() { Id = 4, Name = "2 năm", Code = "", Description = "" },
-  new Experience() { Id = 5, Name = "3 năm", Code = "", Description = "" },
-  new Experience() { Id = 6, Name = "4 năm", Code = "", Description = "" },
-  new Experience() { Id = 7, Name = "5 năm", Code = "", Description = "" },
-  new Experience() { Id = 8, Name = "Trên 5 năm", Code = "", Description = "" }
-);
+                new Experience() { Id = 1, Name = "Chưa có kinh nghiệm", Code = "", Description = "" },
+                new Experience() { Id = 2, Name = "Dưới 1 năm", Code = "", Description = "" },
+                new Experience() { Id = 3, Name = "1 năm", Code = "", Description = "" },
+                new Experience() { Id = 4, Name = "2 năm", Code = "", Description = "" },
+                new Experience() { Id = 5, Name = "3 năm", Code = "", Description = "" },
+                new Experience() { Id = 6, Name = "4 năm", Code = "", Description = "" },
+                new Experience() { Id = 7, Name = "5 năm", Code = "", Description = "" },
+                new Experience() { Id = 8, Name = "Trên 5 năm", Code = "", Description = "" }
+            );
 
             modelBuilder.Entity<Degree>().HasData(
-   new Degree() { Id = 1, Name = "Trung học phổ thông", Code = "", Description = "" },
-  new Degree() { Id = 2, Name = "Trung cấp", Code = "", Description = "" },
-  new Degree() { Id = 3, Name = "Cao đẳng/Đại học", Code = "", Description = "" },
-  new Degree() { Id = 4, Name = "Thạch sĩ", Code = "", Description = "" },
-  new Degree() { Id = 5, Name = "Tiến sĩ", Code = "", Description = "" },
-  new Degree() { Id = 6, Name = "Khác", Code = "", Description = "" }
-);
+                new Degree() { Id = 1, Name = "Trung học phổ thông", Code = "", Description = "" },
+                new Degree() { Id = 2, Name = "Trung cấp", Code = "", Description = "" },
+                new Degree() { Id = 3, Name = "Cao đẳng/Đại học", Code = "", Description = "" },
+                new Degree() { Id = 4, Name = "Thạch sĩ", Code = "", Description = "" },
+                new Degree() { Id = 5, Name = "Tiến sĩ", Code = "", Description = "" },
+                new Degree() { Id = 6, Name = "Khác", Code = "", Description = "" }
+            );
 
 
             modelBuilder.Entity<IdentityType>().HasData(
-   new IdentityType() { Id = 1, Name = "Chứng minh nhân dân", Code = "", Description = "" },
-  new IdentityType() { Id = 2, Name = "Căn cước công dân", Code = "", Description = "" },
-  new IdentityType() { Id = 3, Name = "Hộ chiếu", Code = "", Description = "" }
- 
-);
+                new IdentityType() { Id = 1, Name = "Chứng minh nhân dân", Code = "", Description = "" },
+                new IdentityType() { Id = 2, Name = "Căn cước công dân", Code = "", Description = "" },
+                new IdentityType() { Id = 3, Name = "Hộ chiếu", Code = "", Description = "" }
+
+            );
 
             modelBuilder.Entity<Gender>().HasData(
-  new Gender() { Id = 1, Name = "Nam", Code = "", Description = "" },
- new Gender() { Id = 2, Name = "Nữ", Code = "", Description = "" },
- new Gender() { Id = 3, Name = "Khác", Code = "", Description = "" }
+                new Gender() { Id = 1, Name = "Nam", Code = "", Description = "" },
+                new Gender() { Id = 2, Name = "Nữ", Code = "", Description = "" },
+                new Gender() { Id = 3, Name = "Khác", Code = "", Description = "" }
+            );
 
+            modelBuilder.Entity<Religion>().HasData(
+                new Gender() { Id = 1, Name = "Không", Code = "", Description = "" },
+                new Gender() { Id = 2, Name = "Phật giáo", Code = "", Description = "" },
+                new Gender() { Id = 3, Name = "Công giáo", Code = "", Description = "" },
+                new Gender() { Id = 4, Name = "Tin lành", Code = "", Description = "" },
+                new Gender() { Id = 5, Name = "Khác", Code = "", Description = "" }
+            );
 
+            modelBuilder.Entity<MaritalStatus>().HasData(
+            new Gender() { Id = 1, Name = "Độc thân", Code = "", Description = "" },
+            new Gender() { Id = 2, Name = "Kết hôn", Code = "", Description = "" },
+            new Gender() { Id = 3, Name = "Ly hôn", Code = "", Description = "" },
+            new Gender() { Id = 4, Name = "Khác", Code = "", Description = "" }
 );
         }
     }

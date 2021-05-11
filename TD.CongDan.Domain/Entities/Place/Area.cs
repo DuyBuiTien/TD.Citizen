@@ -12,7 +12,7 @@ namespace TD.CongDan.Domain.Entities
         public string ParentCode { get; set; }
         public string Slug { get; set; }
         public string Type { get; set; }
-
+        public int Level { get; set; }
         public string NameWithType { get; set; }
         public string Path { get; set; }
         public string PathWithType { get; set; }
