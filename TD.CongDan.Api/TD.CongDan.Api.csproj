@@ -6,6 +6,7 @@
   <PropertyGroup>
     <DocumentationFile>TD.CongDan.Api.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
+    <UserSecretsId>4448049e-0aaf-4640-bf6a-4d964a9289fd</UserSecretsId>
     </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />

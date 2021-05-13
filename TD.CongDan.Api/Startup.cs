@@ -44,9 +44,9 @@ namespace TD.CongDan.Api
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:3005", "http://localhost:3006", "http://192.168.2.119:3005").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
-                                       //builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials();
-                                   });
+                                      //builder.WithOrigins("http://localhost:3005", "http://localhost:3006", "http://192.168.2.119:3005").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+                                       builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                                   });  
             });
 
             services.AddControllers();

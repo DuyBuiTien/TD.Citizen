@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using TD.CongDan.Domain.Enums;
 using System.Text.Json.Serialization;
+using TD.CongDan.Domain.Entities.Traffic;
 
 namespace TD.CongDan.Domain.Entities
 {
@@ -44,7 +45,10 @@ namespace TD.CongDan.Domain.Entities
 
         public virtual PlaceType PlaceType { get; set; }
         [JsonIgnore]
-        public ICollection<Company.Company> Companies { get; set; }
+        public virtual ICollection<Company.Company> Companies { get; set; }
+
+        public virtual ICollection<Carpool> CarpoolArrivals { get; set; }
+        public virtual ICollection<Carpool> CarpoolDepartures { get; set; }
 
     }
 }

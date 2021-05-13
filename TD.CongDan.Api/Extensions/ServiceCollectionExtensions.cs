@@ -112,7 +112,9 @@ namespace TD.CongDan.Api.Extensions
             }
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
-                options.SignIn.RequireConfirmedAccount = true;
+                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedPhoneNumber = false;
                 options.Password.RequireNonAlphanumeric = false;
             }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 
@@ -135,8 +137,8 @@ namespace TD.CongDan.Api.Extensions
                     o.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
                         ValidateLifetime = true,
                         ClockSkew = TimeSpan.Zero,
                         ValidIssuer = configuration["JWTSettings:Issuer"],
@@ -155,8 +157,8 @@ namespace TD.CongDan.Api.Extensions
                         OnChallenge = context =>
                         {
                             context.HandleResponse();
-                            context.Response.StatusCode = 401;
-                            context.Response.ContentType = "application/json";
+                            //context.Response.StatusCode = 401;
+                            //context.Response.ContentType = "application/json";
                             var result = JsonConvert.SerializeObject(Result.Fail("You are not Authorized"));
                             return context.Response.WriteAsync(result);
                         },

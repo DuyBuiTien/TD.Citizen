@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TD.CongDan.Domain.Entities;
+using TD.CongDan.Domain.Entities.Traffic;
 
 namespace TD.CongDan.Infrastructure.Configurations
 {
@@ -22,6 +23,9 @@ namespace TD.CongDan.Infrastructure.Configurations
             builder.HasOne<Area>(s => s.Province).WithMany(g => g.PlaceProvinces).HasForeignKey(s => s.ProvinceId);
             builder.HasOne<Area>(s => s.District).WithMany(g => g.PlaceDistricts).HasForeignKey(s => s.DistrictId);
             builder.HasOne<Area>(s => s.Commune).WithMany(g => g.PlaceCommunes).HasForeignKey(s => s.CommuneId);
+
+           // builder.HasMany<Carpool>(s => s.CarpoolArrivals).WithOne(g => g.PlaceArrival).HasForeignKey(s => s.PlaceArrivalId);
+
         }
     }
 }

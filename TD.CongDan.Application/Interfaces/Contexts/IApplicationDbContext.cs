@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using TD.CongDan.Domain.Entities;
 using TD.CongDan.Domain.Entities.Company;
+using TD.CongDan.Domain.Entities.Traffic;
+using TD.CongDan.Domain.Entities.Other;
 
 namespace TD.CongDan.Application.Interfaces.Contexts
 {
@@ -48,5 +50,9 @@ namespace TD.CongDan.Application.Interfaces.Contexts
         DbSet<IdentityType> IdentityTypes { get; set; }
         DbSet<MaritalStatus> MaritalStatuses { get; set; }
         DbSet<Religion> Religions { get; set; }
+
+        DbSet<Carpool> Carpools { get; set; }
+        DbSet<VehicleType> VehicleTypes { get; set; }
+        DbSet<Bookmark> Bookmarks { get; set; }
     }
 }

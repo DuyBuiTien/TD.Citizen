@@ -1,5 +1,7 @@
 ﻿using TD.Libs.Abstractions.Domain;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
+using TD.CongDan.Domain.Entities.Other;
 
 namespace TD.CongDan.Domain.Entities
 {
@@ -12,7 +14,10 @@ namespace TD.CongDan.Domain.Entities
         public string CoverImage { get; set; }
         public string Description { get; set; }
 
+        [JsonIgnore]
         public ICollection<PlaceType> PlaceTypes { get; set; }
+        [JsonIgnore]
+        public ICollection<Bookmark> Bookmarks { get; set; }
 
     }
 }

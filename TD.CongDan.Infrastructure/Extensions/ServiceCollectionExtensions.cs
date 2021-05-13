@@ -8,6 +8,8 @@ using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using TD.CongDan.Application.Interfaces;
+using TD.CongDan.Infrastructure.Identity.Services;
 
 namespace TD.CongDan.Infrastructure.Extensions
 {
@@ -57,7 +59,8 @@ namespace TD.CongDan.Infrastructure.Extensions
             services.AddTransient<IIdentityTypeRepository, IdentityTypeRepository>();
             services.AddTransient<IMaritalStatusRepository, MaritalStatusRepository>();
 
-
+            
+            services.AddTransient<IUserService, UserService>();
 
             #endregion Repositories
         }

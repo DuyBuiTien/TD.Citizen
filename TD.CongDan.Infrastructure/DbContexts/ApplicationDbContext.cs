@@ -17,6 +17,8 @@ using TD.CongDan.Infrastructure.Models;
 using System.Collections.Generic;
 using TD.CongDan.Domain.Enums;
 using TD.CongDan.Infrastructure.Extensions;
+using TD.CongDan.Domain.Entities.Traffic;
+using TD.CongDan.Domain.Entities.Other;
 
 namespace TD.CongDan.Infrastructure.DbContexts
 {
@@ -34,7 +36,8 @@ namespace TD.CongDan.Infrastructure.DbContexts
         public DbSet<Audit> AuditLogs { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-
+        public DbSet<Carpool> Carpools { get; set; }
+        public DbSet<VehicleType> VehicleTypes { get; set; }
         public DbSet<PlaceType> PlaceTypes { get; set; }
         public DbSet<Place> Places { get; set; }
 
@@ -62,6 +65,9 @@ namespace TD.CongDan.Infrastructure.DbContexts
         public DbSet<MaritalStatus> MaritalStatuses { get; set; }
         public DbSet<Religion> Religions { get; set; }
 
+     
+        public DbSet<Bookmark> Bookmarks { get; set; }
+
         public IDbConnection Connection => Database.GetDbConnection();
 
         public bool HasChanges => ChangeTracker.HasChanges();
@@ -74,22 +80,26 @@ namespace TD.CongDan.Infrastructure.DbContexts
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedOn = _dateTime.NowUtc;
-                        entry.Entity.CreatedBy = _authenticatedUser.UserId;
+                        //entry.Entity.CreatedBy = _authenticatedUser.UserId;
+                        entry.Entity.CreatedBy = _authenticatedUser.Username;
                         break;
 
                     case EntityState.Modified:
                         entry.Entity.LastModifiedOn = _dateTime.NowUtc;
-                        entry.Entity.LastModifiedBy = _authenticatedUser.UserId;
+                        //entry.Entity.LastModifiedBy = _authenticatedUser.UserId;
+                        entry.Entity.LastModifiedBy = _authenticatedUser.Username;
                         break;
                 }
             }
-            if (_authenticatedUser.UserId == null)
+            //if (_authenticatedUser.UserId == null)
+            if (_authenticatedUser.Username == null)
             {
                 return await base.SaveChangesAsync(cancellationToken);
             }
             else
             {
-                return await SaveChangesAsync(_authenticatedUser.UserId);
+                //return await SaveChangesAsync(_authenticatedUser.UserId);
+                return await SaveChangesAsync(_authenticatedUser.Username);
             }
         }
 
@@ -188,7 +198,7 @@ namespace TD.CongDan.Infrastructure.DbContexts
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new AreaTypeConfiguration());
-            builder.ApplyConfiguration(new AreaConfiguration());
+            builder.ApplyConfiguration(new VehicleTypeConfiguration());
             builder.ApplyConfiguration(new AttachmentConfiguration());
             builder.ApplyConfiguration(new PlaceConfiguration());
             builder.ApplyConfiguration(new PlaceTypeConfiguration());
@@ -214,6 +224,12 @@ namespace TD.CongDan.Infrastructure.DbContexts
             builder.ApplyConfiguration(new IdentityTypeConfiguration());
 
             builder.ApplyConfiguration(new ApplicationUserConfiguration());
+
+            builder.ApplyConfiguration(new CarpoolConfiguration());
+            builder.ApplyConfiguration(new BookmarkConfiguration());
+            builder.ApplyConfiguration(new VehicleTypeConfiguration());
+
+
             /* builder.Entity<ApplicationUser>(entity =>
              {
                  entity.ToTable(name: "Users");

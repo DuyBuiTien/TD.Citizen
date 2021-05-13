@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TD.CongDan.Infrastructure.DbContexts;
 
 namespace TD.CongDan.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210512050306_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -3081,7 +3083,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<DateTime?>("DepartureDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan?>("DepartureTime")
+                    b.Property<TimeSpan>("DepartureTime")
                         .HasColumnType("time");
 
                     b.Property<string>("Description")

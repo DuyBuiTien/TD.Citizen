@@ -10,8 +10,8 @@ using TD.CongDan.Infrastructure.DbContexts;
 namespace TD.CongDan.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210511134310_initial")]
-    partial class initial
+    [Migration("20210512050400_initial2")]
+    partial class initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -290,12 +290,10 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Code")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -316,9 +314,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameWithType")
                         .HasColumnType("nvarchar(max)");
@@ -339,10 +335,6 @@ namespace TD.CongDan.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Code")
-                        .IsUnique()
-                        .HasFilter("[Code] IS NOT NULL");
 
                     b.ToTable("Areas");
                 });
@@ -451,7 +443,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                         new
                         {
                             Id = 9,
-                            Code = "thanh-pho",
+                            Code = "thanh-pho-trung-uong",
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Name = "Thành phố trung ương"
@@ -2508,6 +2500,91 @@ namespace TD.CongDan.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Other.Bookmark", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AddressDetail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ContentType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoverUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DateEnd")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DateStart")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsOwned")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double?>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("Longitude")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Navigate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TimeEnd")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TimeStart")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TopicId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TopicTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Bookmarks");
+                });
+
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Place", b =>
                 {
                     b.Property<int>("Id")
@@ -2988,6 +3065,126 @@ namespace TD.CongDan.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Traffic.Carpool", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DepartureDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan?>("DepartureTime")
+                        .HasColumnType("time");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PlaceArrivalId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PlaceDepartureId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SeatCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("VehicleTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlaceArrivalId");
+
+                    b.HasIndex("PlaceDepartureId");
+
+                    b.HasIndex("VehicleTypeId");
+
+                    b.ToTable("Carpools");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Traffic.VehicleType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("SeatCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique()
+                        .HasFilter("[Code] IS NOT NULL");
+
+                    b.ToTable("VehicleTypes");
+                });
+
             modelBuilder.Entity("TD.CongDan.Infrastructure.Models.Audit", b =>
                 {
                     b.Property<int>("Id")
@@ -3270,6 +3467,15 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Navigation("Recruitment");
                 });
 
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Other.Bookmark", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Category", "Category")
+                        .WithMany("Bookmarks")
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Place", b =>
                 {
                     b.HasOne("TD.CongDan.Domain.Entities.Area", "Commune")
@@ -3306,6 +3512,27 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Traffic.Carpool", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Place", "PlaceArrival")
+                        .WithMany("CarpoolArrivals")
+                        .HasForeignKey("PlaceArrivalId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Place", "PlaceDeparture")
+                        .WithMany("CarpoolDepartures")
+                        .HasForeignKey("PlaceDepartureId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Traffic.VehicleType", "VehicleType")
+                        .WithMany("Carpools")
+                        .HasForeignKey("VehicleTypeId");
+
+                    b.Navigation("PlaceArrival");
+
+                    b.Navigation("PlaceDeparture");
+
+                    b.Navigation("VehicleType");
+                });
+
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Area", b =>
                 {
                     b.Navigation("PlaceCommunes");
@@ -3323,6 +3550,8 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Category", b =>
                 {
+                    b.Navigation("Bookmarks");
+
                     b.Navigation("PlaceTypes");
                 });
 
@@ -3412,6 +3641,10 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Place", b =>
                 {
+                    b.Navigation("CarpoolArrivals");
+
+                    b.Navigation("CarpoolDepartures");
+
                     b.Navigation("Companies");
                 });
 
@@ -3423,6 +3656,11 @@ namespace TD.CongDan.Infrastructure.Migrations
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Religion", b =>
                 {
                     b.Navigation("UserInfos");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Traffic.VehicleType", b =>
+                {
+                    b.Navigation("Carpools");
                 });
 #pragma warning restore 612, 618
         }

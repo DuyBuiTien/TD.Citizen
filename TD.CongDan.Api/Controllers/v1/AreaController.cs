@@ -14,9 +14,9 @@ namespace TD.CongDan.Api.Controllers.v1
     {
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string parentCode, string type, string keySearch, string orderBy, int? level)
+        public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string parentCode, string type, string keySearch, string orderBy, int? level, int? parentId)
 {
-            var items = await _mediator.Send(new GetAllAreaQuery(pageNumber, pageSize, parentCode, type, keySearch, orderBy, level));
+            var items = await _mediator.Send(new GetAllAreaQuery(pageNumber, pageSize, parentCode, type, keySearch, orderBy, level, parentId));
             return Ok(items);
         }
 

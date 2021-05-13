@@ -50,7 +50,7 @@ namespace TD.CongDan.Application.Features.Are.Commands
         [System.Obsolete]
         public async Task<Result<int>> Handle(CreateAreaCommand request, CancellationToken cancellationToken)
         {
-            var id = _authenticatedUser.UserId;
+            /*var id = _authenticatedUser.UserId;
             if (!string.IsNullOrEmpty(request.Type))
             {
                 var areaType = await _areaTypeRepository.GetByCodeAsync(request.Type);
@@ -75,9 +75,9 @@ namespace TD.CongDan.Application.Features.Are.Commands
             var item = _mapper.Map<Area>(request);
             await _repository.InsertAsync(item);
             await _unitOfWork.Commit(cancellationToken);
-            return Result<int>.Success(item.Id);
+            return Result<int>.Success(item.Id);*/
 
-            /*var client = new RestClient();
+            var client = new RestClient();
             var request_ = new RestRequest("https://raw.githubusercontent.com/daohoangson/dvhcvn/master/data/dvhcvn.json");
             var cancellationTokenSource = new CancellationTokenSource();
 
@@ -143,7 +143,7 @@ namespace TD.CongDan.Application.Features.Are.Commands
                 }
             }
             await _unitOfWork.Commit(cancellationToken);
-            return Result<int>.Success(0);*/
+            return Result<int>.Success(0);
         }
         public static string convert(string s)
         {

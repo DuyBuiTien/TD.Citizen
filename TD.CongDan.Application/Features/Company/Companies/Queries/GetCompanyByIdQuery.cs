@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TD.CongDan.Application.Interfaces.Repositories;
 using TD.CongDan.Domain.Entities;
+using TD.Libs.ThrowR;
 
 namespace TD.CongDan.Application.Features.Companies.Queries
 {
@@ -29,7 +30,7 @@ namespace TD.CongDan.Application.Features.Companies.Queries
             public async Task<Result<CompaniesResponse>> Handle(GetCompanyByIdQuery query, CancellationToken cancellationToken)
             {
                 var item = await _repository.GetByIdAsync(query.Id);
-
+                Throw.Exception.IfNull(item, "Company", "No Company Found");
                 var placeId = item.PlaceId;
                 Place place = await _placeRepository.GetByIdAsync((int)placeId);
 

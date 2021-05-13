@@ -16,10 +16,10 @@ namespace TD.CongDan.Application.Features.Companies.Commands
 
         public class DeleteCommandHandler : IRequestHandler<DeleteCompanyCommand, Result<int>>
         {
-            private readonly IBenefitRepository _repository;
+            private readonly ICompanyRepository _repository;
             private readonly IUnitOfWork _unitOfWork;
 
-            public DeleteCommandHandler(IBenefitRepository repository, IUnitOfWork unitOfWork)
+            public DeleteCommandHandler(ICompanyRepository repository, IUnitOfWork unitOfWork)
             {
                 _repository = repository;
                 _unitOfWork = unitOfWork;

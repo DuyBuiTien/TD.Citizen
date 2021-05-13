@@ -70,7 +70,7 @@ namespace TD.CongDan.Application.Features.Companies.Commands
 
         public async Task<Result<int>> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
         {
-            var id = _authenticatedUser.UserId;
+            var id = _authenticatedUser.Username;
             request.UserId = id;
 
             Place place = new Place { PlaceName = request.PlaceName, ProvinceId = request.ProvinceId, DistrictId = request.DistrictId, CommuneId = request.CommuneId, PlaceTypeId=23, Latitude = (double)request.Latitude, Longitude = (double)request.Longitude };

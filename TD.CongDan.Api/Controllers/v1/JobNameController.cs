@@ -2,9 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using TD.CongDan.Application.Constants;
-using TD.CongDan.Application.Features.JobAges.Queries;
-using TD.CongDan.Application.Features.JobAges.Commands;
 using TD.CongDan.Application.Features.JobNames.Queries;
 using TD.CongDan.Application.Features.JobNames.Commands;
 
@@ -12,7 +9,7 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class JobNameController : BaseApiController<JobNameController>
     {
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy)
         {

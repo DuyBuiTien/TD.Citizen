@@ -84,3 +84,10 @@ Has this Project helped you learn something New? or Helped you at work? Do Consi
 - Twitter - [Mukesh Murugan](https://www.twitter.com/iammukeshm)
 - Twitter - [codewithmukesh](https://www.twitter.com/codewithmukesh)
 - Linkedin - [Mukesh Murugan](https://www.linkedin.com/in/iammukeshm/)
+
+
+add-migration initial2 -context ApplicationDbContext
+add-migration initialIdentity2 -context IdentityContext
+
+update-database -context IdentityContext
+update-database -context ApplicationDbContext
