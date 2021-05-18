@@ -61,10 +61,12 @@ namespace TD.CongDan.Application.Features.Companies.Commands
         private readonly IMapper _mapper;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IAuthenticatedUserService _authenticatedUser;
+        private readonly ICompanyIndustryRepository _companyIndustryRepository;
+
 
         private IUnitOfWork _unitOfWork { get; set; }
 
-        public UpdateCommandHandler(ICompanyRepository repository, IPlaceRepository placeRepository, IUnitOfWork unitOfWork, IMapper mapper, IAuthenticatedUserService authenticatedUser, UserManager<ApplicationUser> userManager)
+        public UpdateCommandHandler(ICompanyIndustryRepository companyIndustryRepository, ICompanyRepository repository, IPlaceRepository placeRepository, IUnitOfWork unitOfWork, IMapper mapper, IAuthenticatedUserService authenticatedUser, UserManager<ApplicationUser> userManager)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
@@ -72,7 +74,7 @@ namespace TD.CongDan.Application.Features.Companies.Commands
             _placeRepository = placeRepository;
             _userManager = userManager;
             _authenticatedUser = authenticatedUser;
-
+            _companyIndustryRepository = companyIndustryRepository;
         }
 
         public async Task<Result<int>> Handle(UpdateCompanyCommand command, CancellationToken cancellationToken)
@@ -98,6 +100,7 @@ namespace TD.CongDan.Application.Features.Companies.Commands
                 var placeCount = _placeRepository.Places.Where(e => e.PlaceTypeId == 23 && e.ProvinceId == command.ProvinceId && e.DistrictId == command.DistrictId && e.CommuneId == command.CommuneId && e.PlaceName == command.PlaceName).Count();
 
                 var placeId = item.PlaceId;
+
 
                 if (placeCount < 1)
                 {
@@ -128,9 +131,13 @@ namespace TD.CongDan.Application.Features.Companies.Commands
 
 
                 var item_CompanyIndustries = item.CompanyIndustries;
+                foreach (var item_ in item_CompanyIndustries)
+                {
+                    await _companyIndustryRepository.DeleteAsync(item_);
+                }
 
 
-               /* foreach (var _item in command.Industries)
+               foreach (var _item in command.Industries)
                 {
                     try
                     {
@@ -141,11 +148,11 @@ namespace TD.CongDan.Application.Features.Companies.Commands
                     {
 
                     }
-                }*/
+                }
 
 
 
-               // await _unitOfWork.Commit(cancellationToken);
+                await _unitOfWork.Commit(cancellationToken);
                 return Result<int>.Success(item.Id);
             }
         }

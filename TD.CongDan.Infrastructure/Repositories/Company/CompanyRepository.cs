@@ -29,7 +29,7 @@ namespace TD.CongDan.Infrastructure.Repositories
 
         public async Task<Company> GetByIdAsync(int Id)
         {
-            return await _repository.Entities.Where(p => p.Id == Id).FirstOrDefaultAsync();
+            return await _repository.Entities.Where(p => p.Id == Id).Include(x=>x.Place).Include(x=>x.CompanyIndustries).FirstOrDefaultAsync();
         }
 
         public async Task<Company> GetByUserNameAsync(string UserName)
