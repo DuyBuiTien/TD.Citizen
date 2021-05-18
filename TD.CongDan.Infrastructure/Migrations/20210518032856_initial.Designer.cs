@@ -10,8 +10,8 @@ using TD.CongDan.Infrastructure.DbContexts;
 namespace TD.CongDan.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210512050400_initial2")]
-    partial class initial2
+    [Migration("20210518032856_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -884,6 +884,9 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Fax")
                         .HasColumnType("nvarchar(max)");
 
@@ -927,8 +930,8 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<string>("TaxCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Website")
                         .HasColumnType("nvarchar(max)");
@@ -937,19 +940,19 @@ namespace TD.CongDan.Infrastructure.Migrations
 
                     b.HasIndex("PlaceId");
 
+                    b.HasIndex("UserName")
+                        .IsUnique()
+                        .HasFilter("[UserName] IS NOT NULL");
+
                     b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.CompanyIndustry", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IndustryId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -958,7 +961,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("IndustryId")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<string>("LastModifiedBy")
@@ -967,9 +970,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
+                    b.HasKey("CompanyId", "IndustryId");
 
                     b.HasIndex("IndustryId");
 
@@ -2110,6 +2111,9 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CompanyId");
@@ -2137,14 +2141,10 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.RecruitmentBenefit", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int>("BenefitId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RecruitmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -2152,6 +2152,9 @@ namespace TD.CongDan.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -2164,12 +2167,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("RecruitmentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BenefitId");
+                    b.HasKey("BenefitId", "RecruitmentId");
 
                     b.HasIndex("RecruitmentId");
 
@@ -3341,11 +3339,15 @@ namespace TD.CongDan.Infrastructure.Migrations
                 {
                     b.HasOne("TD.CongDan.Domain.Entities.Company.Company", "Company")
                         .WithMany("CompanyIndustries")
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TD.CongDan.Domain.Entities.Company.Industry", "Industry")
                         .WithMany("CompanyIndustries")
-                        .HasForeignKey("IndustryId");
+                        .HasForeignKey("IndustryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Company");
 

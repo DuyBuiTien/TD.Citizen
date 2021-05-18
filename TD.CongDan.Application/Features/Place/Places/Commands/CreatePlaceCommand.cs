@@ -23,8 +23,8 @@ namespace TD.CongDan.Application.Features.Places.Commands
         public string Email { get; set; }
         public string Content { get; set; }
         public string ContentHtml { get; set; }
-        public decimal? Latitude { get; set; }
-        public decimal? Longitude { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
 
         public string Tags { get; set; }
         public string Image { get; set; }
@@ -37,6 +37,10 @@ namespace TD.CongDan.Application.Features.Places.Commands
         public DateTime? TimeEnd { get; set; }
 
         public int? PlaceTypeId { get; set; }
+        public int? ProvinceId { get; set; }
+        public int? DistrictId { get; set; }
+        public int? CommuneId { get; set; }
+        public int? CompanyId { get; set; }
     }
 
     public class CreatePlaceCommandHandler : IRequestHandler<CreatePlaceCommand, Result<int>>

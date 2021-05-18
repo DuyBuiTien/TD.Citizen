@@ -9,8 +9,10 @@ namespace TD.CongDan.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<CompanyIndustry> builder)
         {
             builder.ToTable("CompanyIndustries");
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).UseIdentityColumn();
+            builder.HasKey(x => new { x.CompanyId, x.IndustryId});
+
+            //builder.HasKey(x => x.Id);
+            //builder.Property(x => x.Id).UseIdentityColumn();
             builder.HasOne<Company>(sc => sc.Company).WithMany(s => s.CompanyIndustries).HasForeignKey(sc => sc.CompanyId);
             builder.HasOne<Industry>(sc => sc.Industry).WithMany(s => s.CompanyIndustries).HasForeignKey(sc => sc.IndustryId);
         }

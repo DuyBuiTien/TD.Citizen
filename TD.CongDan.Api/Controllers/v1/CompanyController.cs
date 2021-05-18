@@ -21,6 +21,16 @@ namespace TD.CongDan.Api.Controllers.v1
             return Ok(items);
         }
 
+
+        [Authorize]
+        [HttpGet("current-company")]
+        public async Task<IActionResult> GetCurrentCompany()
+        {
+            var item = await _mediator.Send(new GetCurrentCompanyQuery());
+            return Ok(item);
+        }
+
+
         [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)

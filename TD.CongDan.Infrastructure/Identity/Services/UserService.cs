@@ -19,6 +19,7 @@ using TD.CongDan.Application.Interfaces.Repositories;
 using TD.CongDan.Application.Interfaces.Shared;
 using TD.CongDan.Domain.Entities;
 using TD.CongDan.Application.Interfaces.Contexts;
+using System.Globalization;
 
 namespace TD.CongDan.Infrastructure.Identity.Services
 {
@@ -129,13 +130,84 @@ namespace TD.CongDan.Infrastructure.Identity.Services
 
 
 
-        /*public async Task<Result<List<RoleViewModel>>> GetRoles()
+        public async Task<Result<ApplicationUserResponse>> EditByUsername(string username, EditUserRequest request)
         {
-            var roles = await _roleManager.Roles.ToListAsync();
+            var user = await _userManager.FindByNameAsync(username);
 
-            var mappedBrands = _mapper.Map<List<RoleViewModel>>(roles);
-            return Result<List<RoleViewModel>>.Success(mappedBrands);
-        }*/
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            DateTime? dateOfBirth = user.DateOfBirth;
+            try
+            {
+                //dateOfBirth = DateTime.ParseExact(request.DateOfBirth, "dd/MM/yyyy", provider); 
+                dateOfBirth = DateTime.Parse(request.DateOfBirth);
+            }
+            catch { }
+            DateTime? identityDateOfIssue = user.IdentityDateOfIssue;
+            try
+            { /*identityDateOfIssue = DateTime.ParseExact(request.identityDateOfIssue, "dd/MM/yyyy", provider); */
+                identityDateOfIssue = DateTime.Parse(request.IdentityDateOfIssue);
+            }
+            catch { }
+
+            {
+
+                user.FirstName = request.FirstName ?? user.FirstName;
+                user.LastName = request.LastName ?? user.LastName;
+                //user.PhoneNumber = request.PhoneNumber ?? user.PhoneNumber;
+                user.GenderId = request.GenderId ?? user.GenderId;
+                user.DateOfBirth = dateOfBirth ?? user.DateOfBirth;
+                user.IdentityTypeId = request.IdentityTypeId ?? user.IdentityTypeId;
+                user.IdentityNumber = request.IdentityNumber ?? user.IdentityNumber;
+                user.IdentityPlace = request.IdentityPlace ?? user.IdentityPlace;
+                user.IdentityDateOfIssue = identityDateOfIssue ?? user.IdentityDateOfIssue;
+                user.Nationality = request.Nationality ?? user.Nationality;
+                user.ProvinceId = request.ProvinceId ?? user.ProvinceId;
+                user.DistrictId = request.DistrictId ?? user.DistrictId;
+                user.CommuneId = request.CommuneId ?? user.CommuneId;
+                user.Address = request.Address ?? user.Address;
+                user.MaritalStatusId = request.MaritalStatusId ?? user.MaritalStatusId;
+            };
+            //var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
+            await _userManager.UpdateAsync(user);
+            var gender = await _applicationDbContext.Genders.FindAsync(user.GenderId);
+            var identityType = await _applicationDbContext.IdentityTypes.FindAsync(user.IdentityTypeId);
+            var Province = await _applicationDbContext.Areas.FindAsync(user.ProvinceId);
+            var District = await _applicationDbContext.Areas.FindAsync(user.DistrictId);
+            var Commune = await _applicationDbContext.Areas.FindAsync(user.CommuneId);
+            var MaritalStatus = await _applicationDbContext.MaritalStatuses.FindAsync(user.MaritalStatusId);
+
+            return Result<ApplicationUserResponse>.Success(new ApplicationUserResponse()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                AvatarUrl = user.AvatarUrl,
+                GenderId = user.GenderId,
+                Gender = gender,
+                DateOfBirth = user.DateOfBirth,
+                IdentityTypeId = user.IdentityTypeId,
+                IdentityType = identityType,
+                IdentityNumber = user.IdentityNumber,
+                IdentityPlace = user.IdentityPlace,
+                IdentityDateOfIssue = user.IdentityDateOfIssue,
+                Nationality = user.Nationality,
+                ProvinceId = user.ProvinceId,
+                Province = Province,
+                DistrictId = user.DistrictId,
+                District = District,
+                CommuneId = user.CommuneId,
+                Commune = Commune,
+                Address = user.Address,
+                MaritalStatusId = user.MaritalStatusId,
+                MaritalStatus = MaritalStatus,
+                IsActive = user.IsActive,
+                IsVerified = user.IsActive,
+            });
+        }
 
 
 

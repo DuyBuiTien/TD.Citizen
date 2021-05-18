@@ -7,7 +7,7 @@ namespace TD.CongDan.Domain.Entities.Company
 {
     public class Company : AuditableEntity
     {
-        public string UserId { get; set; }
+        public string UserName { get; set; }
         public string Name { get; set; }
         public string InternationalName { get; set; }
         public string ShortName { get; set; }
@@ -20,6 +20,7 @@ namespace TD.CongDan.Domain.Entities.Company
         public string Representative { get; set; }
         public string PhoneNumber { get; set; }
         public string Website { get; set; }
+        public string Email { get; set; }
         public string ProfileVideo { get; set; }
         public string Fax { get; set; }
         //Ngay cap

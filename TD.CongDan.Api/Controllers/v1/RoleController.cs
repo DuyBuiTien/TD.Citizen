@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TD.CongDan.Application.Interfaces;
 using TD.CongDan.Application.DTOs.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TD.CongDan.Api.Controllers.v1
 {
@@ -26,6 +27,7 @@ namespace TD.CongDan.Api.Controllers.v1
                 }*/
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> GetRoleById(string id)
         {
             var items = await userService.GetRoleById(id);
@@ -34,6 +36,7 @@ namespace TD.CongDan.Api.Controllers.v1
 
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> DeleteRoleById(string id)
         {
             var items = await userService.DeleteRoleById(id);
@@ -42,6 +45,7 @@ namespace TD.CongDan.Api.Controllers.v1
 
 
         [HttpPost]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> CreateOrUpdateRole(PermissionViewModel role)
         {
             var items = await userService.CreateOrUpdateRole(role);

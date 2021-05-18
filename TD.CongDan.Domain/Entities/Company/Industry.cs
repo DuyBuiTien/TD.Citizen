@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace TD.CongDan.Domain.Entities.Company
 {
@@ -14,6 +15,7 @@ namespace TD.CongDan.Domain.Entities.Company
         public string Code { get; set; }
         public string Description { get; set; }
 
-        public ICollection<CompanyIndustry> CompanyIndustries { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<CompanyIndustry> CompanyIndustries { get; set; }
     }
 }

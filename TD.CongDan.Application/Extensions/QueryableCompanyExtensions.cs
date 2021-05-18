@@ -12,13 +12,13 @@ namespace TD.CongDan.Application.Extensions
     public static class QueryableCompanyExtensions
     {
 
-        public static IQueryable<Company> FilterCompanyByUserId(this IQueryable<Company> source, string UserId)
+        public static IQueryable<Company> FilterCompanyByUserName(this IQueryable<Company> source, string UserName)
         {
             Throw.Exception.IfNull(source, nameof(source));
-            if (string.IsNullOrWhiteSpace(UserId))
+            if (string.IsNullOrWhiteSpace(UserName))
                 return source;
 
-            return source.Where(e => e.UserId == UserId);
+            return source.Where(e => e.UserName == UserName);
         }
 
         public static IQueryable<Company> FilterCompanyByProvinceId(this IQueryable<Company> source, int? provinceId)

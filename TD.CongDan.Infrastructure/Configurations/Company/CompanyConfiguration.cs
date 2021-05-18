@@ -13,7 +13,12 @@ namespace TD.CongDan.Infrastructure.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.Name).IsRequired();
+            //builder.Property(x => x.UserName).IsRequired();
+            builder.HasIndex(x => x.UserName).IsUnique(true);
+
             builder.HasOne(x => x.Place).WithMany(x => x.Companies).HasForeignKey(x => x.PlaceId);
+            
+
 
 
 

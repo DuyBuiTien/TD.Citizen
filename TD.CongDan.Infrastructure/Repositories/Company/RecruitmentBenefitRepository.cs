@@ -8,43 +8,42 @@ using TD.CongDan.Domain.Entities.Company;
 
 namespace TD.CongDan.Infrastructure.Repositories
 {
-    public class RecruitmentRepository : IRecruitmentRepository
+    public class RecruitmentBenefitRepository : IRecruitmentBenefitRepository
     {
-        private readonly IRepositoryAsync<Recruitment> _repository;
+        private readonly IRepositoryAsync<RecruitmentBenefit> _repository;
         private readonly IDistributedCache _distributedCache;
 
-        public RecruitmentRepository(IDistributedCache distributedCache, IRepositoryAsync<Recruitment> repository)
+        public RecruitmentBenefitRepository(IDistributedCache distributedCache, IRepositoryAsync<RecruitmentBenefit> repository)
         {
             _distributedCache = distributedCache;
             _repository = repository;
         }
 
-        public IQueryable<Recruitment> Recruitments => _repository.Entities;
+        public IQueryable<RecruitmentBenefit> RecruitmentBenefits => _repository.Entities;
 
 
-        public async Task DeleteAsync(Recruitment item)
+        public async Task DeleteAsync(RecruitmentBenefit item)
         {
             await _repository.DeleteAsync(item);
         }
 
-        public async Task<Recruitment> GetByIdAsync(int Id)
+        public async Task<RecruitmentBenefit> GetByIdAsync(int Id)
         {
             return await _repository.Entities.Where(p => p.Id == Id).FirstOrDefaultAsync();
         }
 
-        public async Task<List<Recruitment>> GetListAsync()
+        public async Task<List<RecruitmentBenefit>> GetListAsync()
         {
             return await _repository.Entities.ToListAsync();
         }
 
-        public async Task<int> InsertAsync(Recruitment item)
+        public async Task<int> InsertAsync(RecruitmentBenefit item)
         {
-            var item_ = item;
             await _repository.AddAsync(item);
             return item.Id;
         }
 
-        public async Task UpdateAsync(Recruitment item)
+        public async Task UpdateAsync(RecruitmentBenefit item)
         {
             await _repository.UpdateAsync(item);
         }

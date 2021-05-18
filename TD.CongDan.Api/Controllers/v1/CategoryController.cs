@@ -28,6 +28,7 @@ namespace TD.CongDan.Api.Controllers.v1
 
         // POST api/<controller>
         [HttpPost]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         // [Authorize(Roles = "Admin")]
         //[Authorize(Policy = Permissions.Categories.Create)]
 
@@ -38,6 +39,7 @@ namespace TD.CongDan.Api.Controllers.v1
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> Put(int id, UpdateCategoryCommand command)
         {
             if (id != command.Id)
@@ -49,6 +51,7 @@ namespace TD.CongDan.Api.Controllers.v1
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         //[Authorize(Policy = Permissions.Categories.Delete)]
         public async Task<IActionResult> Delete(int id)
         {

@@ -40,6 +40,13 @@ namespace TD.CongDan.Api.Controllers
             return Ok(await _identityService.RegisterAsync(request, origin));
         }
 
+        [HttpPost("edit-infor")]
+        public async Task<IActionResult> EditAsync(EditUserRequest request)
+        {
+            var origin = Request.Headers["origin"];
+            return Ok(await _identityService.EditAsync(request, origin));
+        }
+
         [HttpGet("confirm-email")]
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmailAsync([FromQuery] string userId, [FromQuery] string code)

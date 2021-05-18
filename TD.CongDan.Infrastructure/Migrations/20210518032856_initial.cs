@@ -839,7 +839,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                     PlaceDepartureId = table.Column<int>(type: "int", nullable: true),
                     PlaceArrivalId = table.Column<int>(type: "int", nullable: true),
                     DepartureDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DepartureTime = table.Column<TimeSpan>(type: "time", nullable: false),
+                    DepartureTime = table.Column<TimeSpan>(type: "time", nullable: true),
                     VehicleTypeId = table.Column<int>(type: "int", nullable: true),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -879,7 +879,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InternationalName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ShortName = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -888,6 +888,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                     Representative = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProfileVideo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Fax = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateOfIssue = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -917,10 +918,9 @@ namespace TD.CongDan.Infrastructure.Migrations
                 name: "CompanyIndustries",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CompanyId = table.Column<int>(type: "int", nullable: true),
-                    IndustryId = table.Column<int>(type: "int", nullable: true),
+                    CompanyId = table.Column<int>(type: "int", nullable: false),
+                    IndustryId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -928,19 +928,19 @@ namespace TD.CongDan.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CompanyIndustries", x => x.Id);
+                    table.PrimaryKey("PK_CompanyIndustries", x => new { x.CompanyId, x.IndustryId });
                     table.ForeignKey(
                         name: "FK_CompanyIndustries_Companies_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CompanyIndustries_Industries_IndustryId",
                         column: x => x.IndustryId,
                         principalTable: "Industries",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -949,6 +949,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -1045,11 +1046,10 @@ namespace TD.CongDan.Infrastructure.Migrations
                 name: "RecruitmentBenefits",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     RecruitmentId = table.Column<int>(type: "int", nullable: false),
                     BenefitId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -1057,7 +1057,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RecruitmentBenefits", x => x.Id);
+                    table.PrimaryKey("PK_RecruitmentBenefits", x => new { x.BenefitId, x.RecruitmentId });
                     table.ForeignKey(
                         name: "FK_RecruitmentBenefits_Benefits_BenefitId",
                         column: x => x.BenefitId,
@@ -1439,9 +1439,11 @@ namespace TD.CongDan.Infrastructure.Migrations
                 column: "PlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CompanyIndustries_CompanyId",
-                table: "CompanyIndustries",
-                column: "CompanyId");
+                name: "IX_Companies_UserName",
+                table: "Companies",
+                column: "UserName",
+                unique: true,
+                filter: "[UserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CompanyIndustries_IndustryId",
@@ -1502,11 +1504,6 @@ namespace TD.CongDan.Infrastructure.Migrations
                 name: "IX_Products_BrandId",
                 table: "Products",
                 column: "BrandId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RecruitmentBenefits_BenefitId",
-                table: "RecruitmentBenefits",
-                column: "BenefitId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RecruitmentBenefits_RecruitmentId",

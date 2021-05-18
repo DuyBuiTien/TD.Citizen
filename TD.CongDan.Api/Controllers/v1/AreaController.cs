@@ -21,6 +21,7 @@ namespace TD.CongDan.Api.Controllers.v1
         }
 
         [HttpGet("{id}")]
+
         public async Task<IActionResult> GetById(int id)
         {
             var item = await _mediator.Send(new GetAreaByIdQuery() { Id = id });
@@ -39,6 +40,7 @@ namespace TD.CongDan.Api.Controllers.v1
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> Put(int id, UpdateAreaCommand command)
         {
             if (id != command.Id)
@@ -51,6 +53,7 @@ namespace TD.CongDan.Api.Controllers.v1
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         /*[Authorize(Policy = Permissions.Categories.Delete)]*/
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await _mediator.Send(new DeleteAreaCommand { Id = id }));

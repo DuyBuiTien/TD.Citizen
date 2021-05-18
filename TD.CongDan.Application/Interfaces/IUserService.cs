@@ -9,6 +9,8 @@ namespace TD.CongDan.Application.Interfaces
     public interface IUserService
     {
         Task<Result<ApplicationUserResponse>> GetByUsername(string username);
+        Task<Result<ApplicationUserResponse>> EditByUsername(string username, EditUserRequest request);
+
 
         Task<PaginatedResult<UserViewModel>> GetAllUsers(int pageNumber, int pageSize, string keySearch, string orderBy);
 

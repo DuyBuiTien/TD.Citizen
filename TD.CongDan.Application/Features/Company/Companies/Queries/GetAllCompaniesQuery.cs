@@ -17,18 +17,18 @@ namespace TD.CongDan.Application.Features.Companies.Queries
         public int PageSize { get; set; }
         public string KeySearch { get; set; }
         public string OrderBy { get; set; }
-        public string UserId { get; set; }
+        public string UserName { get; set; }
         public int? ProvinceId { get; set; }
         public int? DistrictId { get; set; }
         public int? CommuneId { get; set; }
 
-        public GetAllCompaniesQuery(int pageNumber, int pageSize, string keySearch, string orderBy, string userId, int? provinceId, int? districtId, int? communeId)
+        public GetAllCompaniesQuery(int pageNumber, int pageSize, string keySearch, string orderBy, string userName, int? provinceId, int? districtId, int? communeId)
         {
             PageNumber = pageNumber;
             PageSize = pageSize;
             KeySearch = keySearch;
             OrderBy = orderBy;
-            UserId = userId;
+            UserName = userName;
             ProvinceId = provinceId;
             DistrictId = districtId;
             CommuneId = communeId;
@@ -54,8 +54,6 @@ namespace TD.CongDan.Application.Features.Companies.Queries
                 ShortName = e.ShortName,
                 TaxCode = e.TaxCode,
                 PlaceName = e.Place.PlaceName,
-                Latitude = e.Place.Latitude,
-                Longitude = e.Place.Longitude,
                 Province = e.Place.Province.NameWithType,
                 District = e.Place.District.NameWithType,
                 Commune = e.Place.Commune.NameWithType,
@@ -63,10 +61,11 @@ namespace TD.CongDan.Application.Features.Companies.Queries
                 Image = e.Image,
                 Logo = e.Logo,
                 PhoneNumber = e.PhoneNumber,
-                CompanySize = e.CompanySize
+                CompanySize = e.CompanySize,
+                Email = e.Email,
             };
             var paginatedList = await _repository.Companies
-                .FilterCompanyByUserId(request.UserId)
+                .FilterCompanyByUserName(request.UserName)
                 .FilterCompanyByProvinceId(request.ProvinceId)
                 .FilterCompanyByDistrictId(request.DistrictId)
                 .FilterCompanyByCommuneId(request.CommuneId)

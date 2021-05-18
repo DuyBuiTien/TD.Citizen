@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TD.CongDan.Application.Interfaces;
 using TD.CongDan.Application.DTOs.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TD.CongDan.Api.Controllers.v1
 {
@@ -14,6 +15,7 @@ namespace TD.CongDan.Api.Controllers.v1
             userService = service;
         }
         [HttpGet]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize,  string keySearch, string orderBy)
         {
             var items = await userService.GetAllUsers(pageNumber, pageSize, keySearch, orderBy);
@@ -22,6 +24,7 @@ namespace TD.CongDan.Api.Controllers.v1
 
 
         [HttpGet("role/{username}")]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> GetRoleByUsername(string username)
         {
             var items = await userService.GetRoleByUsername(username);
@@ -29,6 +32,7 @@ namespace TD.CongDan.Api.Controllers.v1
         }
 
         [HttpPost("role/{username}")]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> EditRoleByUsername(string username, ManageUserRolesViewModel model)
         {
             var items = await userService.EditRoleByUsername(username, model);
@@ -36,9 +40,18 @@ namespace TD.CongDan.Api.Controllers.v1
         }
 
         [HttpGet("{username}")]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> GetByUsername(string username)
         {
             var items = await userService.GetByUsername(username);
+            return Ok(items);
+        }
+
+        [HttpPost("{username}")]
+        [Authorize(Roles = "Admin, SuperAdmin")]
+        public async Task<IActionResult> EditByUsername(string username, EditUserRequest request)
+        {
+            var items = await userService.EditByUsername(username, request);
             return Ok(items);
         }
 

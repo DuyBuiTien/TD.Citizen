@@ -26,6 +26,7 @@ namespace TD.CongDan.Api.Controllers.v1
 
         // POST api/<controller>
         [HttpPost, DisableRequestSizeLimit]
+        [Authorize]
 
         public async Task<IActionResult> Post([FromForm(Name = "files")] List<IFormFile> files)
         {

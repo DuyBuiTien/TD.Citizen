@@ -15,6 +15,8 @@ namespace TD.CongDan.Application.Mappings
         public CompanyProfile()
         {
             CreateMap<CompaniesResponse, Company>().ReverseMap();
+            CreateMap<CompanyResponse, Company>().ReverseMap();
+
             CreateMap<CreateCompanyCommand, Company>().ReverseMap();
         }
     }

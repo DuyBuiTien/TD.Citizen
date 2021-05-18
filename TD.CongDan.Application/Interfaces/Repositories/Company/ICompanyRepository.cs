@@ -14,6 +14,8 @@ namespace TD.CongDan.Application.Interfaces.Repositories
 
         Task<Company> GetByIdAsync(int Id);
 
+        Task<Company> GetByUserNameAsync(string UserName);
+
         Task<int> InsertAsync(Company item);
 
         Task UpdateAsync(Company item);

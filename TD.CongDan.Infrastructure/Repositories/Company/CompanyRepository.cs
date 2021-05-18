@@ -32,6 +32,11 @@ namespace TD.CongDan.Infrastructure.Repositories
             return await _repository.Entities.Where(p => p.Id == Id).FirstOrDefaultAsync();
         }
 
+        public async Task<Company> GetByUserNameAsync(string UserName)
+        {
+            return await _repository.Entities.Where(p => p.UserName == UserName).FirstOrDefaultAsync();
+        }
+
         public async Task<List<Company>> GetListAsync()
         {
             return await _repository.Entities.ToListAsync();

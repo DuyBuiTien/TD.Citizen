@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using TD.CongDan.Application.Interfaces.Repositories;
 using TD.CongDan.Domain.Entities;
 using System.Globalization;
+using Microsoft.AspNetCore.Identity;
+using TD.CongDan.Application.Interfaces.Shared;
+using TD.CongDan.Domain.Entities.Company;
 
 namespace TD.CongDan.Application.Features.Companies.Commands
 {
@@ -35,6 +38,7 @@ namespace TD.CongDan.Application.Features.Companies.Commands
         public string Website { get; set; }
         public string ProfileVideo { get; set; }
         public string Fax { get; set; }
+        public string Email { get; set; }
         //Ngay cap
         public string DateOfIssueStr { get; set; }
         //Linh vuc kinh doanh
@@ -44,6 +48,10 @@ namespace TD.CongDan.Application.Features.Companies.Commands
         public string Description { get; set; }
         //Quy mo cong ty
         public string CompanySize { get; set; }
+
+        public virtual ICollection<int> Industries { get; set; }
+
+
     }
 
     public class UpdateCommandHandler : IRequestHandler<UpdateCompanyCommand, Result<int>>
@@ -51,25 +59,34 @@ namespace TD.CongDan.Application.Features.Companies.Commands
         private readonly ICompanyRepository _repository;
         private readonly IPlaceRepository _placeRepository;
         private readonly IMapper _mapper;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IAuthenticatedUserService _authenticatedUser;
 
         private IUnitOfWork _unitOfWork { get; set; }
 
-        public UpdateCommandHandler(ICompanyRepository repository, IPlaceRepository placeRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public UpdateCommandHandler(ICompanyRepository repository, IPlaceRepository placeRepository, IUnitOfWork unitOfWork, IMapper mapper, IAuthenticatedUserService authenticatedUser, UserManager<ApplicationUser> userManager)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _placeRepository = placeRepository;
+            _userManager = userManager;
+            _authenticatedUser = authenticatedUser;
 
         }
 
         public async Task<Result<int>> Handle(UpdateCompanyCommand command, CancellationToken cancellationToken)
         {
+
+            var userName = _authenticatedUser.Username;
+            var user = await _userManager.FindByNameAsync(userName);
+            var rolesList = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
+
             var item = await _repository.GetByIdAsync(command.Id);
 
-            if (item == null)
+            if (item == null || !(rolesList.Contains("Admin") || rolesList.Contains("SuperAdmin") || userName == item.UserName))
             {
-                return Result<int>.Fail($"Company Not Found.");
+                return Result<int>.Fail($"Lỗi!");
             }
             else
             {
@@ -107,8 +124,28 @@ namespace TD.CongDan.Application.Features.Companies.Commands
                 item.DateOfIssue = DateOfIssue;
                 item.PlaceId = placeId;
 
-                await _repository.UpdateAsync(item);
-                await _unitOfWork.Commit(cancellationToken);
+               // await _repository.UpdateAsync(item);
+
+
+                var item_CompanyIndustries = item.CompanyIndustries;
+
+
+               /* foreach (var _item in command.Industries)
+                {
+                    try
+                    {
+                        CompanyIndustry tmp = new CompanyIndustry { IndustryId = _item, CompanyId = item.Id };
+                        await _companyIndustryRepository.InsertAsync(tmp);
+                    }
+                    catch
+                    {
+
+                    }
+                }*/
+
+
+
+               // await _unitOfWork.Commit(cancellationToken);
                 return Result<int>.Success(item.Id);
             }
         }

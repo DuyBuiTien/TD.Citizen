@@ -11,6 +11,10 @@ namespace TD.CongDan.Application.Interfaces
 
         Task<Result<string>> RegisterAsync(RegisterRequest request, string origin);
 
+        Task<Result<string>> EditAsync(EditUserRequest request, string origin);
+
+
+
         Task<Result<string>> ConfirmEmailAsync(string userId, string code);
 
         Task ForgotPassword(ForgotPasswordRequest model, string origin);

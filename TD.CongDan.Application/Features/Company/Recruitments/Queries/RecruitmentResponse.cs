@@ -1,16 +1,13 @@
-﻿using TD.Libs.Abstractions.Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TD.CongDan.Domain.Entities;
+using TD.CongDan.Domain.Entities.Company;
 
-namespace TD.CongDan.Domain.Entities.Company
+namespace TD.CongDan.Application.Features.Recruitments.Queries
 {
-    //Tuyen dung
-    public class Recruitment : AuditableEntity
+    public class RecruitmentResponse
     {
-        public string UserName { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
@@ -29,12 +26,12 @@ namespace TD.CongDan.Domain.Entities.Company
         public int? ExperienceId { get; set; }
         //Yeu cau gioi tinh
         public int? GenderId { get; set; }
-        
+        public Gender Gender { get; set; }
         public int? JobAgeId { get; set; }
         public int? DegreeId { get; set; }
 
         //yeu cau khac
-        public string OtherRequirement {get;set;}
+        public string OtherRequirement { get; set; }
         //ho so bao gom
         public string ResumeRequirement { get; set; }
 
@@ -48,19 +45,19 @@ namespace TD.CongDan.Domain.Entities.Company
         public string ContactPhone { get; set; }
         public string ContactAdress { get; set; }
 
-        public virtual Gender Gender { get; set; }
-        public virtual Company Company { get; set; }
-        public virtual JobPosition JobPosition { get; set; }
-        public virtual JobType JobType { get; set; }
-        public virtual JobName JobName { get; set; }
-        public virtual Salary Salary { get; set; }
-        public virtual JobAge JobAge { get; set; }
-        public virtual Degree Degree { get; set; }
-        public virtual Experience Experience { get; set; }
+        public Company Company { get; set; }
+        public JobPosition JobPosition { get; set; }
+        public JobType JobType { get; set; }
+        public JobName JobName { get; set; }
+        public Salary Salary { get; set; }
+        public JobAge JobAge { get; set; }
+        public Degree Degree { get; set; }
+        public Experience Experience { get; set; }
 
-        public virtual ICollection<RecruitmentBenefit> RecruitmentBenefit { get; set; }
+        public IList<RecruitmentBenefit> RecruitmentBenefit { get; set; }
 
         public int? PlaceId { get; set; }
-        public virtual Place Place { get; set; }
+        public Place Place { get; set; }
+
     }
 }

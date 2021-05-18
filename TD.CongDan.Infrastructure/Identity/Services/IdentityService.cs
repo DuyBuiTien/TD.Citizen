@@ -131,7 +131,8 @@ namespace TD.CongDan.Infrastructure.Identity.Services
                 audience: _jwtSettings.Audience,
                 claims: claims,
                 notBefore: DateTime.UtcNow,
-                expires: DateTime.UtcNow.AddMinutes(_jwtSettings.DurationInMinutes),
+                //expires: DateTime.UtcNow.AddMinutes(_jwtSettings.DurationInMinutes),
+                expires: DateTime.UtcNow.AddDays(_jwtSettings.DurationInMinutes),
                 signingCredentials: signingCredentials);
             return jwtSecurityToken;
         }
@@ -224,6 +225,58 @@ namespace TD.CongDan.Infrastructure.Identity.Services
                 throw new ApiException($"UserName {request.UserName } is already registered.");
             }
         }
+
+
+
+
+        public async Task<Result<string>> EditAsync(EditUserRequest request, string origin)
+        {
+            var id = _authenticatedUserService.UserId;
+
+            var user = await _userManager.FindByIdAsync(id);
+
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            DateTime? dateOfBirth = user.DateOfBirth;
+            try
+            {
+                //dateOfBirth = DateTime.ParseExact(request.DateOfBirth, "dd/MM/yyyy", provider); 
+                dateOfBirth = DateTime.Parse(request.DateOfBirth);
+            }
+            catch { }
+            DateTime? identityDateOfIssue = user.IdentityDateOfIssue;
+            try
+            { /*identityDateOfIssue = DateTime.ParseExact(request.identityDateOfIssue, "dd/MM/yyyy", provider); */
+                identityDateOfIssue = DateTime.Parse(request.IdentityDateOfIssue);
+            }
+            catch { }
+
+            {
+
+                user.FirstName = request.FirstName ?? user.FirstName;
+                user.LastName = request.LastName ?? user.LastName;
+                //user.PhoneNumber = request.PhoneNumber ?? user.PhoneNumber;
+                user.GenderId = request.GenderId ?? user.GenderId;
+                user.DateOfBirth = dateOfBirth ?? user.DateOfBirth;
+                user.IdentityTypeId = request.IdentityTypeId ?? user.IdentityTypeId;
+                user.IdentityNumber = request.IdentityNumber ?? user.IdentityNumber;
+                user.IdentityPlace = request.IdentityPlace ?? user.IdentityPlace;
+                user.IdentityDateOfIssue = identityDateOfIssue ?? user.IdentityDateOfIssue;
+                user.Nationality = request.Nationality ?? user.Nationality;
+                user.ProvinceId = request.ProvinceId ?? user.ProvinceId;
+                user.DistrictId = request.DistrictId ?? user.DistrictId;
+                user.CommuneId = request.CommuneId ?? user.CommuneId;
+                user.Address = request.Address ?? user.Address;
+                user.MaritalStatusId = request.MaritalStatusId ?? user.MaritalStatusId;
+            };
+            //var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
+            await _userManager.UpdateAsync(user);
+            return Result<string>.Success("True");
+        }
+
+
+
+
 
         private async Task<string> SendVerificationEmail(ApplicationUser user, string origin)
         {
