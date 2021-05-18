@@ -13,15 +13,15 @@ namespace TD.CongDan.Application.Features.Companies.Queries
         public string TaxCode { get; set; }
         //Dia chi cong ty
         //public string Address { get; set; }
-        public string PlaceName { get; set; }
+       /* public string PlaceName { get; set; }
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
         public int? ProvinceId { get; set; }
-        public string Province { get; set; }
+        public Area Province { get; set; }
         public int? DistrictId { get; set; }
-        public string District { get; set; }
+        public Area District { get; set; }
         public int? CommuneId { get; set; }
-        public string Commune { get; set; }
+        public Area Commune { get; set; }*/
 
         //Dai dien
         public string Representative { get; set; }
@@ -39,6 +39,9 @@ namespace TD.CongDan.Application.Features.Companies.Queries
         public string Description { get; set; }
         //Quy mo cong ty
         public string CompanySize { get; set; }
+
+        public int PlaceId { get; set; }
+        public Place Place { get; set; }
 
         public ICollection<Industry> Industries { get; set; }
 

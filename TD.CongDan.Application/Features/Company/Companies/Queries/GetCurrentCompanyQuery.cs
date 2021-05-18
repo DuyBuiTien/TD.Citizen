@@ -43,22 +43,24 @@ namespace TD.CongDan.Application.Features.Companies.Queries
 
                 var item = await _repository.GetByUserNameAsync(id);
                 Throw.Exception.IfNull(item, "Company", "No Company Found");
-                var placeId = item.PlaceId;
-                Place place = await _placeRepository.GetByIdAsync((int)placeId);
-
                 var mappedCategory = _mapper.Map<CompanyResponse>(item);
-                if (place!=null)
-                {
-                    mappedCategory.PlaceName = place.PlaceName;
-                    mappedCategory.ProvinceId = place.ProvinceId;
-                    mappedCategory.Province = place.Province.NameWithType;
-                    mappedCategory.District = place.District.NameWithType;
-                    mappedCategory.DistrictId = place.DistrictId;
-                    mappedCategory.CommuneId = place.CommuneId;
-                    mappedCategory.Commune = place.Commune.NameWithType;
-                    mappedCategory.Latitude = place.Latitude;
-                    mappedCategory.Longitude = place.Longitude;
-                }
+
+                /* var placeId = item.PlaceId;
+                 Place place = await _placeRepository.GetByIdAsync((int)placeId);
+
+                 var mappedCategory = _mapper.Map<CompanyResponse>(item);
+                 if (place!=null)
+                 {
+                     mappedCategory.PlaceName = place.PlaceName;
+                     mappedCategory.ProvinceId = place.ProvinceId;
+                     mappedCategory.Province = place.Province;
+                     mappedCategory.District = place.District;
+                     mappedCategory.DistrictId = place.DistrictId;
+                     mappedCategory.CommuneId = place.CommuneId;
+                     mappedCategory.Commune = place.Commune;
+                     mappedCategory.Latitude = place.Latitude;
+                     mappedCategory.Longitude = place.Longitude;
+                 }*/
 
 
                 Expression<Func<CompanyIndustry, int>> expression = e => (int)e.IndustryId;

@@ -29,12 +29,12 @@ namespace TD.CongDan.Infrastructure.Repositories
 
         public async Task<Company> GetByIdAsync(int Id)
         {
-            return await _repository.Entities.Where(p => p.Id == Id).Include(x=>x.Place).Include(x=>x.CompanyIndustries).FirstOrDefaultAsync();
+            return await _repository.Entities.Where(p => p.Id == Id).Include(x => x.CompanyIndustries).Include(x => x.Place).ThenInclude(x => x.Province).Include(x => x.Place).ThenInclude(x => x.District).Include(x => x.Place).ThenInclude(x => x.Commune).Include(x => x.Place).FirstOrDefaultAsync();
         }
 
         public async Task<Company> GetByUserNameAsync(string UserName)
         {
-            return await _repository.Entities.Where(p => p.UserName == UserName).FirstOrDefaultAsync();
+            return await _repository.Entities.Where(p => p.UserName == UserName).Include(x => x.CompanyIndustries).Include(x => x.Place).ThenInclude(x=>x.Province).Include(x=>x.Place).ThenInclude(x=>x.District).Include(x => x.Place).ThenInclude(x => x.Commune).Include(x => x.Place).FirstOrDefaultAsync();
         }
 
         public async Task<List<Company>> GetListAsync()
