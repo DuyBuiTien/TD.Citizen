@@ -37,7 +37,7 @@ namespace TD.CongDan.Application.Features.Companies.Commands
         public string Fax { get; set; }
         public string Email { get; set; }
         //Ngay cap
-        public string DateOfIssueStr { get; set; }
+        public DateTime? DateOfIssue { get; set; }
         //Linh vuc kinh doanh
         public string BusinessSector { get; set; }
         public string Images { get; set; }
@@ -84,20 +84,17 @@ namespace TD.CongDan.Application.Features.Companies.Commands
 
             CultureInfo provider = CultureInfo.InvariantCulture;
 
-            DateTime? DateOfIssue = null;
-            try { DateOfIssue = DateTime.ParseExact(request.DateOfIssueStr, "dd/MM/yyyy", provider); } catch { }
+            //DateTime? DateOfIssue = null;
+            //try { DateOfIssue = DateTime.ParseExact(request.DateOfIssueStr, "dd/MM/yyyy", provider); } catch { }
             //try { DateOfIssue = DateTime.ParseExact(request.DateOfIssueStr, "dd/MM/yyyy", provider); } catch { }
 
             var item = _mapper.Map<Company>(request);
-            item.DateOfIssue = DateOfIssue;
+           // item.DateOfIssue = DateOfIssue;
             item.PlaceId = itemPlace.Id;
             item.UserName = id;
 
             await _repository.InsertAsync(item);
             await _unitOfWork.Commit(cancellationToken);
-
-
-
 
 
             if (request.Industries != null)

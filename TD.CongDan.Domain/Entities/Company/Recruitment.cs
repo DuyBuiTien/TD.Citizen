@@ -59,6 +59,9 @@ namespace TD.CongDan.Domain.Entities.Company
         public virtual Experience Experience { get; set; }
 
         public virtual ICollection<RecruitmentBenefit> RecruitmentBenefit { get; set; }
+        public virtual ICollection<JobSaved> JobSaveds { get; set; }
+        public virtual ICollection<JobApplied> JobApplieds { get; set; }
+        
 
         public int? PlaceId { get; set; }
         public virtual Place Place { get; set; }

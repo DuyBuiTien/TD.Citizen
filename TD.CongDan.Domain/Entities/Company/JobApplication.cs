@@ -1,14 +1,11 @@
 ﻿using TD.Libs.Abstractions.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace TD.CongDan.Domain.Entities.Company
 {
     public class JobApplication : AuditableEntity
     {
+        // Hồ sơ nghề nghiệp
         public string UserName { get; set; }
         public string Name { get; set; }
         public string CVFile { get; set; }

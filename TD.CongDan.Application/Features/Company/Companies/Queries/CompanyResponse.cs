@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TD.CongDan.Domain.Entities;
 using TD.CongDan.Domain.Entities.Company;
 
@@ -31,7 +32,7 @@ namespace TD.CongDan.Application.Features.Companies.Queries
         public string Fax { get; set; }
         public string Email { get; set; }
         //Ngay cap
-        public string DateOfIssueStr { get; set; }
+        public DateTime? DateOfIssue { get; set; }
         //Linh vuc kinh doanh
         public string Images { get; set; }
         public string Image { get; set; }

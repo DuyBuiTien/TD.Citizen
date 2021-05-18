@@ -55,6 +55,9 @@ namespace TD.CongDan.Infrastructure.Extensions
             services.AddTransient<IBenefitRepository, BenefitRepository>();
             services.AddTransient<IRecruitmentBenefitRepository, RecruitmentBenefitRepository>();
             services.AddTransient<ICompanyIndustryRepository, CompanyIndustryRepository>();
+            services.AddTransient<IJobSavedRepository, JobSavedRepository>();
+            services.AddTransient<IJobAppliedRepository, JobAppliedRepository>();
+            
 
             services.AddTransient<IGenderRepository,GenderRepository>();
             services.AddTransient<IReligionRepository, ReligionRepository>();

@@ -28,6 +28,7 @@
     <ProjectReference Include="..\TD.CongDan.Infrastructure\TD.CongDan.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controllers\v1\Trafic\" />
     <Folder Include="Resources\Files\" />
   </ItemGroup>
 

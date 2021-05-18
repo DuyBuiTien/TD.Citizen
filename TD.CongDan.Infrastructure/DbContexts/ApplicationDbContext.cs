@@ -64,10 +64,10 @@ namespace TD.CongDan.Infrastructure.DbContexts
         public DbSet<IdentityType> IdentityTypes { get; set; }
         public DbSet<MaritalStatus> MaritalStatuses { get; set; }
         public DbSet<Religion> Religions { get; set; }
-
-     
         public DbSet<Bookmark> Bookmarks { get; set; }
 
+        public DbSet<JobApplied> JobApplieds { get; set; }
+        public DbSet<JobSaved> JobSaveds { get; set; }
         public IDbConnection Connection => Database.GetDbConnection();
 
         public bool HasChanges => ChangeTracker.HasChanges();
@@ -217,6 +217,8 @@ namespace TD.CongDan.Infrastructure.DbContexts
             builder.ApplyConfiguration(new BenefitConfiguration());
             builder.ApplyConfiguration(new RecruitmentBenefitConfiguration());
             builder.ApplyConfiguration(new CompanyIndustryConfiguration());
+            builder.ApplyConfiguration(new JobSavedConfiguration());
+            builder.ApplyConfiguration(new JobAppliedConfiguration());
 
             builder.ApplyConfiguration(new GenderConfiguration());
             builder.ApplyConfiguration(new ReligionConfiguration());

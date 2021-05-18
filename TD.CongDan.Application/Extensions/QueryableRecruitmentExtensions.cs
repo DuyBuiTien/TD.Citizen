@@ -6,11 +6,49 @@ using System.Text;
 using System.Text.RegularExpressions;
 using TD.CongDan.Domain.Entities;
 using TD.CongDan.Domain.Entities.Company;
+using System.Globalization;
 
 namespace TD.CongDan.Application.Extensions
 {
     public static class QueryableRecruitmentExtensions
     {
+
+
+        public static IQueryable<Recruitment> FilterRecruitmentByResumeApplyExpiredStartDate(this IQueryable<Recruitment> source, string date)
+        {
+            Throw.Exception.IfNull(source, nameof(source));
+            if (string.IsNullOrWhiteSpace(date))
+                return source;
+
+            try
+            {
+                var sDate = DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                return source.Where(e => e.ResumeApplyExpired >= sDate);
+            }
+            catch {
+                return source;
+            }
+
+        }
+
+        public static IQueryable<Recruitment> FilterRecruitmentByResumeApplyExpiredEndDate(this IQueryable<Recruitment> source, string date)
+        {
+            Throw.Exception.IfNull(source, nameof(source));
+            if (string.IsNullOrWhiteSpace(date))
+                return source;
+
+            try
+            {
+                var sDate = DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                return source.Where(e => e.ResumeApplyExpired <= sDate);
+            }
+            catch
+            {
+                return source;
+            }
+
+        }
+
 
         public static IQueryable<Recruitment> FilterRecruitmentByUserName(this IQueryable<Recruitment> source, string UserName)
         {
@@ -19,6 +57,15 @@ namespace TD.CongDan.Application.Extensions
                 return source;
 
             return source.Where(e => e.UserName == UserName);
+        }
+
+        public static IQueryable<Recruitment> FilterRecruitmentByStatus(this IQueryable<Recruitment> source, int? status)
+        {
+            Throw.Exception.IfNull(source, nameof(source));
+            if (status == null || status < 1)
+                return source;
+
+            return source.Where(e => e.Status == status);
         }
 
         public static IQueryable<Recruitment> FilterRecruitmentByCompanyId(this IQueryable<Recruitment> source, int? companyId)

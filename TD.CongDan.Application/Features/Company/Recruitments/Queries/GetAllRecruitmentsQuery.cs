@@ -31,10 +31,13 @@ namespace TD.CongDan.Application.Features.Recruitments.Queries
         public int? JobAgeId { get; set; }
         //Bang cap
         public int? DegreeId { get; set; }
+        public int? Status { get; set; }
+        public string ResumeApplyExpiredStart { get; set; }
+        public string ResumeApplyExpiredEnd { get; set; }
 
 
         public GetAllRecruitmentsQuery(int pageNumber, int pageSize, string keySearch, string orderBy, int? companyId, string userName, int? provinceId, int? districtId, int? communeId, int? jobTypeId, int? jobNameId,
-            int? jobPositionId, int? salaryId, int? experienceId, int? genderId, int? jobAgeId, int degreeId)
+            int? jobPositionId, int? salaryId, int? experienceId, int? genderId, int? jobAgeId, int? degreeId, int? status, string resumeApplyExpiredStart, string resumeApplyExpiredEnd)
         {
             PageNumber = pageNumber;
             PageSize = pageSize;
@@ -53,7 +56,9 @@ namespace TD.CongDan.Application.Features.Recruitments.Queries
             ExperienceId = experienceId;
             GenderId = genderId;
             DegreeId = degreeId;
-
+            Status = status;
+            ResumeApplyExpiredStart = resumeApplyExpiredStart;
+            ResumeApplyExpiredEnd = resumeApplyExpiredEnd;
         }
     }
 
@@ -87,6 +92,9 @@ namespace TD.CongDan.Application.Features.Recruitments.Queries
                 Salary = e.Salary.Name
             };
             var paginatedList = await _repository.Recruitments
+                .FilterRecruitmentByResumeApplyExpiredStartDate(request.ResumeApplyExpiredStart)
+                .FilterRecruitmentByResumeApplyExpiredEndDate(request.ResumeApplyExpiredEnd)
+                .FilterRecruitmentByStatus(request.Status)
                 .FilterRecruitmentByUserName(request.UserName)
                 .FilterRecruitmentByCompanyId(request.CompanyId)
                 .FilterRecruitmentByProvinceId(request.ProvinceId)

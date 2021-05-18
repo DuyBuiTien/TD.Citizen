@@ -40,7 +40,7 @@ namespace TD.CongDan.Application.Features.Companies.Commands
         public string Fax { get; set; }
         public string Email { get; set; }
         //Ngay cap
-        public string DateOfIssueStr { get; set; }
+        public DateTime? DateOfIssue { get; set; }
         //Linh vuc kinh doanh
         public string Images { get; set; }
         public string Image { get; set; }
@@ -94,21 +94,26 @@ namespace TD.CongDan.Application.Features.Companies.Commands
             {
                 CultureInfo provider = CultureInfo.InvariantCulture;
 
-                DateTime? DateOfIssue = item.DateOfIssue;
-                try { DateOfIssue = DateTime.ParseExact(command.DateOfIssueStr, "dd/MM/yyyy", provider); } catch { }
+               /* DateTime? DateOfIssue = item.DateOfIssue;
+                try { DateOfIssue = DateTime.ParseExact(command.DateOfIssueStr, "dd/MM/yyyy", provider); } catch { }*/
 
-                var placeCount = _placeRepository.Places.Where(e => e.PlaceTypeId == 23 && e.ProvinceId == command.ProvinceId && e.DistrictId == command.DistrictId && e.CommuneId == command.CommuneId && e.PlaceName == command.PlaceName).Count();
+                //var placeCount = _placeRepository.Places.Where(e => e.PlaceTypeId == 23 && e.ProvinceId == command.ProvinceId && e.DistrictId == command.DistrictId && e.CommuneId == command.CommuneId && e.PlaceName == command.PlaceName ).Count();
 
-                var placeId = item.PlaceId;
+                var place = item.Place;
+                place.PlaceName = command.PlaceName ?? place.PlaceName;
+                place.ProvinceId = command.ProvinceId ?? place.ProvinceId;
+                place.DistrictId = command.DistrictId ?? place.DistrictId;
+                place.Latitude = command.Latitude ?? place.Latitude;
+                place.Longitude = command.Longitude ?? place.Longitude;
 
 
-                if (placeCount < 1)
+                /*if (placeCount < 1)
                 {
                     Place place = new Place { PlaceName = command.PlaceName, ProvinceId = command.ProvinceId, DistrictId = command.DistrictId, CommuneId = command.CommuneId, PlaceTypeId = 23, Latitude = (double)command.Latitude, Longitude = (double)command.Longitude };
                     await _placeRepository.InsertAsync(place);
                     await _unitOfWork.Commit(cancellationToken);
                     placeId = place.Id;
-                }
+                }*/
 
                 item.Name = command.Name ?? item.Name;
                 item.InternationalName = command.InternationalName ?? item.InternationalName;
@@ -119,15 +124,16 @@ namespace TD.CongDan.Application.Features.Companies.Commands
                 item.Website = command.Website ?? item.Website;
                 item.ProfileVideo = command.ProfileVideo ?? item.ProfileVideo;
                 item.Fax = command.Fax ?? item.Fax;
+                item.Email = command.Email ?? item.Email;
                 item.Images = command.Images ?? item.Images;
                 item.Image = command.Image ?? item.Image;
                 item.Logo = command.Logo ?? item.Logo;
                 item.CompanySize = command.CompanySize ?? item.CompanySize;
                 item.Description = command.Description ?? item.Description;
-                item.DateOfIssue = DateOfIssue;
-                item.PlaceId = placeId;
+                item.DateOfIssue = command.DateOfIssue?? item.DateOfIssue;
+                //item.PlaceId = placeId;
 
-               // await _repository.UpdateAsync(item);
+                await _repository.UpdateAsync(item);
 
 
                 var item_CompanyIndustries = item.CompanyIndustries;

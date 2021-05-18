@@ -15,9 +15,9 @@ namespace TD.CongDan.Api.Controllers.v1
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy, int? companyId, string userName, int? provinceId, int? districtId, int? communeId, int? jobTypeId, int? jobNameId,
-            int? jobPositionId, int? salaryId, int? experienceId, int? genderId, int? jobAgeId, int degreeId)
+            int? jobPositionId, int? salaryId, int? experienceId, int? genderId, int? jobAgeId, int? degreeId, int? status, string resumeApplyExpiredStart, string resumeApplyExpiredEnd)
         {
-            var items = await _mediator.Send(new GetAllRecruitmentsQuery(pageNumber, pageSize, keySearch, orderBy,  companyId,  userName,  provinceId,  districtId,  communeId, jobTypeId, jobNameId, jobPositionId, salaryId, experienceId, genderId, jobAgeId, degreeId));
+            var items = await _mediator.Send(new GetAllRecruitmentsQuery(pageNumber, pageSize, keySearch, orderBy,  companyId,  userName,  provinceId,  districtId,  communeId, jobTypeId, jobNameId, jobPositionId, salaryId, experienceId, genderId, jobAgeId, degreeId, status, resumeApplyExpiredStart, resumeApplyExpiredEnd));
             return Ok(items);
         }
 
@@ -28,6 +28,19 @@ namespace TD.CongDan.Api.Controllers.v1
             var item = await _mediator.Send(new GetRecruitmentByIdQuery() { Id = id });
             return Ok(item);
         }
+
+
+        [HttpPost("{id}/change-status")]
+        [Authorize]
+        public async Task<IActionResult> ChangeStatus(int id, ChangeStatusRecruitmentCommand command)
+        {
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
+            return Ok(await _mediator.Send(command));
+        }
+
 
         // POST api/<controller>
         [HttpPost]

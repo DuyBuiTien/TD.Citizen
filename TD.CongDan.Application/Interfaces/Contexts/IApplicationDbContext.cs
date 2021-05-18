@@ -54,5 +54,9 @@ namespace TD.CongDan.Application.Interfaces.Contexts
         DbSet<Carpool> Carpools { get; set; }
         DbSet<VehicleType> VehicleTypes { get; set; }
         DbSet<Bookmark> Bookmarks { get; set; }
+
+        DbSet<JobApplied> JobApplieds { get; set; }
+        DbSet<JobSaved> JobSaveds { get; set; }
+
     }
 }
