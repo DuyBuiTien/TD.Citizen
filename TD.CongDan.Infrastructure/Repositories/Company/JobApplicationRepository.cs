@@ -29,12 +29,12 @@ namespace TD.CongDan.Infrastructure.Repositories
 
         public async Task<JobApplication> GetByIdAsync(int Id)
         {
-            return await _repository.Entities.Where(p => p.Id == Id).FirstOrDefaultAsync();
+            return await _repository.Entities.Where(p => p.Id == Id).Include(x => x.Degree).Include(x => x.CurrentPosition).Include(x => x.Position).Include(x => x.JobType).Include(x => x.Experience).FirstOrDefaultAsync();
         }
 
         public async Task<List<JobApplication>> GetListAsync()
         {
-            return await _repository.Entities.ToListAsync();
+            return await _repository.Entities.Include(x=>x.Degree).Include(x => x.CurrentPosition).Include(x => x.Position).Include(x => x.JobType).Include(x => x.Experience).ToListAsync();
         }
 
         public async Task<int> InsertAsync(JobApplication item)

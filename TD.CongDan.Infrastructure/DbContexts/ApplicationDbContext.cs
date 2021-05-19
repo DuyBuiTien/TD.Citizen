@@ -68,6 +68,8 @@ namespace TD.CongDan.Infrastructure.DbContexts
 
         public DbSet<JobApplied> JobApplieds { get; set; }
         public DbSet<JobSaved> JobSaveds { get; set; }
+        public DbSet<AppConfig> AppConfigs { get; set; }
+
         public IDbConnection Connection => Database.GetDbConnection();
 
         public bool HasChanges => ChangeTracker.HasChanges();
@@ -197,6 +199,7 @@ namespace TD.CongDan.Infrastructure.DbContexts
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfiguration(new AppConfigConfiguration());
             builder.ApplyConfiguration(new AreaTypeConfiguration());
             builder.ApplyConfiguration(new VehicleTypeConfiguration());
             builder.ApplyConfiguration(new AttachmentConfiguration());

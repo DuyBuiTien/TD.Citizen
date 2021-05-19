@@ -33,6 +33,7 @@ namespace TD.CongDan.Infrastructure.Extensions
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
+            services.AddTransient<IAppConfigRepository, AppConfigRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ICategoryCacheRepository, CategoryCacheRepository>();
             services.AddTransient<IAttachmentRepository, AttachmentRepository>();

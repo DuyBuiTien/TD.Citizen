@@ -58,5 +58,7 @@ namespace TD.CongDan.Application.Interfaces.Contexts
         DbSet<JobApplied> JobApplieds { get; set; }
         DbSet<JobSaved> JobSaveds { get; set; }
 
+        DbSet<AppConfig> AppConfigs { get; set; }
+
     }
 }
