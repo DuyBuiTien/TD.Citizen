@@ -10,6 +10,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class SalaryController : BaseApiController<SalaryController>
     {
+        /// <summary>
+        /// Danh sách khoảng lương
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy)

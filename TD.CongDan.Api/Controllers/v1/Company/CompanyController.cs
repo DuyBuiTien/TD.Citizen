@@ -10,6 +10,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class CompanyController : BaseApiController<CompanyController>
     {
+        /// <summary>
+        /// Danh sách công ty, công ty được cá nhân tạo
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy, string userId, int? provinceId, int? districtId, int? communeId)

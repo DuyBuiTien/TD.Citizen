@@ -9,6 +9,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class AreaTypeController : BaseApiController<AreaTypeController>
     {
+        /// <summary>
+        /// Danh sách loại địa bàn - toàn bộ, dữ liệu cố định không thêm sửa xóa
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll()

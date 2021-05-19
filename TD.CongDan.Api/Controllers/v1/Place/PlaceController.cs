@@ -12,6 +12,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class PlaceController : BaseApiController<PlaceController>
     {
+        /// <summary>
+        /// Danh sách địa điểm - có phân trang và lọc theo địa điểm gần tọa độ với khoảng khách range
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string parentCode, string type, string keySearch, string orderBy, double latitude, double longitude, double range, string placeTypeId)
@@ -34,6 +37,7 @@ namespace TD.CongDan.Api.Controllers.v1
             return Ok(items);
         }*/
 
+        /// <summary>Chi tiết địa điểm</summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {

@@ -9,6 +9,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class JobTypeController : BaseApiController<JobTypeController>
     {
+        /// <summary>
+        /// Danh sách loại hình công việc
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy)

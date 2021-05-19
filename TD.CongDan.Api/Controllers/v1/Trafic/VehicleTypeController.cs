@@ -2,21 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using TD.CongDan.Application.Features.JobPositions.Queries;
-using TD.CongDan.Application.Features.JobPositions.Commands;
+using TD.CongDan.Application.Features.VehicleTypes.Queries;
+using TD.CongDan.Application.Features.VehicleTypes.Commands;
 
 namespace TD.CongDan.Api.Controllers.v1
 {
-    public class JobPositionController : BaseApiController<JobPositionController>
+    public class VehicleTypeController : BaseApiController<VehicleTypeController>
     {
         /// <summary>
-        /// Danh sách vị trí việc làm
+        /// Danh sách loại phương tiện
         /// </summary>
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy)
+        public async Task<IActionResult> GetAll(int pageNumber, int pageSize)
         {
-            var items = await _mediator.Send(new GetAllJobPositionsQuery(pageNumber, pageSize, keySearch, orderBy));
+            var items = await _mediator.Send(new GetAllVehicleTypeQuery(pageNumber, pageSize));
             return Ok(items);
         }
 
@@ -24,7 +24,7 @@ namespace TD.CongDan.Api.Controllers.v1
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var item = await _mediator.Send(new GetJobPositionByIdQuery() { Id = id });
+            var item = await _mediator.Send(new GetVehicleTypeByIdQuery() { Id = id });
             return Ok(item);
         }
 
@@ -34,7 +34,7 @@ namespace TD.CongDan.Api.Controllers.v1
         // [Authorize(Roles = "Admin")]
         //[Authorize(Policy = Permissions.Categories.Create)]
 
-        public async Task<IActionResult> Post(CreateJobPositionCommand command)
+        public async Task<IActionResult> Post(CreateVehicleTypeCommand command)
         {
             return Ok(await _mediator.Send(command));
         }
@@ -42,7 +42,7 @@ namespace TD.CongDan.Api.Controllers.v1
         // PUT api/<controller>/5
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin, SuperAdmin")]
-        public async Task<IActionResult> Put(int id, UpdateJobPositionCommand command)
+        public async Task<IActionResult> Put(int id, UpdateVehicleTypeCommand command)
         {
             if (id != command.Id)
             {
@@ -58,7 +58,7 @@ namespace TD.CongDan.Api.Controllers.v1
 
         public async Task<IActionResult> Delete(int id)
         {
-            return Ok(await _mediator.Send(new DeleteJobPositionCommand { Id = id }));
+            return Ok(await _mediator.Send(new DeleteVehicleTypeCommand { Id = id }));
         }
     }
 }

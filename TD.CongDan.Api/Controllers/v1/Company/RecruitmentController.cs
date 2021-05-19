@@ -12,6 +12,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class RecruitmentController : BaseApiController<RecruitmentController>
     {
+        /// <summary>
+        /// Danh sách việc làm
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy, int? companyId, string userName, int? provinceId, int? districtId, int? communeId, int? jobTypeId, int? jobNameId,

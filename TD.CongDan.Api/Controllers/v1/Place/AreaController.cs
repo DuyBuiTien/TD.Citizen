@@ -12,6 +12,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class AreaController : BaseApiController<AreaController>
     {
+        /// <summary>
+        /// Danh sách địa bàn có phân trang, tìm kiếm, lọc theo level= 1: tỉnh, thành phố trực thuộc trung ương, level = 2 : quận, huyện, level =3: phường xã; Lọc theo ParentId: Địa bàn cấp cha
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string parentCode, string type, string keySearch, string orderBy, int? level, int? parentId)
@@ -20,8 +23,10 @@ namespace TD.CongDan.Api.Controllers.v1
             return Ok(items);
         }
 
+        /// <summary>
+        /// Chi tiết địa bàn
+        /// </summary>
         [HttpGet("{id}")]
-
         public async Task<IActionResult> GetById(int id)
         {
             var item = await _mediator.Send(new GetAreaByIdQuery() { Id = id });
@@ -29,10 +34,11 @@ namespace TD.CongDan.Api.Controllers.v1
         }
 
         // POST api/<controller>
+        /// <summary>
+        /// Thêm mới địa bàn
+        /// </summary>
         [HttpPost]
         // [Authorize(Roles = "Admin")]
-       
-
         public async Task<IActionResult> Post(CreateAreaCommand command)
         {
             return Ok(await _mediator.Send(command));

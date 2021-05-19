@@ -65,7 +65,10 @@ namespace TD.CongDan.Infrastructure.Extensions
             services.AddTransient<IIdentityTypeRepository, IdentityTypeRepository>();
             services.AddTransient<IMaritalStatusRepository, MaritalStatusRepository>();
 
-            
+            services.AddTransient<ICarpoolRepository, CarpoolRepository>();
+            services.AddTransient<IVehicleTypeRepository, VehicleTypeRepository>();
+
+
             services.AddTransient<IUserService, UserService>();
 
             #endregion Repositories

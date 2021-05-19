@@ -8,6 +8,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class ReligionController : BaseApiController<ReligionController>
     {
+        /// <summary>
+        /// Danh sách tôn giáo
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll()

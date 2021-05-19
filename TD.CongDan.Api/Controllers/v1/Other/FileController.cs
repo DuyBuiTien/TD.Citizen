@@ -24,6 +24,10 @@ namespace TD.CongDan.Api.Controllers.v1
             return Ok(item);
         }
 
+
+        /// <summary>
+        /// Upload file đính kèm lên server, kết quả trả về đường dẫn file
+        /// </summary>
         // POST api/<controller>
         [HttpPost, DisableRequestSizeLimit]
         [Authorize]

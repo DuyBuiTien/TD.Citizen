@@ -10,6 +10,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class JobSavedController : BaseApiController<JobSavedController>
     {
+        /// <summary>
+        /// Việc làm cá nhân đã lưu
+        /// </summary>
         //[AllowAnonymous]
         [HttpGet]
         [Authorize]

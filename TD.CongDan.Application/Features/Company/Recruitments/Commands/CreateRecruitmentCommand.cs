@@ -43,7 +43,7 @@ namespace TD.CongDan.Application.Features.Recruitments.Commands
         //ho so bao gom
         public string ResumeRequirement { get; set; }
 
-         public string ResumeApplyExpired { get; set; }
+         public DateTime? ResumeApplyExpired { get; set; }
         //So luong
         public int NumberOfJob { get; set; }
 
@@ -106,11 +106,11 @@ namespace TD.CongDan.Application.Features.Recruitments.Commands
 
             CultureInfo provider = CultureInfo.InvariantCulture;
 
-            DateTime? ResumeApplyExpired = null;
-            try { ResumeApplyExpired = DateTime.ParseExact(request.ResumeApplyExpired, "dd/MM/yyyy", provider); } catch { }
+           /* DateTime? ResumeApplyExpired = null;
+            try { ResumeApplyExpired = DateTime.ParseExact(request.ResumeApplyExpired, "dd/MM/yyyy", provider); } catch { }*/
 
             var item = _mapper.Map<Recruitment>(request);
-            item.ResumeApplyExpired = ResumeApplyExpired;
+           
             item.PlaceId = itemPlace.Id;
             item.UserName = id;
 

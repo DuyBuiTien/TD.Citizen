@@ -9,6 +9,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class IndustryController : BaseApiController<IndustryController>
     {
+        /// <summary>
+        /// Danh sách ngành nghề kinh doanh
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy)

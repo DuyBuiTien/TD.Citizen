@@ -44,7 +44,7 @@ namespace TD.CongDan.Application.Features.Recruitments.Commands
         //ho so bao gom
         public string ResumeRequirement { get; set; }
 
-        public string ResumeApplyExpired { get; set; }
+        public DateTime? ResumeApplyExpired { get; set; }
         //So luong
         public int NumberOfJob { get; set; }
 
@@ -103,8 +103,8 @@ namespace TD.CongDan.Application.Features.Recruitments.Commands
 
                 CultureInfo provider = CultureInfo.InvariantCulture;
 
-                DateTime? ResumeApplyExpired = item.ResumeApplyExpired;
-                try { ResumeApplyExpired = DateTime.ParseExact(command.ResumeApplyExpired, "dd/MM/yyyy", provider); } catch { }
+               /* DateTime? ResumeApplyExpired = item.ResumeApplyExpired;
+                try { ResumeApplyExpired = DateTime.ParseExact(command.ResumeApplyExpired, "dd/MM/yyyy", provider); } catch { }*/
 
                 var placeCount = _placeRepository.Places.Where(e => e.PlaceTypeId == 23 && e.ProvinceId == command.ProvinceId && e.DistrictId == command.DistrictId && e.CommuneId == command.CommuneId && e.PlaceName == command.PlaceName).Count();
 
@@ -132,7 +132,7 @@ namespace TD.CongDan.Application.Features.Recruitments.Commands
                 item.DegreeId = command.DegreeId ?? item.DegreeId;
                 item.OtherRequirement = command.OtherRequirement ?? item.OtherRequirement;
                 item.ResumeRequirement = command.ResumeRequirement ?? item.ResumeRequirement;
-                item.ResumeApplyExpired = ResumeApplyExpired ?? item.ResumeApplyExpired;
+                item.ResumeApplyExpired = command.ResumeApplyExpired ?? item.ResumeApplyExpired;
                 item.NumberOfJob = command.NumberOfJob>=0 ? command.NumberOfJob : item.NumberOfJob;
                 item.ContactName = command.ContactName ?? item.ContactName;
                 item.ContactEmail = command.ContactEmail ?? item.ContactEmail;

@@ -6,10 +6,208 @@
     <members>
         <member name="M:TD.CongDan.Api.Controllers.IdentityController.GetTokenAsync(TD.CongDan.Application.DTOs.Identity.TokenRequest)">
             <summary>
-            Generates a JSON Web Token for a valid combination of emailId and password.
+            Generates a JSON Web Token , có thể truyền username hoặc email để đăng nhập.
             </summary>
             <param name="tokenRequest"></param>
             <returns></returns>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.IdentityController.RegisterAsync(TD.CongDan.Application.DTOs.Identity.RegisterRequest)">
+            <summary>
+            Đăng ký
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.IdentityController.EditAsync(TD.CongDan.Application.DTOs.Identity.EditUserRequest)">
+            <summary>
+            Chỉnh sửa thông tin cá nhân
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.IdentityController.ConfirmEmailAsync(System.String,System.String)">
+            <summary>
+            Xác thực email
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.IdentityController.ForgotPassword(TD.CongDan.Application.DTOs.Identity.ForgotPasswordRequest)">
+            <summary>
+            Quên mật khẩu
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.IdentityController.ResetPassword(TD.CongDan.Application.DTOs.Identity.ResetPasswordRequest)">
+            <summary>
+            Đặt lại mật khẩu
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.IdentityController.UpdateAvatar(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Thay đổi ảnh đại diện của cá nhân
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.IdentityController.UserInfor">
+            <summary>
+            Get thông tin cá nhân
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.BenefitController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách loại phúc lợi
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.CompanyController.GetAll(System.Int32,System.Int32,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Danh sách công ty, công ty được cá nhân tạo
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.DegreeController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách loại bằng cấp
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.ExperienceController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách kinh nghiệm
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.IndustryController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách ngành nghề kinh doanh
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.JobAgeController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách độ tuổi
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.JobApplicationController.GetAll(System.Int32,System.Int32,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Danh sách hồ sơ ứng tuyển của cá nhân - Cá nhân tự tạo hồ sơ để nhà tuyển dụng có thể theo dõi
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.JobAppliedController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách việc làm cá nhân ứng tuyển
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.JobNameController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách nghề nghiệp
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.JobPositionController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách vị trí việc làm
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.JobSavedController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Việc làm cá nhân đã lưu
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.JobTypeController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách loại hình công việc
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.RecruitmentController.GetAll(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Int32},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String)">
+            <summary>
+            Danh sách việc làm
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.SalaryController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách khoảng lương
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.FileController.Post(System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            Upload file đính kèm lên server, kết quả trả về đường dẫn file
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.GenderController.GetAll">
+            <summary>
+            Danh sách giới tính
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.IdentityTypeController.GetAll">
+            <summary>
+            Danh sách loại giấy tờ
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.MaritalStatusController.GetAll">
+            <summary>
+            Danh sách tình trạng hôn nhân
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.ReligionController.GetAll">
+            <summary>
+            Danh sách tôn giáo
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.AreaController.GetAll(System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Danh sách địa bàn có phân trang, tìm kiếm, lọc theo level= 1: tỉnh, thành phố trực thuộc trung ương, level = 2 : quận, huyện, level =3: phường xã; Lọc theo ParentId: Địa bàn cấp cha
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.AreaController.GetById(System.Int32)">
+            <summary>
+            Chi tiết địa bàn
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.AreaController.Post(TD.CongDan.Application.Features.Are.Commands.CreateAreaCommand)">
+            <summary>
+            Thêm mới địa bàn
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.AreaTypeController.GetAll">
+            <summary>
+            Danh sách loại địa bàn - toàn bộ, dữ liệu cố định không thêm sửa xóa
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.PlaceController.GetAll(System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.Double,System.Double,System.Double,System.String)">
+            <summary>
+            Danh sách địa điểm - có phân trang và lọc theo địa điểm gần tọa độ với khoảng khách range
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.PlaceController.GetById(System.Int32)">
+            <summary>Chi tiết địa điểm</summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.PlaceTypeController.GetAll(System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Danh sách loại địa điểm - Có phân trang và lọc
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.CarpoolController.GetAll(System.Int32,System.Int32,System.String,System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Danh sách loại phương tiện
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.VehicleTypeController.GetAll(System.Int32,System.Int32)">
+            <summary>
+            Danh sách loại phương tiện
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.UserController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách người dùng, quyền Admin, SuperAdmin được xem
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.UserController.GetRoleByUsername(System.String)">
+            <summary>
+            Danh sách Role của người dùng cụ thể
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.UserController.EditRoleByUsername(System.String,TD.CongDan.Application.DTOs.Identity.ManageUserRolesViewModel)">
+            <summary>
+            Chỉnh sửa Role của người dùng cụ thể
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.UserController.GetByUsername(System.String)">
+            <summary>
+            Chi tiết người dùng theo Username
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.UserController.EditByUsername(System.String,TD.CongDan.Application.DTOs.Identity.EditUserRequest)">
+            <summary>
+            Chỉnh sửa thông tin người dùng
+            </summary>
         </member>
     </members>
 </doc>

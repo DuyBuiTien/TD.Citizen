@@ -8,6 +8,8 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using TD.CongDan.Domain.Entities.Company;
+using Microsoft.AspNetCore.Identity;
+using TD.CongDan.Domain.Entities;
 
 namespace TD.CongDan.Application.Features.JobApplications.Queries
 {
@@ -49,10 +51,12 @@ namespace TD.CongDan.Application.Features.JobApplications.Queries
     public class GetAllQueryHandler : IRequestHandler<GetAllJobApplicationsQuery, PaginatedResult<JobApplicationsResponse>>
     {
         private readonly IJobApplicationRepository _repository;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public GetAllQueryHandler(IJobApplicationRepository repository)
+        public GetAllQueryHandler(IJobApplicationRepository repository, UserManager<ApplicationUser> _userManager)
         {
             _repository = repository;
+            this._userManager = _userManager;
         }
 
         public async Task<PaginatedResult<JobApplicationsResponse>> Handle(GetAllJobApplicationsQuery request, CancellationToken cancellationToken)
@@ -67,8 +71,9 @@ namespace TD.CongDan.Application.Features.JobApplications.Queries
                 Degree = e.Degree,
                 DegreeId = e.DegreeId,
                 ExperienceId = e.ExperienceId,
-                Experience = e.Experience
-
+                Experience = e.Experience,
+                JobType = e.JobType,
+                JobTypeId = e.JobTypeId,
             };
             var paginatedList = await _repository.JobApplications
                 .FillterByUsername(request.UserName)
@@ -82,6 +87,25 @@ namespace TD.CongDan.Application.Features.JobApplications.Queries
                 .Sort(request.OrderBy)
                 .Select(expression)
                 .ToPaginatedListAsync(request.PageNumber, request.PageSize);
+
+            foreach (var data in paginatedList.Data)
+            {
+                var tmp = data.UserName;
+
+                var user = await _userManager.FindByNameAsync(data.UserName);
+
+                if (user !=null)
+                {
+                    data.UserFirstName = user.FirstName;
+                    data.UserLastName = user.LastName;
+                    data.UserAvatarUrl = user.AvatarUrl;
+                    
+                }
+                
+            }
+            
+
+
             return paginatedList;
         }
     }

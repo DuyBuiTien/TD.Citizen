@@ -12,6 +12,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class JobAppliedController : BaseApiController<JobAppliedController>
     {
+        /// <summary>
+        /// Danh sách việc làm cá nhân ứng tuyển
+        /// </summary>
         //[AllowAnonymous]
         [HttpGet]
         [Authorize]

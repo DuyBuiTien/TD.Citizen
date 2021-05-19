@@ -54,7 +54,7 @@ namespace TD.CongDan.Application.Features.JobApplications.Commands
 
         public async Task<Result<int>> Handle(CreateJobApplicationCommand request, CancellationToken cancellationToken)
         {
-            var id = _authenticatedUser.UserId;
+            var id = _authenticatedUser.Username;
            
             
             var item = _mapper.Map<JobApplication>(request);

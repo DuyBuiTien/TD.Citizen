@@ -9,6 +9,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class ExperienceController : BaseApiController<ExperienceController>
     {
+        /// <summary>
+        /// Danh sách kinh nghiệm
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy)

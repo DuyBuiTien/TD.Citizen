@@ -14,6 +14,10 @@ namespace TD.CongDan.Api.Controllers.v1
         {
             userService = service;
         }
+
+        /// <summary>
+        /// Danh sách người dùng, quyền Admin, SuperAdmin được xem
+        /// </summary>
         [HttpGet]
         [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize,  string keySearch, string orderBy)
@@ -22,7 +26,9 @@ namespace TD.CongDan.Api.Controllers.v1
             return Ok(items);
         }
 
-
+        /// <summary>
+        /// Danh sách Role của người dùng cụ thể
+        /// </summary>
         [HttpGet("role/{username}")]
         [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> GetRoleByUsername(string username)
@@ -31,6 +37,9 @@ namespace TD.CongDan.Api.Controllers.v1
             return Ok(items);
         }
 
+        /// <summary>
+        /// Chỉnh sửa Role của người dùng cụ thể
+        /// </summary>
         [HttpPost("role/{username}")]
         [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> EditRoleByUsername(string username, ManageUserRolesViewModel model)
@@ -39,6 +48,9 @@ namespace TD.CongDan.Api.Controllers.v1
             return Ok(items);
         }
 
+        /// <summary>
+        /// Chi tiết người dùng theo Username
+        /// </summary>
         [HttpGet("{username}")]
         [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> GetByUsername(string username)
@@ -47,6 +59,9 @@ namespace TD.CongDan.Api.Controllers.v1
             return Ok(items);
         }
 
+        /// <summary>
+        /// Chỉnh sửa thông tin người dùng
+        /// </summary>
         [HttpPost("{username}")]
         [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> EditByUsername(string username, EditUserRequest request)

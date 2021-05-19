@@ -19,7 +19,7 @@ namespace TD.CongDan.Api.Controllers
         }
 
         /// <summary>
-        /// Generates a JSON Web Token for a valid combination of emailId and password.
+        /// Generates a JSON Web Token , có thể truyền username hoặc email để đăng nhập.
         /// </summary>
         /// <param name="tokenRequest"></param>
         /// <returns></returns>
@@ -32,6 +32,9 @@ namespace TD.CongDan.Api.Controllers
             return Ok(token);
         }
 
+        /// <summary>
+        /// Đăng ký
+        /// </summary>
         [HttpPost("register")]
         [AllowAnonymous]
         public async Task<IActionResult> RegisterAsync(RegisterRequest request)
@@ -40,6 +43,9 @@ namespace TD.CongDan.Api.Controllers
             return Ok(await _identityService.RegisterAsync(request, origin));
         }
 
+        /// <summary>
+        /// Chỉnh sửa thông tin cá nhân
+        /// </summary>
         [HttpPost("edit-infor")]
         public async Task<IActionResult> EditAsync(EditUserRequest request)
         {
@@ -47,6 +53,9 @@ namespace TD.CongDan.Api.Controllers
             return Ok(await _identityService.EditAsync(request, origin));
         }
 
+        /// <summary>
+        /// Xác thực email
+        /// </summary>
         [HttpGet("confirm-email")]
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmailAsync([FromQuery] string userId, [FromQuery] string code)
@@ -54,6 +63,9 @@ namespace TD.CongDan.Api.Controllers
             return Ok(await _identityService.ConfirmEmailAsync(userId, code));
         }
 
+        /// <summary>
+        /// Quên mật khẩu
+        /// </summary>
         [HttpPost("forgot-password")]
         [AllowAnonymous]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordRequest model)
@@ -62,6 +74,9 @@ namespace TD.CongDan.Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Đặt lại mật khẩu
+        /// </summary>
         [HttpPost("reset-password")]
         [AllowAnonymous]
         public async Task<IActionResult> ResetPassword(ResetPasswordRequest model)
@@ -69,12 +84,18 @@ namespace TD.CongDan.Api.Controllers
             return Ok(await _identityService.ResetPassword(model));
         }
 
+        /// <summary>
+        /// Thay đổi ảnh đại diện của cá nhân
+        /// </summary>
         [HttpPost("update-avatar"), DisableRequestSizeLimit]
         public async Task<IActionResult> UpdateAvatar([FromForm(Name = "file")] IFormFile file)
         {
             return Ok(await _identityService.UpdateAvatar(file));
         }
 
+        /// <summary>
+        /// Get thông tin cá nhân
+        /// </summary>
         [HttpGet("user-infor")]
         public async Task<IActionResult> UserInfor()
         {

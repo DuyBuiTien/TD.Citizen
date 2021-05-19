@@ -8,6 +8,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class IdentityTypeController : BaseApiController<IdentityTypeController>
     {
+        /// <summary>
+        /// Danh sách loại giấy tờ
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll()

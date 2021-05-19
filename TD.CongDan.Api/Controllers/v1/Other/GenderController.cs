@@ -8,6 +8,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class GenderController : BaseApiController<GenderController>
     {
+        /// <summary>
+        /// Danh sách giới tính
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll()

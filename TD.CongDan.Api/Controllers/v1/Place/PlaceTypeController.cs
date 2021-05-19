@@ -11,6 +11,9 @@ namespace TD.CongDan.Api.Controllers.v1
 {
     public class PlaceTypeController : BaseApiController<PlaceTypeController>
     {
+        /// <summary>
+        /// Danh sách loại địa điểm - Có phân trang và lọc
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string parentCode, string type, string keySearch, string orderBy, int categoryId)
@@ -19,6 +22,9 @@ namespace TD.CongDan.Api.Controllers.v1
             return Ok(items);
         }
 
+        /*/// <summary>
+        /// Chi tiết loại địa điểm
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -55,6 +61,6 @@ namespace TD.CongDan.Api.Controllers.v1
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await _mediator.Send(new DeletePlaceTypeCommand { Id = id }));
-        }
+        }*/
     }
 }
