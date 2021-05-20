@@ -11,7 +11,7 @@ namespace TD.CongDan.Api.Controllers.v1
     public class CarpoolController : BaseApiController<CarpoolController>
     {
         /// <summary>
-        /// Danh sách loại phương tiện
+        /// Danh sách đi chung xe
         /// </summary>
         [AllowAnonymous]
         [HttpGet]
