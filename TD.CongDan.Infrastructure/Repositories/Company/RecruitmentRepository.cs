@@ -29,7 +29,20 @@ namespace TD.CongDan.Infrastructure.Repositories
 
         public async Task<Recruitment> GetByIdAsync(int Id)
         {
-            return await _repository.Entities.Where(p => p.Id == Id).FirstOrDefaultAsync();
+            return await _repository.Entities.Where(p => p.Id == Id).Include(x =>x.Degree)
+                .Include(x=>x.Place)
+                .Include(x => x.Company)
+                .Include(x => x.Gender)
+                .Include(x => x.JobPosition)
+                .Include(x => x.JobType)
+                .Include(x => x.JobName)
+                .Include(x => x.Salary)
+                .Include(x => x.JobAge)
+                .Include(x => x.Degree)
+                .Include(x => x.Experience)
+                .Include(x => x.RecruitmentBenefit)
+                .Include(x => x.Place).ThenInclude(x => x.Province).Include(x => x.Place).ThenInclude(x => x.District).Include(x => x.Place).ThenInclude(x => x.Commune).Include(x => x.Place)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<List<Recruitment>> GetListAsync()

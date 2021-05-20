@@ -31,18 +31,8 @@ namespace TD.CongDan.Application.Features.Recruitments.Queries
             public async Task<Result<RecruitmentResponse>> Handle(GetRecruitmentByIdQuery query, CancellationToken cancellationToken)
             {
                  var item = await _repository.GetByIdAsync(query.Id);
-
-                var tmp = _repository.Recruitments;
-                
-
-                //await _repository.Recruitments.
-
-
-                //Place place = 
-                //await _repository.Recruitments.Where(x => x.Id == query.Id);
-
-
                 var mappedCategory = _mapper.Map<RecruitmentResponse>(item);
+                mappedCategory.CompanyName = item.Company.Name;
                 return Result<RecruitmentResponse>.Success(mappedCategory);
             }
         }

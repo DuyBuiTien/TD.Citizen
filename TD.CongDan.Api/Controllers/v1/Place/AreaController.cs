@@ -37,16 +37,16 @@ namespace TD.CongDan.Api.Controllers.v1
         /// <summary>
         /// Thêm mới địa bàn
         /// </summary>
-        [HttpPost]
-        // [Authorize(Roles = "Admin")]
+        /*[HttpPost]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> Post(CreateAreaCommand command)
         {
             return Ok(await _mediator.Send(command));
-        }
+        }*/
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        [Authorize(Roles = "Admin, SuperAdmin")]
+        //[HttpPut("{id}")]
+       /* [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> Put(int id, UpdateAreaCommand command)
         {
             if (id != command.Id)
@@ -54,15 +54,15 @@ namespace TD.CongDan.Api.Controllers.v1
                 return BadRequest();
             }
             return Ok(await _mediator.Send(command));
-        }
+        }*/
 
         // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        /*[Authorize(Policy = Permissions.Categories.Delete)]*/
+        /*[HttpDelete("{id}")]
+        *//*[Authorize(Policy = Permissions.Categories.Delete)]*//*
         [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await _mediator.Send(new DeleteAreaCommand { Id = id }));
-        }
+        }*/
     }
 }

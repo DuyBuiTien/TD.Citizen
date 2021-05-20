@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace TD.CongDan.Domain.Entities.Company
 {
@@ -59,7 +60,9 @@ namespace TD.CongDan.Domain.Entities.Company
         public virtual Experience Experience { get; set; }
 
         public virtual ICollection<RecruitmentBenefit> RecruitmentBenefit { get; set; }
+        [JsonIgnore]
         public virtual ICollection<JobSaved> JobSaveds { get; set; }
+        [JsonIgnore]
         public virtual ICollection<JobApplied> JobApplieds { get; set; }
         
 

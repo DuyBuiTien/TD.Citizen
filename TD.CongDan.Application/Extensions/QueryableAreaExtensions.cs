@@ -32,8 +32,9 @@ namespace TD.CongDan.Application.Extensions
         public static IQueryable<Area> FilterAreaLevel(this IQueryable<Area> source, int? Level)
         {
             Throw.Exception.IfNull(source, nameof(source));
-            if (Level==null)
+            if (Level==null || Level<1)
                 return source;
+          
 
             return source.Where(e => e.Level == Level);
         }

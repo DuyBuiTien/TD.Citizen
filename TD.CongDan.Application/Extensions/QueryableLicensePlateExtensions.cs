@@ -5,29 +5,30 @@ using System.Linq.Dynamic.Core;
 using System.Text;
 using System.Text.RegularExpressions;
 using TD.CongDan.Domain.Entities;
+using TD.CongDan.Domain.Entities.Traffic;
 
 namespace TD.CongDan.Application.Extensions
 {
-    public static class QueryablePlaceTypeExtensions
+    public static class QueryableLicensePlateExtensions
     {
 
-        public static IQueryable<PlaceType> FilterByCategoryId(this IQueryable<PlaceType> source, int? CategoryId)
+        public static IQueryable<LicensePlate> FilterByUsername(this IQueryable<LicensePlate> source, string UserName)
         {
             Throw.Exception.IfNull(source, nameof(source));
-            if (CategoryId <= 0 || !CategoryId.HasValue || CategoryId==null)
+            if (string.IsNullOrWhiteSpace(UserName))
                 return source;
 
-            return source.Where(e => e.CategoryId == CategoryId);
+            return source.Where(e => e.UserName == UserName);
         }
 
 
 
-        public static IQueryable<PlaceType> Sort(this IQueryable<PlaceType> source, string orderByQueryString)
+        public static IQueryable<LicensePlate> Sort(this IQueryable<LicensePlate> source, string orderByQueryString)
         {
             if (string.IsNullOrWhiteSpace(orderByQueryString))
                 return source.OrderBy(e => e.Name);
 
-            var orderQuery = OrderQueryBuilder.CreateOrderQuery<Area>(orderByQueryString);
+            var orderQuery = OrderQueryBuilder.CreateOrderQuery<LicensePlate>(orderByQueryString);
 
             if (string.IsNullOrWhiteSpace(orderQuery))
                 return source.OrderBy(e => e.Name);
@@ -35,13 +36,13 @@ namespace TD.CongDan.Application.Extensions
             return source.OrderBy(orderQuery);
         }
 
-        public static IQueryable<PlaceType> Search(this IQueryable<PlaceType> source, string searchTerm)
+        public static IQueryable<LicensePlate> Search(this IQueryable<LicensePlate> source, string searchTerm)
         {
             Throw.Exception.IfNull(source, nameof(source));
             if (string.IsNullOrWhiteSpace(searchTerm))
                 return source;
             var lowerCaseTerm = searchTerm.Trim().ToLower();
-            return source.Where(e => e.Name.ToLower().Contains(lowerCaseTerm));
+            return source.Where(e => e.LicensePlateNumber.ToLower().Contains(lowerCaseTerm) || e.OwnerFullName.ToLower().Contains(lowerCaseTerm) || e.Name.ToLower().Contains(lowerCaseTerm));
         }
     }
 }

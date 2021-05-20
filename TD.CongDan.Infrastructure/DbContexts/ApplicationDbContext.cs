@@ -70,6 +70,9 @@ namespace TD.CongDan.Infrastructure.DbContexts
         public DbSet<JobSaved> JobSaveds { get; set; }
         public DbSet<AppConfig> AppConfigs { get; set; }
 
+        public DbSet<LicensePlate> LicensePlates { get; set; }
+        public DbSet<TrafficTicket> TrafficTickets { get; set; }
+
         public IDbConnection Connection => Database.GetDbConnection();
 
         public bool HasChanges => ChangeTracker.HasChanges();
@@ -233,6 +236,8 @@ namespace TD.CongDan.Infrastructure.DbContexts
             builder.ApplyConfiguration(new CarpoolConfiguration());
             builder.ApplyConfiguration(new BookmarkConfiguration());
             builder.ApplyConfiguration(new VehicleTypeConfiguration());
+            builder.ApplyConfiguration(new TrafficTicketConfiguration());
+            builder.ApplyConfiguration(new LicensePlateConfiguration());
 
 
             /* builder.Entity<ApplicationUser>(entity =>

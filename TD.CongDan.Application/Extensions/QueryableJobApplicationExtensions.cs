@@ -24,7 +24,7 @@ namespace TD.CongDan.Application.Extensions
         public static IQueryable<JobApplication> FillterByCurrentPositionId(this IQueryable<JobApplication> source, int? id)
         {
             Throw.Exception.IfNull(source, nameof(source));
-            if (id<0 || id ==null)
+            if (id<1 || id ==null)
                 return source;
             return source.Where(e => e.CurrentPositionId == id);
         }

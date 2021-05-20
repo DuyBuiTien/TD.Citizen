@@ -142,17 +142,19 @@ namespace TD.CongDan.Application.Features.Companies.Commands
                     await _companyIndustryRepository.DeleteAsync(item_);
                 }
 
-
-               foreach (var _item in command.Industries)
+                if (command.Industries != null)
                 {
-                    try
+                    foreach (var _item in command.Industries)
                     {
-                        CompanyIndustry tmp = new CompanyIndustry { IndustryId = _item, CompanyId = item.Id };
-                        await _companyIndustryRepository.InsertAsync(tmp);
-                    }
-                    catch
-                    {
+                        try
+                        {
+                            CompanyIndustry tmp = new CompanyIndustry { IndustryId = _item, CompanyId = item.Id };
+                            await _companyIndustryRepository.InsertAsync(tmp);
+                        }
+                        catch
+                        {
 
+                        }
                     }
                 }
 

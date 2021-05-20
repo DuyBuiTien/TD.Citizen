@@ -60,5 +60,8 @@ namespace TD.CongDan.Application.Interfaces.Contexts
 
         DbSet<AppConfig> AppConfigs { get; set; }
 
+        DbSet<LicensePlate> LicensePlates { get; set; }
+        DbSet<TrafficTicket> TrafficTickets { get; set; }
+
     }
 }

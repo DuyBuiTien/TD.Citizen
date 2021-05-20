@@ -8,6 +8,7 @@ namespace TD.CongDan.Application.Features.Companies.Queries
     public class CompanyResponse
     {
         public int Id { get; set; }
+        public string UserName { get; set; }
         public string Name { get; set; }
         public string InternationalName { get; set; }
         public string ShortName { get; set; }

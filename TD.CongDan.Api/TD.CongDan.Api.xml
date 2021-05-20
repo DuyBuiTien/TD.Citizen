@@ -151,11 +151,6 @@
             Chi tiết địa bàn
             </summary>
         </member>
-        <member name="M:TD.CongDan.Api.Controllers.v1.AreaController.Post(TD.CongDan.Application.Features.Are.Commands.CreateAreaCommand)">
-            <summary>
-            Thêm mới địa bàn
-            </summary>
-        </member>
         <member name="M:TD.CongDan.Api.Controllers.v1.AreaTypeController.GetAll">
             <summary>
             Danh sách loại địa bàn - toàn bộ, dữ liệu cố định không thêm sửa xóa
@@ -176,7 +171,17 @@
         </member>
         <member name="M:TD.CongDan.Api.Controllers.v1.CarpoolController.GetAll(System.Int32,System.Int32,System.String,System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Int32})">
             <summary>
-            Danh sách loại phương tiện
+            Danh sách đi chung xe
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.LicensePlateController.GetAll(System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Danh sách thông tin số xe của người dùng - phục vụ cho tra cứu phạt nguội
+            </summary>
+        </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.TrafficTicketController.GetAll(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Danh sách Vi phạm luật giao thông - Phục vụ cho chức năng phạt nguội
             </summary>
         </member>
         <member name="M:TD.CongDan.Api.Controllers.v1.VehicleTypeController.GetAll(System.Int32,System.Int32)">

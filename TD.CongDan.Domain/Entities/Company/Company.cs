@@ -1,7 +1,7 @@
 ﻿using TD.Libs.Abstractions.Domain;
 using System;
 using System.Collections.Generic;
-
+using System.Text.Json.Serialization;
 
 namespace TD.CongDan.Domain.Entities.Company
 {
@@ -35,6 +35,7 @@ namespace TD.CongDan.Domain.Entities.Company
         public string CompanySize { get; set; }
 
 
+        [JsonIgnore]
         public ICollection<Recruitment> Recruitments { get; set; }
         public ICollection<CompanyIndustry> CompanyIndustries { get; set; }
 

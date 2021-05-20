@@ -59,7 +59,6 @@ namespace TD.CongDan.Infrastructure.Extensions
             services.AddTransient<IJobSavedRepository, JobSavedRepository>();
             services.AddTransient<IJobAppliedRepository, JobAppliedRepository>();
             
-
             services.AddTransient<IGenderRepository,GenderRepository>();
             services.AddTransient<IReligionRepository, ReligionRepository>();
             services.AddTransient<IIdentityTypeRepository, IdentityTypeRepository>();
@@ -67,7 +66,8 @@ namespace TD.CongDan.Infrastructure.Extensions
 
             services.AddTransient<ICarpoolRepository, CarpoolRepository>();
             services.AddTransient<IVehicleTypeRepository, VehicleTypeRepository>();
-
+            services.AddTransient<ITrafficTicketRepository, TrafficTicketRepository>();
+            services.AddTransient<ILicensePlateRepository, LicensePlateRepository>();
 
             services.AddTransient<IUserService, UserService>();
 

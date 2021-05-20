@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace TD.CongDan.Domain.Entities.Company
 {
@@ -14,9 +15,11 @@ namespace TD.CongDan.Domain.Entities.Company
         public string Code { get; set; }
         public string Description { get; set; }
 
+        [JsonIgnore]
         public ICollection<Recruitment> Recruitments { get; set; }
+        [JsonIgnore]
         public ICollection<JobApplication> JobApplications { get; set; }
-
+        [JsonIgnore]
         public ICollection<JobApplication> CurrentJobApplications { get; set; }
         
     }

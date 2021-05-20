@@ -13,6 +13,7 @@ namespace TD.CongDan.Application.Features.Recruitments.Queries
         public string Image { get; set; }
         //Cong ty
         public int? CompanyId { get; set; }
+        public string CompanyName { get; set; }
         //Loai hinh cong viec
         public int? JobTypeId { get; set; }
         //Nghe nghiep
@@ -45,7 +46,7 @@ namespace TD.CongDan.Application.Features.Recruitments.Queries
         public string ContactPhone { get; set; }
         public string ContactAdress { get; set; }
 
-        public Company Company { get; set; }
+        //public Company Company { get; set; }
         public JobPosition JobPosition { get; set; }
         public JobType JobType { get; set; }
         public JobName JobName { get; set; }

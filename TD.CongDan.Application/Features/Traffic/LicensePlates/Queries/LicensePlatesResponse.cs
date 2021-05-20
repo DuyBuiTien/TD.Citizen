@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using TD.Libs.Abstractions.Domain;
+using TD.CongDan.Domain.Entities;
 
-namespace TD.CongDan.Domain.Entities.Traffic
+namespace TD.CongDan.Application.Features.LicensePlates.Queries
 {
-    //Thông tin xe của người dùng
-    public class LicensePlate : AuditableEntity
+    public class LicensePlatesResponse
     {
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string Name { get; set; }
         //Ten chu xe
@@ -19,9 +14,9 @@ namespace TD.CongDan.Domain.Entities.Traffic
         public string LicensePlateNumber { get; set; }
         //Ngay dang ky
         public DateTime? DateOfRegistration { get; set; }
-        
+
         public string Description { get; set; }
 
-       
+
     }
 }

@@ -1,22 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using TD.Libs.Abstractions.Domain;
+using TD.CongDan.Domain.Entities;
 
-namespace TD.CongDan.Domain.Entities.Traffic
+namespace TD.CongDan.Application.Features.TrafficTickets.Queries
 {
-    //Vi phạm giao thông
-    public class TrafficTicket : AuditableEntity
+    public class TrafficTicketsResponse
     {
+        public int Id { get; set; }
         public string LicensePlateNumber { get; set; }
         //hành vi vi phạm
         public string Behaviour { get; set; }
+        public DateTime? DateOfOffence { get; set; }
         //Địa điểm
         public string Location { get; set; }
-        public DateTime? DateOfOffence { get; set; }
         //Thiết bị phát hiện
         public string Device { get; set; }
         //Đơn vị phát hiện
@@ -32,6 +27,6 @@ namespace TD.CongDan.Domain.Entities.Traffic
         //Mô tả thêm
         public string Description { get; set; }
 
-       
+
     }
 }
