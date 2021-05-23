@@ -15,6 +15,7 @@ namespace TD.CongDan.Application.Interfaces.Repositories
         Task<List<JobApplication>> GetListAsync();
 
         Task<JobApplication> GetByIdAsync(int Id);
+        Task<JobApplication> GetByUsernameAsync(string UserName);
 
         Task<int> InsertAsync(JobApplication item);
 

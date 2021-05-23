@@ -1,5 +1,5 @@
 ﻿using TD.CongDan.Application.Interfaces.Repositories;
-using TD.CongDan.Domain.Entities.Catalog;
+using TD.CongDan.Domain.Entities.Ecommerce;
 using TD.Libs.Results;
 using AutoMapper;
 using MediatR;

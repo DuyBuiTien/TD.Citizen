@@ -32,6 +32,11 @@ namespace TD.CongDan.Infrastructure.Repositories
             return await _repository.Entities.Where(p => p.Id == Id).Include(x => x.Degree).Include(x => x.CurrentPosition).Include(x => x.Position).Include(x => x.JobType).Include(x => x.Experience).FirstOrDefaultAsync();
         }
 
+        public async Task<JobApplication> GetByUsernameAsync(string UserName)
+        {
+            return await _repository.Entities.Where(p => p.UserName == UserName).Include(x => x.Degree).Include(x => x.CurrentPosition).Include(x => x.Position).Include(x => x.JobType).Include(x => x.Experience).FirstOrDefaultAsync();
+        }
+
         public async Task<List<JobApplication>> GetListAsync()
         {
             return await _repository.Entities.Include(x=>x.Degree).Include(x => x.CurrentPosition).Include(x => x.Position).Include(x => x.JobType).Include(x => x.Experience).ToListAsync();

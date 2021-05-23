@@ -11,4 +11,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Td.Libs.Abstractions\TD.Libs.Abstractions.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\Catalog\" />
+  </ItemGroup>
 </Project>

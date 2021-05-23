@@ -2,7 +2,7 @@
 using TD.CongDan.Application.Features.Products.Queries.GetAllCached;
 using TD.CongDan.Application.Features.Products.Queries.GetAllPaged;
 using TD.CongDan.Application.Features.Products.Queries.GetById;
-using TD.CongDan.Domain.Entities.Catalog;
+using TD.CongDan.Domain.Entities.Ecommerce;
 using AutoMapper;
 
 namespace TD.CongDan.Application.Mappings

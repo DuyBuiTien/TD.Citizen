@@ -1,7 +1,7 @@
 ﻿using TD.CongDan.Application.Features.Brands.Commands.Create;
 using TD.CongDan.Application.Features.Brands.Queries.GetAllCached;
 using TD.CongDan.Application.Features.Brands.Queries.GetById;
-using TD.CongDan.Domain.Entities.Catalog;
+using TD.CongDan.Domain.Entities.Ecommerce;
 using AutoMapper;
 
 namespace TD.CongDan.Application.Mappings

@@ -1,4 +1,4 @@
-﻿using TD.CongDan.Domain.Entities.Catalog;
+﻿using TD.CongDan.Domain.Entities.Ecommerce;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

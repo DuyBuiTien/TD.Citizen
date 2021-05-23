@@ -1,6 +1,6 @@
 ﻿using TD.CongDan.Application.Interfaces.Contexts;
 using TD.CongDan.Application.Interfaces.Shared;
-using TD.CongDan.Domain.Entities.Catalog;
+using TD.CongDan.Domain.Entities.Ecommerce;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Linq;

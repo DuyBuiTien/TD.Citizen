@@ -1,6 +1,6 @@
 ﻿using TD.CongDan.Application.Extensions;
 using TD.CongDan.Application.Interfaces.Repositories;
-using TD.CongDan.Domain.Entities.Catalog;
+using TD.CongDan.Domain.Entities.Ecommerce;
 using TD.Libs.Results;
 using MediatR;
 using System;
@@ -41,6 +41,9 @@ namespace TD.CongDan.Application.Features.Categories.Queries.GetAllPaged
                 Name = e.Name,
                 Description = e.Description,
                 Code = e.Code,
+                Icon = e.Icon,
+                Image = e.Image,
+                CoverImage = e.CoverImage
             };
             var paginatedList = await _repository.Categories
                 .Select(expression)

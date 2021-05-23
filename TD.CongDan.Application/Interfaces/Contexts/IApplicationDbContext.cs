@@ -1,4 +1,4 @@
-﻿using TD.CongDan.Domain.Entities.Catalog;
+﻿using TD.CongDan.Domain.Entities.Ecommerce;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Data;

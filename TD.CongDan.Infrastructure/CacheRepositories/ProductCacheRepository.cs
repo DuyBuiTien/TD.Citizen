@@ -1,6 +1,6 @@
 ﻿using TD.CongDan.Application.Interfaces.CacheRepositories;
 using TD.CongDan.Application.Interfaces.Repositories;
-using TD.CongDan.Domain.Entities.Catalog;
+using TD.CongDan.Domain.Entities.Ecommerce;
 using TD.CongDan.Infrastructure.CacheKeys;
 using TD.Libs.Extensions.Caching;
 using TD.Libs.ThrowR;

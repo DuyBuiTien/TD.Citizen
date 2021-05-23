@@ -22,6 +22,16 @@ namespace TD.CongDan.Api.Controllers.v1
             return Ok(items);
         }
 
+
+        [Authorize]
+        [HttpGet("current")]
+        public async Task<IActionResult> GetCurrentJobApplication()
+        {
+            var item = await _mediator.Send(new GetCurrentJobApplication());
+            return Ok(item);
+        }
+
+
         [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)

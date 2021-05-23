@@ -1,5 +1,4 @@
 ﻿using TD.CongDan.Application.Interfaces.Repositories;
-using TD.CongDan.Domain.Entities.Catalog;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Collections.Generic;
