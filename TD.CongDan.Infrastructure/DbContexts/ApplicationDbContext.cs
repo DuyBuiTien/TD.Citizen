@@ -72,10 +72,22 @@ namespace TD.CongDan.Infrastructure.DbContexts
 
         public DbSet<LicensePlate> LicensePlates { get; set; }
         public DbSet<TrafficTicket> TrafficTickets { get; set; }
+        public DbSet<Domain.Entities.Ecommerce.Attribute> Attributes { get; set; }
+        public DbSet<AttributeDatetime> AttributeDatetimes { get; set; }
+        public  DbSet<AttributeDecimal> AttributeDecimals { get; set; }
+        public DbSet<AttributeInt> AttributeInts { get; set; }
+        public DbSet<AttributeText> AttributeTexts { get; set; }
+        public DbSet<AttributeValue> AttributeValues { get; set; }
+        public DbSet<AttributeVarchar> AttributeVarchars { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<EcommerceCategory> EcommerceCategories { get; set; }
+        public DbSet<EcommerceCategoryAttribute> EcommerceCategoryAttributes { get; set; }
+        public DbSet<EcommerceCategoryProduct> EcommerceCategoryProducts { get; set; }
 
         public IDbConnection Connection => Database.GetDbConnection();
 
         public bool HasChanges => ChangeTracker.HasChanges();
+
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -238,6 +250,23 @@ namespace TD.CongDan.Infrastructure.DbContexts
             builder.ApplyConfiguration(new VehicleTypeConfiguration());
             builder.ApplyConfiguration(new TrafficTicketConfiguration());
             builder.ApplyConfiguration(new LicensePlateConfiguration());
+
+
+            builder.ApplyConfiguration(new AttributeConfiguration());
+            builder.ApplyConfiguration(new AttributeDatetimeConfiguration());
+            builder.ApplyConfiguration(new AttributeDecimalConfiguration());
+            builder.ApplyConfiguration(new AttributeIntConfiguration());
+            builder.ApplyConfiguration(new AttributeTextConfiguration());
+            builder.ApplyConfiguration(new AttributeValueConfiguration());
+            builder.ApplyConfiguration(new AttributeVarcharConfiguration());
+            builder.ApplyConfiguration(new BrandConfiguration());
+            builder.ApplyConfiguration(new EcommerceCategoryAttributeConfiguration());
+            builder.ApplyConfiguration(new EcommerceCategoryConfiguration());
+            builder.ApplyConfiguration(new ProductConfiguration());
+            builder.ApplyConfiguration(new EcommerceCategoryProductConfiguration());
+
+            
+
 
 
             /* builder.Entity<ApplicationUser>(entity =>

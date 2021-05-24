@@ -33,7 +33,7 @@ namespace TD.CongDan.Application.Features.Products.Commands.Update
                 }
                 else
                 {
-                    product.Image = command.Image;
+                    //product.Image = command.Image;
                     await _productRepository.UpdateAsync(product);
                     await _unitOfWork.Commit(cancellationToken);
                     return Result<int>.Success(product.Id);

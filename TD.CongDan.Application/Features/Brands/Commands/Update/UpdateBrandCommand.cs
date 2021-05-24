@@ -35,7 +35,7 @@ namespace TD.CongDan.Application.Features.Brands.Commands.Update
                 else
                 {
                     brand.Name = command.Name ?? brand.Name;
-                    brand.Tax = (command.Tax == 0) ? brand.Tax : command.Tax;
+                    //brand.Tax = (command.Tax == 0) ? brand.Tax : command.Tax;
                     brand.Description = command.Description ?? brand.Description;
                     await _brandRepository.UpdateAsync(brand);
                     await _unitOfWork.Commit(cancellationToken);

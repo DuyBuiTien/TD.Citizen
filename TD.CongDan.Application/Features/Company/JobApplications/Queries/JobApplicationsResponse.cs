@@ -15,6 +15,7 @@ namespace TD.CongDan.Application.Features.JobApplications.Queries
         public int? CurrentPositionId { get; set; }
         //Vi tri mong muon
         public int? PositionId { get; set; }
+        public int? JobNameId { get; set; }
         //Trinh do hoc van
         public int? DegreeId { get; set; }
         //Tong so nam Kinh nghiem
@@ -32,6 +33,7 @@ namespace TD.CongDan.Application.Features.JobApplications.Queries
         public Experience Experience { get; set; }
         public Degree Degree { get; set; }
         public JobType JobType { get; set; }
+        public JobName JobName { get; set; }
 
     }
 }

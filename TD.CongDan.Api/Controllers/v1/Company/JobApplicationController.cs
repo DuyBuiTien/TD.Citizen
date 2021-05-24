@@ -14,7 +14,7 @@ namespace TD.CongDan.Api.Controllers.v1
         /// <summary>
         /// Danh sách hồ sơ ứng tuyển của cá nhân - Cá nhân tự tạo hồ sơ để nhà tuyển dụng có thể theo dõi
         /// </summary>
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy, string userName, int? currentPositionId, int? positionId, int? degreeId, int? experienceId, int? jobTypeId, int? isSearchAllowed)
         {
@@ -32,7 +32,7 @@ namespace TD.CongDan.Api.Controllers.v1
         }
 
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
