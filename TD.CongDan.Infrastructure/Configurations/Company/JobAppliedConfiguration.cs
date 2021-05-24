@@ -9,7 +9,7 @@ namespace TD.CongDan.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<JobApplied> builder)
         {
-            builder.ToTable(" JobApplieds");
+            builder.ToTable("JobApplieds");
             builder.HasKey(x => new { x.UserName, x.RecruitmentId });
 
             //builder.HasKey(x => x.Id);

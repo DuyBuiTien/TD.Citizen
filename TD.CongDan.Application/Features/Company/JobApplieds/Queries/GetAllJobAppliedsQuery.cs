@@ -47,8 +47,21 @@ namespace TD.CongDan.Application.Features.JobApplieds.Queries
             Expression<Func<JobApplied, JobAppliedsResponse>> expression = e => new JobAppliedsResponse
             {
                 UserName = e.UserName,
-                RecruitmentId = e.RecruitmentId,
-                Recruitment = e.Recruitment,
+                Id = e.Recruitment.Id,
+                Name = e.Recruitment.Name,
+                Image = e.Recruitment.Image,
+                CompanyId = e.Recruitment.CompanyId,
+                CompanyName = e.Recruitment.Company.Name,
+                CompanyLogo = e.Recruitment.Company.Logo,
+                ResumeApplyExpired = e.Recruitment.ResumeApplyExpired,
+                PlaceName = e.Recruitment.Name,
+                PlaceProvince = e.Recruitment.Place.Province.NameWithType,
+                PlaceDistrict = e.Recruitment.Place.District.NameWithType,
+                PlaceCommune = e.Recruitment.Place.Commune.NameWithType,
+                JobName = e.Recruitment.JobName.Name,
+                JobPosition = e.Recruitment.JobPosition.Name,
+                JobAge = e.Recruitment.JobAge.Name,
+                Salary = e.Recruitment.Salary.Name,
                 CVFile = e.CVFile
             };
             var paginatedList = await _repository.JobApplieds

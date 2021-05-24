@@ -33,7 +33,7 @@ namespace TD.CongDan.Api.Controllers.v1
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{RecruitmentId}")]
         //[Authorize(Policy = Permissions.Categories.Delete)]
         [Authorize]
 

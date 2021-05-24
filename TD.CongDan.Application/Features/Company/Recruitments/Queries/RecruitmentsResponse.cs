@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using TD.CongDan.Domain.Entities;
-using TD.CongDan.Domain.Entities.Company;
+
 
 namespace TD.CongDan.Application.Features.Recruitments.Queries
 {

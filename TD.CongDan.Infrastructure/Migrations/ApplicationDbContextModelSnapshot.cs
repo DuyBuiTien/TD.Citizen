@@ -1590,7 +1590,7 @@ namespace TD.CongDan.Infrastructure.Migrations
 
                     b.HasIndex("RecruitmentId");
 
-                    b.ToTable(" JobApplieds");
+                    b.ToTable("JobApplieds");
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.JobName", b =>

@@ -93,6 +93,7 @@ namespace TD.CongDan.Application.Features.JobApplications.Queries
                 var tmp = data.UserName;
 
                 var user = await _userManager.FindByNameAsync(data.UserName);
+               
 
                 if (user !=null)
                 {

@@ -29,6 +29,18 @@ namespace TD.CongDan.Infrastructure.Extensions
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IProductCacheRepository, ProductCacheRepository>();
             services.AddTransient<IBrandRepository, BrandRepository>();
+
+            services.AddTransient<IAttributeDatetimeRepository, AttributeDatetimeRepository>();
+            services.AddTransient<IAttributeDecimalRepository, AttributeDecimalRepository>();
+            services.AddTransient<IAttributeIntRepository, AttributeIntRepository>();
+            services.AddTransient<IAttributeRepository, AttributeRepository>();
+            services.AddTransient<IAttributeTextRepository, AttributeTextRepository>();
+            services.AddTransient<IAttributeValueRepository, AttributeValueRepository>();
+            services.AddTransient<IAttributeVarcharRepository, AttributeVarcharRepository>();
+            services.AddTransient<IEcommerceCategoryAttributeRepository, EcommerceCategoryAttributeRepository>();
+            services.AddTransient<IEcommerceCategoryProductRepository, EcommerceCategoryProductRepository>();
+            services.AddTransient<IEcommerceCategoryRepository, EcommerceCategoryRepository>();
+
             services.AddTransient<IBrandCacheRepository, BrandCacheRepository>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();

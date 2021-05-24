@@ -31,6 +31,16 @@ namespace TD.CongDan.Application.Extensions
             return source.Where(e => e.UserName == userName);
         }
 
+        public static IQueryable<JobApplied> FilterCurrentCompany(this IQueryable<JobApplied> source, int CompanyId)
+        {
+            return source.Where(e => e.Recruitment.CompanyId == CompanyId);
+        }
+
+        public static IQueryable<JobApplied> FilterRecruitmentId(this IQueryable<JobApplied> source, int RecruitmentId)
+        {
+            return source.Where(e => e.RecruitmentId == RecruitmentId);
+        }
+
         public static IQueryable<JobApplied> Search(this IQueryable<JobApplied> source, string searchTerm)
         {
             Throw.Exception.IfNull(source, nameof(source));

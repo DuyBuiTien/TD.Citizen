@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 
-using TD.CongDan.Application.Features.JobSaveds.Commands;
-using TD.CongDan.Application.Features.JobSaveds.Queries;
+
 using TD.CongDan.Application.Features.JobApplieds.Commands;
 using TD.CongDan.Application.Features.JobApplieds.Queries;
 
@@ -25,6 +24,25 @@ namespace TD.CongDan.Api.Controllers.v1
         }
 
 
+        
+
+        [HttpGet("candidates")]
+        [Authorize]
+        public async Task<IActionResult> GetAllCandidate(int pageNumber, int pageSize, string keySearch, string orderBy)
+        {
+            var items = await _mediator.Send(new GetAllCandidatesQuery(pageNumber, pageSize, keySearch, orderBy));
+            return Ok(items);
+        }
+
+        [HttpGet("{RecruitmentId}")]
+        [Authorize]
+        public async Task<IActionResult> GetAllUser(int RecruitmentId, int pageNumber, int pageSize, string keySearch, string orderBy)
+        {
+            var items = await _mediator.Send(new GetAllUsersQuery(RecruitmentId, pageNumber, pageSize, keySearch, orderBy));
+            return Ok(items);
+        }
+
+
         // POST api/<controller>
         [HttpPost]
         [Authorize]
@@ -35,7 +53,7 @@ namespace TD.CongDan.Api.Controllers.v1
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{RecruitmentId}")]
         //[Authorize(Policy = Permissions.Categories.Delete)]
         [Authorize]
 

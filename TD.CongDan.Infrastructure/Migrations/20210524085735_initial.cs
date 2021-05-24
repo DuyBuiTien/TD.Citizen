@@ -1438,7 +1438,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: " JobApplieds",
+                name: "JobApplieds",
                 columns: table => new
                 {
                     UserName = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -1452,9 +1452,9 @@ namespace TD.CongDan.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ JobApplieds", x => new { x.UserName, x.RecruitmentId });
+                    table.PrimaryKey("PK_JobApplieds", x => new { x.UserName, x.RecruitmentId });
                     table.ForeignKey(
-                        name: "FK_ JobApplieds_Recruitments_RecruitmentId",
+                        name: "FK_JobApplieds_Recruitments_RecruitmentId",
                         column: x => x.RecruitmentId,
                         principalTable: "Recruitments",
                         principalColumn: "Id",
@@ -1809,11 +1809,6 @@ namespace TD.CongDan.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ JobApplieds_RecruitmentId",
-                table: " JobApplieds",
-                column: "RecruitmentId");
-
-            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
@@ -2016,6 +2011,11 @@ namespace TD.CongDan.Infrastructure.Migrations
                 column: "PositionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_JobApplieds_RecruitmentId",
+                table: "JobApplieds",
+                column: "RecruitmentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_JobSaveds_RecruitmentId",
                 table: "JobSaveds",
                 column: "RecruitmentId");
@@ -2160,9 +2160,6 @@ namespace TD.CongDan.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: " JobApplieds");
-
-            migrationBuilder.DropTable(
                 name: "AppConfigs");
 
             migrationBuilder.DropTable(
@@ -2209,6 +2206,9 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "JobApplications");
+
+            migrationBuilder.DropTable(
+                name: "JobApplieds");
 
             migrationBuilder.DropTable(
                 name: "JobSaveds");

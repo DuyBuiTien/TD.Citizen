@@ -10,7 +10,7 @@ using TD.CongDan.Infrastructure.DbContexts;
 namespace TD.CongDan.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210524044842_initial")]
+    [Migration("20210524085735_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1592,7 +1592,7 @@ namespace TD.CongDan.Infrastructure.Migrations
 
                     b.HasIndex("RecruitmentId");
 
-                    b.ToTable(" JobApplieds");
+                    b.ToTable("JobApplieds");
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.JobName", b =>
