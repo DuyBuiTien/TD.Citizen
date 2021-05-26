@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using TD.Libs.Abstractions.Domain;
 
@@ -18,7 +17,7 @@ namespace TD.CongDan.Domain.Entities.Ecommerce
         public int Level { get; set; }
         public string Icon { get; set; }
         public string Image { get;set; }
-        public string Tags { get; set; }
+        public string[] Tags { get; set; }
         public int Status { get; set; }
 
 

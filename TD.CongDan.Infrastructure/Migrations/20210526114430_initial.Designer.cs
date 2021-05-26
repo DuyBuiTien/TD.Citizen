@@ -10,7 +10,7 @@ using TD.CongDan.Infrastructure.DbContexts;
 namespace TD.CongDan.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210524085735_initial")]
+    [Migration("20210526114430_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -2622,6 +2622,9 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -2710,12 +2713,8 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategoryAttribute", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int?>("EcommerceCategoryId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("AttributeId")
                         .HasColumnType("int");
@@ -2726,7 +2725,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EcommerceCategoryId")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<string>("LastModifiedBy")
@@ -2735,23 +2734,23 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
+
+                    b.HasKey("EcommerceCategoryId", "AttributeId");
 
                     b.HasIndex("AttributeId");
-
-                    b.HasIndex("EcommerceCategoryId");
 
                     b.ToTable("EcommerceCategoryAttributes");
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategoryProduct", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int?>("EcommerceCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -2759,7 +2758,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EcommerceCategoryId")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsPrimary")
@@ -2771,12 +2770,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EcommerceCategoryId");
+                    b.HasKey("EcommerceCategoryId", "ProductId");
 
                     b.HasIndex("ProductId");
 
@@ -2811,7 +2805,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -2830,8 +2824,7 @@ namespace TD.CongDan.Infrastructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -4287,11 +4280,15 @@ namespace TD.CongDan.Infrastructure.Migrations
                 {
                     b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Attribute", "Attribute")
                         .WithMany("EcommerceCategoryAttributes")
-                        .HasForeignKey("AttributeId");
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategory", "EcommerceCategory")
                         .WithMany("EcommerceCategoryAttributes")
-                        .HasForeignKey("EcommerceCategoryId");
+                        .HasForeignKey("EcommerceCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Attribute");
 
@@ -4302,11 +4299,15 @@ namespace TD.CongDan.Infrastructure.Migrations
                 {
                     b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategory", "EcommerceCategory")
                         .WithMany("EcommerceCategoryProducts")
-                        .HasForeignKey("EcommerceCategoryId");
+                        .HasForeignKey("EcommerceCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Product", "Product")
                         .WithMany("EcommerceCategoryProducts")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("EcommerceCategory");
 

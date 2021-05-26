@@ -166,6 +166,7 @@ namespace TD.CongDan.Infrastructure.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Code = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -640,10 +641,10 @@ namespace TD.CongDan.Infrastructure.Migrations
                 name: "EcommerceCategoryAttributes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EcommerceCategoryId = table.Column<int>(type: "int", nullable: true),
-                    AttributeId = table.Column<int>(type: "int", nullable: true),
+                    EcommerceCategoryId = table.Column<int>(type: "int", nullable: false),
+                    AttributeId = table.Column<int>(type: "int", nullable: false),
+                    Position = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -651,19 +652,19 @@ namespace TD.CongDan.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EcommerceCategoryAttributes", x => x.Id);
+                    table.PrimaryKey("PK_EcommerceCategoryAttributes", x => new { x.EcommerceCategoryId, x.AttributeId });
                     table.ForeignKey(
                         name: "FK_EcommerceCategoryAttributes_Attributes_AttributeId",
                         column: x => x.AttributeId,
                         principalTable: "Attributes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_EcommerceCategoryAttributes_EcommerceCategories_EcommerceCategoryId",
                         column: x => x.EcommerceCategoryId,
                         principalTable: "EcommerceCategories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1109,14 +1110,14 @@ namespace TD.CongDan.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     SKU = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Barcode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ThumbnailUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Images = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
                     ShortDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VideoURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -1410,11 +1411,10 @@ namespace TD.CongDan.Infrastructure.Migrations
                 name: "EcommerceCategoryProducts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EcommerceCategoryId = table.Column<int>(type: "int", nullable: true),
-                    ProductId = table.Column<int>(type: "int", nullable: true),
+                    EcommerceCategoryId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
                     IsPrimary = table.Column<bool>(type: "bit", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -1422,19 +1422,19 @@ namespace TD.CongDan.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EcommerceCategoryProducts", x => x.Id);
+                    table.PrimaryKey("PK_EcommerceCategoryProducts", x => new { x.EcommerceCategoryId, x.ProductId });
                     table.ForeignKey(
                         name: "FK_EcommerceCategoryProducts_EcommerceCategories_EcommerceCategoryId",
                         column: x => x.EcommerceCategoryId,
                         principalTable: "EcommerceCategories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_EcommerceCategoryProducts_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1964,16 +1964,6 @@ namespace TD.CongDan.Infrastructure.Migrations
                 name: "IX_EcommerceCategoryAttributes_AttributeId",
                 table: "EcommerceCategoryAttributes",
                 column: "AttributeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EcommerceCategoryAttributes_EcommerceCategoryId",
-                table: "EcommerceCategoryAttributes",
-                column: "EcommerceCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EcommerceCategoryProducts_EcommerceCategoryId",
-                table: "EcommerceCategoryProducts",
-                column: "EcommerceCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EcommerceCategoryProducts_ProductId",

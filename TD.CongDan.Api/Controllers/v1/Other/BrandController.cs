@@ -2,19 +2,19 @@
 using TD.CongDan.Application.Features.Brands.Commands.Create;
 using TD.CongDan.Application.Features.Brands.Commands.Delete;
 using TD.CongDan.Application.Features.Brands.Commands.Update;
-using TD.CongDan.Application.Features.Brands.Queries.GetAllCached;
 using TD.CongDan.Application.Features.Brands.Queries.GetById;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using TD.CongDan.Application.Features.Brands.Queries.GetAll;
 
 namespace TD.CongDan.Api.Controllers.v1
 {
     public class BrandController : BaseApiController<BrandController>
     {
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy)
         {
-            var brands = await _mediator.Send(new GetAllBrandsCachedQuery());
+            var brands = await _mediator.Send(new GetAllBrandsQuery(pageNumber, pageSize, keySearch, orderBy));
             return Ok(brands);
         }
 

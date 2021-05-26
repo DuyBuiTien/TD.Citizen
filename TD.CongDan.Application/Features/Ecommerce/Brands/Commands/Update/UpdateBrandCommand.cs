@@ -11,7 +11,8 @@ namespace TD.CongDan.Application.Features.Brands.Commands.Update
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Tax { get; set; }
+        public string Code { get; set; }
+        public string Image { get; set; }
 
         public class UpdateProductCommandHandler : IRequestHandler<UpdateBrandCommand, Result<int>>
         {
@@ -35,6 +36,8 @@ namespace TD.CongDan.Application.Features.Brands.Commands.Update
                 else
                 {
                     brand.Name = command.Name ?? brand.Name;
+                    brand.Code = command.Code ?? brand.Code;
+                    brand.Image = command.Image ?? brand.Image;
                     //brand.Tax = (command.Tax == 0) ? brand.Tax : command.Tax;
                     brand.Description = command.Description ?? brand.Description;
                     await _brandRepository.UpdateAsync(brand);

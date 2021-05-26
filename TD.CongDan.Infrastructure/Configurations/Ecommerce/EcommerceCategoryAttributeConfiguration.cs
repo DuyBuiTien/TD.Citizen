@@ -9,8 +9,7 @@ namespace TD.CongDan.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<EcommerceCategoryAttribute> builder)
         {
             builder.ToTable("EcommerceCategoryAttributes");
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).UseIdentityColumn();
+            builder.HasKey(x => new { x.EcommerceCategoryId, x.AttributeId });
             builder.HasOne<EcommerceCategory>(s => s.EcommerceCategory).WithMany(g => g.EcommerceCategoryAttributes).HasForeignKey(s => s.EcommerceCategoryId);
             builder.HasOne<Attribute>(s => s.Attribute).WithMany(g => g.EcommerceCategoryAttributes).HasForeignKey(s => s.AttributeId);
 

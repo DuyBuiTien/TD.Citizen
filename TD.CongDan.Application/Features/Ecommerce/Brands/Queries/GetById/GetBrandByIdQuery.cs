@@ -4,6 +4,7 @@ using AutoMapper;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using TD.CongDan.Application.Interfaces.Repositories;
 
 namespace TD.CongDan.Application.Features.Brands.Queries.GetById
 {
@@ -13,10 +14,10 @@ namespace TD.CongDan.Application.Features.Brands.Queries.GetById
 
         public class GetProductByIdQueryHandler : IRequestHandler<GetBrandByIdQuery, Result<GetBrandByIdResponse>>
         {
-            private readonly IBrandCacheRepository _brandCache;
+            private readonly IBrandRepository _brandCache;
             private readonly IMapper _mapper;
 
-            public GetProductByIdQueryHandler(IBrandCacheRepository productCache, IMapper mapper)
+            public GetProductByIdQueryHandler(IBrandRepository productCache, IMapper mapper)
             {
                 _brandCache = productCache;
                 _mapper = mapper;

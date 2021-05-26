@@ -2,22 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using TD.CongDan.Application.Features.JobAges.Queries;
-using TD.CongDan.Application.Features.JobAges.Commands;
-
+using TD.CongDan.Application.Features.EcommerceCategories.Commands;
+using TD.CongDan.Application.Features.EcommerceCategories.Queries;
 
 namespace TD.CongDan.Api.Controllers.v1
 {
-    public class JobAgeController : BaseApiController<JobAgeController>
+    public class EcommerceCategoryController : BaseApiController<EcommerceCategoryController>
     {
         /// <summary>
         /// Danh sách độ tuổi
         /// </summary>
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy)
+        public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string keySearch, string orderBy, int? level, int? parentId)
         {
-            var items = await _mediator.Send(new GetAllJobAgesQuery(pageNumber, pageSize, keySearch, orderBy));
+            var items = await _mediator.Send(new GetAllEcommerceCategoriesQuery(pageNumber, pageSize, keySearch, orderBy, level, parentId));
             return Ok(items);
         }
 
@@ -25,7 +24,7 @@ namespace TD.CongDan.Api.Controllers.v1
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var item = await _mediator.Send(new GetJobAgeByIdQuery() { Id = id });
+            var item = await _mediator.Send(new GetEcommerceCategoryByIdQuery() { Id = id });
             return Ok(item);
         }
 
@@ -35,7 +34,7 @@ namespace TD.CongDan.Api.Controllers.v1
         // [Authorize(Roles = "Admin")]
         //[Authorize(Policy = Permissions.Categories.Create)]
 
-        public async Task<IActionResult> Post(CreateJobAgeCommand command)
+        public async Task<IActionResult> Post(CreateEcommerceCategoryCommand command)
         {
             return Ok(await _mediator.Send(command));
         }
@@ -43,7 +42,7 @@ namespace TD.CongDan.Api.Controllers.v1
         // PUT api/<controller>/5
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin, SuperAdmin")]
-        public async Task<IActionResult> Put(int id, UpdateJobAgeCommand command)
+        public async Task<IActionResult> Put(int id, UpdateEcommerceCategoryCommand command)
         {
             if (id != command.Id)
             {
@@ -59,7 +58,7 @@ namespace TD.CongDan.Api.Controllers.v1
 
         public async Task<IActionResult> Delete(int id)
         {
-            return Ok(await _mediator.Send(new DeleteJobAgeCommand { Id = id }));
+            return Ok(await _mediator.Send(new DeleteEcommerceCategoryCommand { Id = id }));
         }
     }
 }
