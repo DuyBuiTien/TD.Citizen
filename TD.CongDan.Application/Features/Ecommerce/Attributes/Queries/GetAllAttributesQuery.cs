@@ -1,14 +1,13 @@
 ﻿using TD.Libs.Results;
 using MediatR;
-using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using TD.CongDan.Application.Extensions;
 using TD.CongDan.Application.Interfaces.Repositories;
-using TD.CongDan.Domain.Entities;
 using TD.CongDan.Domain.Entities.Ecommerce;
+using System;
 
 namespace TD.CongDan.Application.Features.Attributes.Queries
 {
@@ -41,21 +40,23 @@ namespace TD.CongDan.Application.Features.Attributes.Queries
 
         public async Task<PaginatedResult<AttributesResponse>> Handle(GetAllAttributesQuery request, CancellationToken cancellationToken)
         {
-            Expression<Func<EcommerceCategory, AttributesResponse>> expression = e => new AttributesResponse
+            Expression<Func<Domain.Entities.Ecommerce.Attribute, AttributesResponse>> expression = e => new AttributesResponse
             {
                 Id = e.Id,
-                Name = e.Name,
-                ParentId = e.ParentId,
+                Code = e.Code,
+                DisplayName = e.DisplayName,
                 Description = e.Description,
-                Level = e.Level,
-                Slug = e.Slug,
-                MetaTitle = e.MetaTitle,
-                Position = e.Position,
-                MetaDescription = e.MetaDescription,
-                Icon = e.Icon, 
-                Image = e.Image,
-                Tags = e.Tags
-            };
+                IsVisibleOnFront = e.IsVisibleOnFront,
+                IsRequired = e.IsRequired,
+                IsFilterable = e.IsFilterable,
+                IsSearchable = e.IsSearchable,
+                IsSellerEditable = e.IsSellerEditable,
+                DefaultValue = e.DefaultValue,
+                FrontendInput = e.FrontendInput,
+                DataType = e.DataType,
+                InputType = e.InputType
+
+    };
 
 
             

@@ -19,7 +19,7 @@ namespace TD.CongDan.Application.Features.AttributeValues.Queries
        
         public string KeySearch { get; set; }
         public string OrderBy { get; set; }
-        public int? AttributeId { get;set }
+        public int? AttributeId { get; set; }
         
         public GetAllAttributeValuesQuery(int pageNumber, int pageSize, string keySearch, string orderBy, int? attributeId)
         {

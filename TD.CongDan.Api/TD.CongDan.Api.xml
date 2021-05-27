@@ -121,6 +121,11 @@
             Danh sách độ tuổi
             </summary>
         </member>
+        <member name="M:TD.CongDan.Api.Controllers.v1.AttributeValueController.GetAll(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Danh sách độ tuổi
+            </summary>
+        </member>
         <member name="M:TD.CongDan.Api.Controllers.v1.EcommerceCategoryController.GetAll(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             Danh sách độ tuổi

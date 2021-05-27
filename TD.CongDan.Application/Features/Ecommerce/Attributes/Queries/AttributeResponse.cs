@@ -1,20 +1,24 @@
-﻿namespace TD.CongDan.Application.Features.Attributes.Queries
+﻿using TD.CongDan.Domain.Enums;
+
+namespace TD.CongDan.Application.Features.Attributes.Queries
 {
     public class AttributeResponse
     {
         public int Id { get; set; }
-        public int? ParentId { get; set; }
-        public int Level { get; set; }
-        public string Name { get; set; }
-        public string Slug { get; set; }
+        public string Code { get; set; }
+        public string DisplayName { get; set; }
         public string Description { get; set; }
-        public string MetaTitle { get; set; }
-        public string MetaDescription { get; set; }
-        public int? Position { get; set; }
-        public bool? IncludeInMenu { get; set; }
-        public string Icon { get; set; }
-        public string Image { get; set; }
-        public string[] Tags { get; set; }
+        public bool IsVisibleOnFront { get; set; }
+        public bool IsRequired { get; set; }
+        public bool IsFilterable { get; set; }
+        public bool IsSearchable { get; set; }
+        public bool IsEditable { get; set; }
+        public bool IsSellerEditable { get; set; }
+        public string DefaultValue { get; set; }
+        public FrontendInput FrontendInput { get; set; }
+        //Datatype : int, decimal, varchar, text, datetime
+        public DataType DataType { get; set; }
+        public FrontendInput InputType { get; set; }
 
     }
 }
