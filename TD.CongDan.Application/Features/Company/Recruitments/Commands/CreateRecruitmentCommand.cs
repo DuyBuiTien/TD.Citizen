@@ -113,6 +113,7 @@ namespace TD.CongDan.Application.Features.Recruitments.Commands
            
             item.PlaceId = itemPlace.Id;
             item.UserName = id;
+            item.CompanyId = company.Id;
 
             await _repository.InsertAsync(item);
             await _unitOfWork.Commit(cancellationToken);

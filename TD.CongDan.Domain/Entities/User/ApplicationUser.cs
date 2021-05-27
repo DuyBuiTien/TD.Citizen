@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
+using TD.CongDan.Domain.Entities.Covid;
 
 namespace TD.CongDan.Domain.Entities
 {
@@ -39,5 +40,12 @@ namespace TD.CongDan.Domain.Entities
         public Area Province { get; set; }
         public Area District { get; set; }
         public Area Commune { get; set; }
+
+        public int? ChucVuId { get; set; }
+        public ChucVu ChucVu { get; set; }
+        public DonViCongTac DonViCongTac { get; set; }
+        public int? DonViCongTacId { get; set; }
+        public int? ChotKiemDichId { get; set; }
+        public ChotKiemDich ChotKiemDich { get; set; }
     }
 }

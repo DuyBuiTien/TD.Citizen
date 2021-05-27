@@ -19,6 +19,7 @@ using TD.CongDan.Domain.Enums;
 using TD.CongDan.Infrastructure.Extensions;
 using TD.CongDan.Domain.Entities.Traffic;
 using TD.CongDan.Domain.Entities.Other;
+using TD.CongDan.Domain.Entities.Covid;
 
 namespace TD.CongDan.Infrastructure.DbContexts
 {
@@ -72,10 +73,36 @@ namespace TD.CongDan.Infrastructure.DbContexts
 
         public DbSet<LicensePlate> LicensePlates { get; set; }
         public DbSet<TrafficTicket> TrafficTickets { get; set; }
+        public DbSet<Domain.Entities.Ecommerce.Attribute> Attributes { get; set; }
+        public DbSet<AttributeDatetime> AttributeDatetimes { get; set; }
+        public  DbSet<AttributeDecimal> AttributeDecimals { get; set; }
+        public DbSet<AttributeInt> AttributeInts { get; set; }
+        public DbSet<AttributeText> AttributeTexts { get; set; }
+        public DbSet<AttributeValue> AttributeValues { get; set; }
+        public DbSet<AttributeVarchar> AttributeVarchars { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<EcommerceCategory> EcommerceCategories { get; set; }
+        public DbSet<EcommerceCategoryAttribute> EcommerceCategoryAttributes { get; set; }
+        public DbSet<EcommerceCategoryProduct> EcommerceCategoryProducts { get; set; }
+
+
+        public DbSet<BenhNen> BenhNens { get; set; }
+        public DbSet<ChotKiemDich> ChotKiemDichs { get; set; }
+        public DbSet<ChucVu> ChucVus { get; set; }
+        public DbSet<DonViCongTac> DonViCongTacs { get; set; }
+        public DbSet<NguoiKhaiBao> NguoiKhaiBaos { get; set; }
+        public DbSet<PhuongTien> PhuongTiens { get; set; }
+        public DbSet<QuocGia> QuocGias { get; set; }
+        public DbSet<ToKhaiYTe> ToKhaiYTes { get; set; }
+        public DbSet<ToKhaiYTeBenhNen> ToKhaiYTeBenhNens { get; set; }
+        public DbSet<ToKhaiYTeTrieuChung> ToKhaiYTeTrieuChungs { get; set; }
+        public DbSet<TrieuChung> TrieuChungs { get; set; }
+
 
         public IDbConnection Connection => Database.GetDbConnection();
 
         public bool HasChanges => ChangeTracker.HasChanges();
+
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -238,6 +265,34 @@ namespace TD.CongDan.Infrastructure.DbContexts
             builder.ApplyConfiguration(new VehicleTypeConfiguration());
             builder.ApplyConfiguration(new TrafficTicketConfiguration());
             builder.ApplyConfiguration(new LicensePlateConfiguration());
+
+
+            builder.ApplyConfiguration(new BenhNenConfiguration());
+            builder.ApplyConfiguration(new AttributeDatetimeConfiguration());
+            builder.ApplyConfiguration(new AttributeDecimalConfiguration());
+            builder.ApplyConfiguration(new AttributeIntConfiguration());
+            builder.ApplyConfiguration(new AttributeTextConfiguration());
+            builder.ApplyConfiguration(new AttributeValueConfiguration());
+            builder.ApplyConfiguration(new AttributeVarcharConfiguration());
+            builder.ApplyConfiguration(new BrandConfiguration());
+            builder.ApplyConfiguration(new EcommerceCategoryAttributeConfiguration());
+            builder.ApplyConfiguration(new EcommerceCategoryConfiguration());
+            builder.ApplyConfiguration(new ProductConfiguration());
+            builder.ApplyConfiguration(new EcommerceCategoryProductConfiguration());
+
+
+            builder.ApplyConfiguration(new BenhNenConfiguration());
+            builder.ApplyConfiguration(new ChotKiemDichConfiguration());
+            builder.ApplyConfiguration(new ChucVuConfiguration());
+            builder.ApplyConfiguration(new DonViCongTacConfiguration());
+            builder.ApplyConfiguration(new NguoiKhaiBaoConfiguration());
+            builder.ApplyConfiguration(new PhuongTienConfiguration());
+            builder.ApplyConfiguration(new QuocGiaConfiguration());
+            builder.ApplyConfiguration(new ToKhaiYTeBenhNenConfiguration());
+            builder.ApplyConfiguration(new ToKhaiYTeConfiguration());
+            builder.ApplyConfiguration(new ToKhaiYTeTrieuChungConfiguration());
+            builder.ApplyConfiguration(new TrieuChungConfiguration());
+
 
 
             /* builder.Entity<ApplicationUser>(entity =>

@@ -19,6 +19,7 @@ namespace TD.CongDan.Application.Features.JobApplications.Commands
         public int? CurrentPositionId { get; set; }
         //Vi tri mong muon
         public int? PositionId { get; set; }
+        public int? JobNameId { get; set; }
         //Trinh do hoc van
         public int? DegreeId { get; set; }
         //Tong so nam Kinh nghiem

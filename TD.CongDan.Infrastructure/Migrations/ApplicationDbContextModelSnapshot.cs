@@ -164,6 +164,12 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<string>("AvatarUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ChotKiemDichId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ChucVuId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("CommuneId")
                         .HasColumnType("int");
 
@@ -175,6 +181,9 @@ namespace TD.CongDan.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("DistrictId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DonViCongTacId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -258,9 +267,15 @@ namespace TD.CongDan.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ChotKiemDichId");
+
+                    b.HasIndex("ChucVuId");
+
                     b.HasIndex("CommuneId");
 
                     b.HasIndex("DistrictId");
+
+                    b.HasIndex("DonViCongTacId");
 
                     b.HasIndex("GenderId");
 
@@ -481,83 +496,6 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Attachments");
-                });
-
-            modelBuilder.Entity("TD.CongDan.Domain.Entities.Catalog.Brand", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Tax")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Brand");
-                });
-
-            modelBuilder.Entity("TD.CongDan.Domain.Entities.Catalog.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Barcode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Rate")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BrandId");
-
-                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Category", b =>
@@ -1594,6 +1532,9 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Property<int>("IsSearchAllowed")
                         .HasColumnType("int");
 
+                    b.Property<int?>("JobNameId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("JobTypeId")
                         .HasColumnType("int");
 
@@ -1624,6 +1565,8 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasIndex("DegreeId");
 
                     b.HasIndex("ExperienceId");
+
+                    b.HasIndex("JobNameId");
 
                     b.HasIndex("JobTypeId");
 
@@ -1662,7 +1605,7 @@ namespace TD.CongDan.Infrastructure.Migrations
 
                     b.HasIndex("RecruitmentId");
 
-                    b.ToTable(" JobApplieds");
+                    b.ToTable("JobApplieds");
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.JobName", b =>
@@ -2360,6 +2303,1038 @@ namespace TD.CongDan.Infrastructure.Migrations
                             Description = "",
                             Name = "Thỏa thuận"
                         });
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.BenhNen", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BenhNens");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ChotKiemDich", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CommuneId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DistrictId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProvinceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommuneId");
+
+                    b.HasIndex("DistrictId");
+
+                    b.HasIndex("ProvinceId");
+
+                    b.ToTable("ChotKiemDichs");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ChucVu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChucVus");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.DonViCongTac", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DonViCongTacs");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.NguoiKhaiBao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CommuneId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DistrictId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("GenderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IdentityNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("NationalityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NguoiNhap")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProvinceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommuneId");
+
+                    b.HasIndex("DistrictId");
+
+                    b.HasIndex("GenderId");
+
+                    b.HasIndex("NationalityId");
+
+                    b.HasIndex("ProvinceId");
+
+                    b.ToTable("NguoiKhaiBaos");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.PhuongTien", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PhuongTiens");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.QuocGia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuocGias");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ToKhaiYTe", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ChotKiemDichId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CommuneId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DistrictId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GhiChu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("NgayKhoiHanh")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("NgayToi")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("NguoiKhaiBaoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NguoiNhap")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PhuongTienId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProvinceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SoGhe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SoPhuongTien")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChotKiemDichId");
+
+                    b.HasIndex("CommuneId");
+
+                    b.HasIndex("DistrictId");
+
+                    b.HasIndex("NguoiKhaiBaoId");
+
+                    b.HasIndex("ProvinceId");
+
+                    b.ToTable("ToKhaiYTes");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ToKhaiYTeBenhNen", b =>
+                {
+                    b.Property<int>("ToKhaiYTeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BenhNenId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ToKhaiYTeId", "BenhNenId");
+
+                    b.HasIndex("BenhNenId");
+
+                    b.ToTable("ToKhaiYTeBenhNens");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ToKhaiYTeTrieuChung", b =>
+                {
+                    b.Property<int>("ToKhaiYTeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TrieuChungId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ToKhaiYTeId", "TrieuChungId");
+
+                    b.HasIndex("TrieuChungId");
+
+                    b.ToTable("ToKhaiYTeTrieuChungs");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.TrieuChung", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TrieuChungs");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.Attribute", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DataType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DefaultValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FrontendInput")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InputType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsEditable")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsFilterable")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRequired")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSearchable")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSellerEditable")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsVisibleOnFront")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Attributes");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeDatetime", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Value")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("AttributeDatetimes");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeDecimal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("AttributeDecimals");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeInt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("AttributeInts");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeText", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ProductId1")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.HasIndex("ProductId1");
+
+                    b.ToTable("AttributeTexts");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeValue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.ToTable("AttributeValues");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeVarchar", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("AttributeVarchars");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique()
+                        .HasFilter("[Code] IS NOT NULL");
+
+                    b.ToTable("Brands");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IncludeInMenu")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MetaDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Slug")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tags")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EcommerceCategories");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategoryAttribute", b =>
+                {
+                    b.Property<int?>("EcommerceCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
+
+                    b.HasKey("EcommerceCategoryId", "AttributeId");
+
+                    b.HasIndex("AttributeId");
+
+                    b.ToTable("EcommerceCategoryAttributes");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategoryProduct", b =>
+                {
+                    b.Property<int?>("EcommerceCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPrimary")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("EcommerceCategoryId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("EcommerceCategoryProducts");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Barcode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Images")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("ListPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("PrimaryEcommerceCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Rate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("SKU")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShortDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ThumbnailUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VideoURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("Code")
+                        .IsUnique()
+                        .HasFilter("[Code] IS NOT NULL");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("PrimaryEcommerceCategoryId");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Gender", b =>
@@ -3464,6 +4439,14 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.ApplicationUser", b =>
                 {
+                    b.HasOne("TD.CongDan.Domain.Entities.Covid.ChotKiemDich", "ChotKiemDich")
+                        .WithMany("ApplicationUsers")
+                        .HasForeignKey("ChotKiemDichId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Covid.ChucVu", "ChucVu")
+                        .WithMany("ApplicationUsers")
+                        .HasForeignKey("ChucVuId");
+
                     b.HasOne("TD.CongDan.Domain.Entities.Area", "Commune")
                         .WithMany("UserInfoCommunes")
                         .HasForeignKey("CommuneId");
@@ -3471,6 +4454,10 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.HasOne("TD.CongDan.Domain.Entities.Area", "District")
                         .WithMany("UserInfoDistricts")
                         .HasForeignKey("DistrictId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Covid.DonViCongTac", "DonViCongTac")
+                        .WithMany("ApplicationUsers")
+                        .HasForeignKey("DonViCongTacId");
 
                     b.HasOne("TD.CongDan.Domain.Entities.Gender", "Gender")
                         .WithMany("UserInfos")
@@ -3492,9 +4479,15 @@ namespace TD.CongDan.Infrastructure.Migrations
                         .WithMany("UserInfos")
                         .HasForeignKey("ReligionId");
 
+                    b.Navigation("ChotKiemDich");
+
+                    b.Navigation("ChucVu");
+
                     b.Navigation("Commune");
 
                     b.Navigation("District");
+
+                    b.Navigation("DonViCongTac");
 
                     b.Navigation("Gender");
 
@@ -3505,17 +4498,6 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Navigation("Province");
 
                     b.Navigation("Religion");
-                });
-
-            modelBuilder.Entity("TD.CongDan.Domain.Entities.Catalog.Product", b =>
-                {
-                    b.HasOne("TD.CongDan.Domain.Entities.Catalog.Brand", "Brand")
-                        .WithMany()
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Brand");
                 });
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Company.Company", b =>
@@ -3560,6 +4542,10 @@ namespace TD.CongDan.Infrastructure.Migrations
                         .WithMany("JobApplications")
                         .HasForeignKey("ExperienceId");
 
+                    b.HasOne("TD.CongDan.Domain.Entities.Company.JobName", "JobName")
+                        .WithMany()
+                        .HasForeignKey("JobNameId");
+
                     b.HasOne("TD.CongDan.Domain.Entities.Company.JobType", "JobType")
                         .WithMany("JobApplications")
                         .HasForeignKey("JobTypeId");
@@ -3573,6 +4559,8 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Navigation("Degree");
 
                     b.Navigation("Experience");
+
+                    b.Navigation("JobName");
 
                     b.Navigation("JobType");
 
@@ -3683,6 +4671,290 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Navigation("Recruitment");
                 });
 
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ChotKiemDich", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Area", "Commune")
+                        .WithMany("ChotKiemDichCommunes")
+                        .HasForeignKey("CommuneId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Area", "District")
+                        .WithMany("ChotKiemDichDistricts")
+                        .HasForeignKey("DistrictId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Area", "Province")
+                        .WithMany("ChotKiemDichProvinces")
+                        .HasForeignKey("ProvinceId");
+
+                    b.Navigation("Commune");
+
+                    b.Navigation("District");
+
+                    b.Navigation("Province");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.NguoiKhaiBao", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Area", "Commune")
+                        .WithMany("NguoiKhaiBaoCommunes")
+                        .HasForeignKey("CommuneId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Area", "District")
+                        .WithMany("NguoiKhaiBaoDistricts")
+                        .HasForeignKey("DistrictId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Gender", "Gender")
+                        .WithMany("NguoiKhaiBaos")
+                        .HasForeignKey("GenderId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Covid.QuocGia", "QuocGia")
+                        .WithMany("NguoiKhaiBaos")
+                        .HasForeignKey("NationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Area", "Province")
+                        .WithMany("NguoiKhaiBaoProvinces")
+                        .HasForeignKey("ProvinceId");
+
+                    b.Navigation("Commune");
+
+                    b.Navigation("District");
+
+                    b.Navigation("Gender");
+
+                    b.Navigation("Province");
+
+                    b.Navigation("QuocGia");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ToKhaiYTe", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Covid.ChotKiemDich", "ChotKiemDich")
+                        .WithMany("ToKhaiYTes")
+                        .HasForeignKey("ChotKiemDichId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Covid.PhuongTien", "PhuongTien")
+                        .WithMany("ToKhaiYTes")
+                        .HasForeignKey("ChotKiemDichId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Area", "Commune")
+                        .WithMany("ToKhaiYTeCommunes")
+                        .HasForeignKey("CommuneId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Area", "District")
+                        .WithMany("ToKhaiYTeDistricts")
+                        .HasForeignKey("DistrictId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Covid.NguoiKhaiBao", "NguoiKhaiBao")
+                        .WithMany("ToKhaiYTes")
+                        .HasForeignKey("NguoiKhaiBaoId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Area", "Province")
+                        .WithMany("ToKhaiYTeProvinces")
+                        .HasForeignKey("ProvinceId");
+
+                    b.Navigation("ChotKiemDich");
+
+                    b.Navigation("Commune");
+
+                    b.Navigation("District");
+
+                    b.Navigation("NguoiKhaiBao");
+
+                    b.Navigation("PhuongTien");
+
+                    b.Navigation("Province");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ToKhaiYTeBenhNen", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Covid.BenhNen", "BenhNen")
+                        .WithMany("ToKhaiYTeBenhNens")
+                        .HasForeignKey("BenhNenId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Covid.ToKhaiYTe", "ToKhaiYTe")
+                        .WithMany("ToKhaiYTeBenhNens")
+                        .HasForeignKey("ToKhaiYTeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BenhNen");
+
+                    b.Navigation("ToKhaiYTe");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ToKhaiYTeTrieuChung", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Covid.ToKhaiYTe", "ToKhaiYTe")
+                        .WithMany("ToKhaiYTeTrieuChungs")
+                        .HasForeignKey("ToKhaiYTeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Covid.TrieuChung", "TrieuChung")
+                        .WithMany("ToKhaiYTeTrieuChungs")
+                        .HasForeignKey("TrieuChungId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ToKhaiYTe");
+
+                    b.Navigation("TrieuChung");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeDatetime", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Attribute", "Attribute")
+                        .WithMany("AttributeDatetimes")
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Product", "Product")
+                        .WithMany("AttributeDatetimes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Attribute");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeDecimal", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Attribute", "Attribute")
+                        .WithMany("AttributeDecimals")
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Product", "Product")
+                        .WithMany("AttributeDecimals")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Attribute");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeInt", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Attribute", "Attribute")
+                        .WithMany("AttributeInts")
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Product", "Product")
+                        .WithMany("AttributeInts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Attribute");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeText", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Attribute", "Attribute")
+                        .WithMany("AttributeTexts")
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Product", null)
+                        .WithMany("AttributeTexts")
+                        .HasForeignKey("ProductId1");
+
+                    b.Navigation("Attribute");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeValue", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Attribute", "Attribute")
+                        .WithMany("AttributeValues")
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Attribute");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.AttributeVarchar", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Attribute", "Attribute")
+                        .WithMany("AttributeVarchars")
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Product", "Product")
+                        .WithMany("AttributeVarchars")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Attribute");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategoryAttribute", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Attribute", "Attribute")
+                        .WithMany("EcommerceCategoryAttributes")
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategory", "EcommerceCategory")
+                        .WithMany("EcommerceCategoryAttributes")
+                        .HasForeignKey("EcommerceCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Attribute");
+
+                    b.Navigation("EcommerceCategory");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategoryProduct", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategory", "EcommerceCategory")
+                        .WithMany("EcommerceCategoryProducts")
+                        .HasForeignKey("EcommerceCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Product", "Product")
+                        .WithMany("EcommerceCategoryProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EcommerceCategory");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.Product", b =>
+                {
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.Brand", "Brand")
+                        .WithMany("Products")
+                        .HasForeignKey("BrandId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Company.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+
+                    b.HasOne("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategory", "PrimaryEcommerceCategory")
+                        .WithMany("PrimaryProducts")
+                        .HasForeignKey("PrimaryEcommerceCategoryId");
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Company");
+
+                    b.Navigation("PrimaryEcommerceCategory");
+                });
+
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Other.Bookmark", b =>
                 {
                     b.HasOne("TD.CongDan.Domain.Entities.Category", "Category")
@@ -3751,11 +5023,29 @@ namespace TD.CongDan.Infrastructure.Migrations
 
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Area", b =>
                 {
+                    b.Navigation("ChotKiemDichCommunes");
+
+                    b.Navigation("ChotKiemDichDistricts");
+
+                    b.Navigation("ChotKiemDichProvinces");
+
+                    b.Navigation("NguoiKhaiBaoCommunes");
+
+                    b.Navigation("NguoiKhaiBaoDistricts");
+
+                    b.Navigation("NguoiKhaiBaoProvinces");
+
                     b.Navigation("PlaceCommunes");
 
                     b.Navigation("PlaceDistricts");
 
                     b.Navigation("PlaceProvinces");
+
+                    b.Navigation("ToKhaiYTeCommunes");
+
+                    b.Navigation("ToKhaiYTeDistricts");
+
+                    b.Navigation("ToKhaiYTeProvinces");
 
                     b.Navigation("UserInfoCommunes");
 
@@ -3842,8 +5132,105 @@ namespace TD.CongDan.Infrastructure.Migrations
                     b.Navigation("Recruitments");
                 });
 
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.BenhNen", b =>
+                {
+                    b.Navigation("ToKhaiYTeBenhNens");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ChotKiemDich", b =>
+                {
+                    b.Navigation("ApplicationUsers");
+
+                    b.Navigation("ToKhaiYTes");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ChucVu", b =>
+                {
+                    b.Navigation("ApplicationUsers");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.DonViCongTac", b =>
+                {
+                    b.Navigation("ApplicationUsers");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.NguoiKhaiBao", b =>
+                {
+                    b.Navigation("ToKhaiYTes");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.PhuongTien", b =>
+                {
+                    b.Navigation("ToKhaiYTes");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.QuocGia", b =>
+                {
+                    b.Navigation("NguoiKhaiBaos");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.ToKhaiYTe", b =>
+                {
+                    b.Navigation("ToKhaiYTeBenhNens");
+
+                    b.Navigation("ToKhaiYTeTrieuChungs");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Covid.TrieuChung", b =>
+                {
+                    b.Navigation("ToKhaiYTeTrieuChungs");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.Attribute", b =>
+                {
+                    b.Navigation("AttributeDatetimes");
+
+                    b.Navigation("AttributeDecimals");
+
+                    b.Navigation("AttributeInts");
+
+                    b.Navigation("AttributeTexts");
+
+                    b.Navigation("AttributeValues");
+
+                    b.Navigation("AttributeVarchars");
+
+                    b.Navigation("EcommerceCategoryAttributes");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.Brand", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.EcommerceCategory", b =>
+                {
+                    b.Navigation("EcommerceCategoryAttributes");
+
+                    b.Navigation("EcommerceCategoryProducts");
+
+                    b.Navigation("PrimaryProducts");
+                });
+
+            modelBuilder.Entity("TD.CongDan.Domain.Entities.Ecommerce.Product", b =>
+                {
+                    b.Navigation("AttributeDatetimes");
+
+                    b.Navigation("AttributeDecimals");
+
+                    b.Navigation("AttributeInts");
+
+                    b.Navigation("AttributeTexts");
+
+                    b.Navigation("AttributeVarchars");
+
+                    b.Navigation("EcommerceCategoryProducts");
+                });
+
             modelBuilder.Entity("TD.CongDan.Domain.Entities.Gender", b =>
                 {
+                    b.Navigation("NguoiKhaiBaos");
+
                     b.Navigation("Recruitments");
 
                     b.Navigation("UserInfos");

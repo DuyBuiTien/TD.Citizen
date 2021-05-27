@@ -53,12 +53,16 @@ namespace TD.CongDan.Application.Features.Recruitments.Commands
         public string ContactPhone { get; set; }
         public string ContactAdress { get; set; }
 
+
         public string PlaceName { get; set; }
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
         public int? ProvinceId { get; set; }
         public int? DistrictId { get; set; }
         public int? CommuneId { get; set; }
+
+        public virtual ICollection<RecruitmentBenefitCommand> ListBenefit { get; set; }
+
     }
 
 
@@ -103,27 +107,40 @@ namespace TD.CongDan.Application.Features.Recruitments.Commands
 
                 CultureInfo provider = CultureInfo.InvariantCulture;
 
-                /* DateTime? ResumeApplyExpired = item.ResumeApplyExpired;
-                 try { ResumeApplyExpired = DateTime.ParseExact(command.ResumeApplyExpired, "dd/MM/yyyy", provider); } catch { }*/
-
-                /* var placeCount = _placeRepository.Places.Where(e => e.PlaceTypeId == 23 && e.ProvinceId == command.ProvinceId && e.DistrictId == command.DistrictId && e.CommuneId == command.CommuneId && e.PlaceName == command.PlaceName).Count();
-
-                 var placeId = item.PlaceId;
-
-                 if (placeCount < 1)
-                 {
-                     Place place = new Place { PlaceName = command.PlaceName, ProvinceId = command.ProvinceId, DistrictId = command.DistrictId, CommuneId = command.CommuneId, PlaceTypeId = 23, Latitude = (double)command.Latitude, Longitude = (double)command.Longitude };
-                     await _placeRepository.InsertAsync(place);
-                     await _unitOfWork.Commit(cancellationToken);
-                     placeId = place.Id;
-                 }*/
-
                 var place = item.Place;
                 place.PlaceName = command.PlaceName ?? place.PlaceName;
                 place.ProvinceId = command.ProvinceId ?? place.ProvinceId;
                 place.DistrictId = command.DistrictId ?? place.DistrictId;
                 place.Latitude = command.Latitude ?? place.Latitude;
                 place.Longitude = command.Longitude ?? place.Longitude;
+
+
+
+
+                var item_CompanyIndustries = item.RecruitmentBenefit;
+                foreach (var item_ in item_CompanyIndustries)
+                {
+                    await _recruitmentBenefitRepository.DeleteAsync(item_);
+                }
+
+                if (command.ListBenefit != null)
+                {
+                    foreach (var _item in command.ListBenefit)
+                    {
+                        try
+                        {
+                            RecruitmentBenefit tmp = new RecruitmentBenefit { BenefitId = _item.BenefitId, Name = _item.Name, RecruitmentId = item.Id };
+                            await _recruitmentBenefitRepository.InsertAsync(tmp);
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                }
+
+
+
 
 
                 item.Name = command.Name ?? item.Name;

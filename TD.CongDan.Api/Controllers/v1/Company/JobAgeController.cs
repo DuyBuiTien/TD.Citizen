@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using TD.CongDan.Application.Constants;
 using TD.CongDan.Application.Features.JobAges.Queries;
 using TD.CongDan.Application.Features.JobAges.Commands;
 

@@ -59,6 +59,7 @@ namespace TD.CongDan.Domain.Entities.Company
         public virtual Degree Degree { get; set; }
         public virtual Experience Experience { get; set; }
 
+        /*[JsonIgnore]*/
         public virtual ICollection<RecruitmentBenefit> RecruitmentBenefit { get; set; }
         [JsonIgnore]
         public virtual ICollection<JobSaved> JobSaveds { get; set; }

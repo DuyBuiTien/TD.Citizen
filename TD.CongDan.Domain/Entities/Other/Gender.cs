@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TD.CongDan.Domain.Entities.Company;
 using System.Text.Json.Serialization;
+using TD.CongDan.Domain.Entities.Covid;
 
 namespace TD.CongDan.Domain.Entities
 {
@@ -21,6 +22,7 @@ namespace TD.CongDan.Domain.Entities
         [JsonIgnore]
         public ICollection<Recruitment> Recruitments { get; set; }
 
-
+        [JsonIgnore]
+        public ICollection<NguoiKhaiBao> NguoiKhaiBaos { get; set; }
     }
 }
