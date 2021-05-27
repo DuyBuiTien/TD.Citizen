@@ -23,4 +23,9 @@
     <ProjectReference Include="..\TD.Libs.Results\TD.Libs.Results.csproj" />
     <ProjectReference Include="..\TD.Libs.ThrowR\TD.Libs.ThrowR.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\Companies\" />
+    <Folder Include="Extensions\Covids\" />
+    <Folder Include="Extensions\Ecommerces\" />
+  </ItemGroup>
 </Project>

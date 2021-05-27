@@ -19,6 +19,7 @@ using TD.CongDan.Domain.Enums;
 using TD.CongDan.Infrastructure.Extensions;
 using TD.CongDan.Domain.Entities.Traffic;
 using TD.CongDan.Domain.Entities.Other;
+using TD.CongDan.Domain.Entities.Covid;
 
 namespace TD.CongDan.Infrastructure.DbContexts
 {
@@ -83,6 +84,20 @@ namespace TD.CongDan.Infrastructure.DbContexts
         public DbSet<EcommerceCategory> EcommerceCategories { get; set; }
         public DbSet<EcommerceCategoryAttribute> EcommerceCategoryAttributes { get; set; }
         public DbSet<EcommerceCategoryProduct> EcommerceCategoryProducts { get; set; }
+
+
+        public DbSet<BenhNen> BenhNens { get; set; }
+        public DbSet<ChotKiemDich> ChotKiemDichs { get; set; }
+        public DbSet<ChucVu> ChucVus { get; set; }
+        public DbSet<DonViCongTac> DonViCongTacs { get; set; }
+        public DbSet<NguoiKhaiBao> NguoiKhaiBaos { get; set; }
+        public DbSet<PhuongTien> PhuongTiens { get; set; }
+        public DbSet<QuocGia> QuocGias { get; set; }
+        public DbSet<ToKhaiYTe> ToKhaiYTes { get; set; }
+        public DbSet<ToKhaiYTeBenhNen> ToKhaiYTeBenhNens { get; set; }
+        public DbSet<ToKhaiYTeTrieuChung> ToKhaiYTeTrieuChungs { get; set; }
+        public DbSet<TrieuChung> TrieuChungs { get; set; }
+
 
         public IDbConnection Connection => Database.GetDbConnection();
 
@@ -252,7 +267,7 @@ namespace TD.CongDan.Infrastructure.DbContexts
             builder.ApplyConfiguration(new LicensePlateConfiguration());
 
 
-            builder.ApplyConfiguration(new AttributeConfiguration());
+            builder.ApplyConfiguration(new BenhNenConfiguration());
             builder.ApplyConfiguration(new AttributeDatetimeConfiguration());
             builder.ApplyConfiguration(new AttributeDecimalConfiguration());
             builder.ApplyConfiguration(new AttributeIntConfiguration());
@@ -265,7 +280,18 @@ namespace TD.CongDan.Infrastructure.DbContexts
             builder.ApplyConfiguration(new ProductConfiguration());
             builder.ApplyConfiguration(new EcommerceCategoryProductConfiguration());
 
-            
+
+            builder.ApplyConfiguration(new BenhNenConfiguration());
+            builder.ApplyConfiguration(new ChotKiemDichConfiguration());
+            builder.ApplyConfiguration(new ChucVuConfiguration());
+            builder.ApplyConfiguration(new DonViCongTacConfiguration());
+            builder.ApplyConfiguration(new NguoiKhaiBaoConfiguration());
+            builder.ApplyConfiguration(new PhuongTienConfiguration());
+            builder.ApplyConfiguration(new QuocGiaConfiguration());
+            builder.ApplyConfiguration(new ToKhaiYTeBenhNenConfiguration());
+            builder.ApplyConfiguration(new ToKhaiYTeConfiguration());
+            builder.ApplyConfiguration(new ToKhaiYTeTrieuChungConfiguration());
+            builder.ApplyConfiguration(new TrieuChungConfiguration());
 
 
 

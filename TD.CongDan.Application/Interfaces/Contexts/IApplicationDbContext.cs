@@ -8,6 +8,7 @@ using TD.CongDan.Domain.Entities;
 using TD.CongDan.Domain.Entities.Company;
 using TD.CongDan.Domain.Entities.Traffic;
 using TD.CongDan.Domain.Entities.Other;
+using TD.CongDan.Domain.Entities.Covid;
 
 namespace TD.CongDan.Application.Interfaces.Contexts
 {
@@ -74,6 +75,17 @@ namespace TD.CongDan.Application.Interfaces.Contexts
         DbSet<EcommerceCategory> EcommerceCategories { get; set; }
         DbSet<EcommerceCategoryAttribute> EcommerceCategoryAttributes { get; set; }
         DbSet<EcommerceCategoryProduct> EcommerceCategoryProducts { get; set; }
-        
+
+        DbSet<BenhNen> BenhNens { get; set; }
+        DbSet<ChotKiemDich> ChotKiemDichs { get; set; }
+        DbSet<ChucVu> ChucVus { get; set; }
+        DbSet<DonViCongTac> DonViCongTacs  { get; set; }
+        DbSet<NguoiKhaiBao> NguoiKhaiBaos { get; set; }
+        DbSet<PhuongTien> PhuongTiens { get; set; }
+        DbSet<QuocGia> QuocGias { get; set; }
+        DbSet<ToKhaiYTe> ToKhaiYTes { get; set; }
+        DbSet<ToKhaiYTeBenhNen> ToKhaiYTeBenhNens { get; set; }
+        DbSet<ToKhaiYTeTrieuChung> ToKhaiYTeTrieuChungs { get; set; }
+        DbSet<TrieuChung> TrieuChungs{ get; set; }
     }
 }

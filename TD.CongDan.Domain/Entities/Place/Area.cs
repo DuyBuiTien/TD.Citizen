@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using TD.CongDan.Domain.Entities.Covid;
 using TD.Libs.Abstractions.Domain;
 
 namespace TD.CongDan.Domain.Entities
@@ -31,6 +32,30 @@ namespace TD.CongDan.Domain.Entities
         public ICollection<Place> PlaceDistricts { get; set; }
         [JsonIgnore]
         public ICollection<Place> PlaceCommunes { get; set; }
+
+
+
+        [JsonIgnore]
+        public ICollection<ChotKiemDich> ChotKiemDichProvinces { get; set; }
+        [JsonIgnore]
+        public ICollection<ChotKiemDich> ChotKiemDichDistricts { get; set; }
+        [JsonIgnore]
+        public ICollection<ChotKiemDich> ChotKiemDichCommunes { get; set; }
+
+
+        [JsonIgnore]
+        public ICollection<NguoiKhaiBao> NguoiKhaiBaoProvinces { get; set; }
+        [JsonIgnore]
+        public ICollection<NguoiKhaiBao> NguoiKhaiBaoDistricts { get; set; }
+        [JsonIgnore]
+        public ICollection<NguoiKhaiBao> NguoiKhaiBaoCommunes { get; set; }
+
+        [JsonIgnore]
+        public ICollection<ToKhaiYTe> ToKhaiYTeProvinces { get; set; }
+        [JsonIgnore]
+        public ICollection<ToKhaiYTe> ToKhaiYTeDistricts { get; set; }
+        [JsonIgnore]
+        public ICollection<ToKhaiYTe> ToKhaiYTeCommunes { get; set; }
 
     }
 }

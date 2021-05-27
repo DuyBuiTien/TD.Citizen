@@ -83,6 +83,18 @@ namespace TD.CongDan.Infrastructure.Extensions
 
             services.AddTransient<IUserService, UserService>();
 
+            services.AddTransient<IBenhNenRepository, BenhNenRepository>();
+            services.AddTransient<IChotKiemDichRepository, ChotKiemDichRepository>();
+            services.AddTransient<IChucVuRepository, ChucVuRepository>();
+            services.AddTransient<IDonViCongTacRepository, DonViCongTacRepository>();
+            services.AddTransient<INguoiKhaiBaoRepository, NguoiKhaiBaoRepository>();
+            services.AddTransient<IPhuongTienRepository, PhuongTienRepository>();
+            services.AddTransient<IQuocGiaRepository, QuocGiaRepository>();
+            services.AddTransient<IToKhaiYTeBenhNenRepository, ToKhaiYTeBenhNenRepository>();
+            services.AddTransient<IToKhaiYTeRepository, ToKhaiYTeRepository>();
+            services.AddTransient<IToKhaiYTeTrieuChungRepository, ToKhaiYTeTrieuChungRepository>();
+            services.AddTransient<ITrieuChungRepository, TrieuChungRepository>();
+
             #endregion Repositories
         }
     }
